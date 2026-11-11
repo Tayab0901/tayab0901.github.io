@@ -9,6 +9,11 @@
 <meta name="author" content="Muhammad Tayyab">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#1f5fa8">
+<script>
+  // Scroll-reveal hides content only while the page script is alive; if it never starts, show everything.
+  document.documentElement.classList.add('js');
+  setTimeout(function () { if (!window.__revealReady) { document.documentElement.classList.remove('js'); } }, 3000);
+</script>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tayyabch-portfolio.vercel.app/">
 <meta property="og:title" content="Muhammad Tayyab | Senior Software Engineer / Team Lead">
@@ -415,11 +420,52 @@
   .pal-empty { padding: 18px; color: var(--muted); text-align: center; }
   .pal-foot { display: flex; gap: 14px; padding: 10px 16px; border-top: 1px solid var(--line); font-size: 0.76rem; color: var(--muted); }
 
-  /* Scroll reveal: progressive, transform only, so content is always visible. */
-  @supports (animation-timeline: view()) {
-    .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
-    @keyframes rise { from { transform: translateY(26px) scale(0.985); } to { transform: none; } }
-  }
+  /* Motion: calm entrances and small accents. Only the marquee and tiny details loop. */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: none; } }
+  @keyframes lineIn { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
+  @keyframes shimmer { to { background-position: 100% 50%; } }
+  .hero .intro > * { animation: fadeUp 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .hero .intro > :nth-child(1) { animation-delay: 0.05s; }
+  .hero .intro > :nth-child(2) { animation-delay: 0.14s; }
+  .hero .intro > :nth-child(3) { animation-delay: 0.23s; }
+  .hero .intro > :nth-child(4) { animation-delay: 0.32s; }
+  .hero .intro > :nth-child(5) { animation-delay: 0.41s; }
+  .hero .intro > :nth-child(6) { animation-delay: 0.5s; }
+  .hero h1 .grad { background-size: 200% auto; animation: shimmer 7s ease-in-out 1.2s infinite alternate; }
+  .portrait { animation: scaleIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both; }
+  .terminal-wrap { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.45s both; }
+  .term-body p { animation: lineIn 0.4s ease both; }
+  .term-body p:nth-child(1) { animation-delay: 0.9s; }
+  .term-body p:nth-child(2) { animation-delay: 1.12s; }
+  .term-body p:nth-child(3) { animation-delay: 1.34s; }
+  .term-body p:nth-child(4) { animation-delay: 1.56s; }
+  .term-body p:nth-child(5) { animation-delay: 1.78s; }
+  .term-body p:nth-child(6) { animation-delay: 1.9s; }
+  .term-body p:nth-child(7) { animation-delay: 2.1s; }
+  .term-body p:nth-child(8) { animation-delay: 2.35s; }
+  .float { animation: fadeUp 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 1s both, bob 6s ease-in-out 1.6s infinite; }
+  .float.f2 { animation-delay: 1.15s, 3.4s; }
+  .visual .portrait, .visual .terminal-wrap { transition: translate 0.45s ease-out; }
+  .visual .portrait { translate: calc(var(--px, 0) * -10px) calc(var(--py, 0) * -8px); }
+  .visual .terminal-wrap { translate: calc(var(--px, 0) * 8px) calc(var(--py, 0) * 6px); }
+  .site-header { transition: box-shadow 0.3s ease, background 0.3s ease; }
+  .site-header.scrolled { box-shadow: 0 8px 28px rgba(14, 31, 51, 0.08); background: rgba(255, 255, 255, 0.9); }
+  .btn .arr { display: inline-block; transition: transform 0.2s ease; }
+  .btn:hover .arr { transform: translateX(4px); }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: none; } }
+  .js .reveal { opacity: 0; }
+  .js .reveal.in { animation: fadeUp 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 80ms); }
+  .js .career .cbar { transform: scaleX(0); transform-origin: 0 50%; }
+  .js .career.grown .cbar { animation: grow 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(0.25s + var(--i, 0) * 120ms); }
+  .d-body > * { animation: fadeUp 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .d-body > :nth-child(2) { animation-delay: 0.05s; }
+  .d-body > :nth-child(3) { animation-delay: 0.1s; }
+  .d-body > :nth-child(4) { animation-delay: 0.15s; }
+  .d-body > :nth-child(5) { animation-delay: 0.2s; }
+  .d-body > :nth-child(6) { animation-delay: 0.25s; }
+  .d-body > :nth-child(n+7) { animation-delay: 0.3s; }
+  .msg { animation: fadeUp 0.3s ease both; }
 
   @media (max-width: 1080px) {
     .hero .wrap { grid-template-columns: 1fr; gap: 40px; padding-block: 56px 64px; }
@@ -488,13 +534,13 @@
 
 <section class="hero" id="top">
   <div class="wrap">
-    <div>
+    <div class="intro">
       <span class="avail"><span class="pulse" aria-hidden="true"></span>Open to remote roles, Lahore (UTC+5)</span>
       <h1>Muhammad <span class="grad">Tayyab</span></h1>
       <p class="role">Senior Software Engineer / Team Lead</p>
       <p class="thesis">I build .NET, Angular, SQL Server and AI-powered systems for clients in the US and Pakistan, and I lead the releases that put them live: staging first, measured, and reversible.</p>
       <div class="actions">
-        <a class="btn primary" href="#work">See case studies <span aria-hidden="true">&#8594;</span></a>
+        <a class="btn primary" href="#work">See case studies <span class="arr" aria-hidden="true">&#8594;</span></a>
         <button type="button" class="btn ai" data-open-chat><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg>Ask AI about me</button>
         <a class="btn ghost" href="Muhammad-Tayyab-Resume.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>CV</a>
       </div>
@@ -956,6 +1002,76 @@
   (function () {
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    /* ---------- Scroll reveal, count-up numbers, growing career bars ---------- */
+    function countUp(el) {
+      var finalText = el.textContent;
+      var parts = finalText.split(/(\d[\d,]*)/);
+      var nums = parts.map(function (p) { return /^\d[\d,]*$/.test(p) ? parseInt(p.replace(/,/g, ''), 10) : null; });
+      if (!nums.some(function (n) { return n !== null; })) { return; }
+      var start = performance.now();
+      var duration = 1100;
+      function frame(now) {
+        var p = Math.min(1, (now - start) / duration);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = parts.map(function (s, i) {
+          if (nums[i] === null) { return s; }
+          var v = Math.round(nums[i] * eased);
+          return s.indexOf(',') !== -1 ? v.toLocaleString('en-US') : String(v);
+        }).join('');
+        if (p < 1) { requestAnimationFrame(frame); } else { el.textContent = finalText; }
+      }
+      requestAnimationFrame(frame);
+    }
+    function revealNow(el) {
+      el.classList.add('in');
+      if (el.classList.contains('career')) { el.classList.add('grown'); }
+      if (!reduceMotion) { el.querySelectorAll('.m b').forEach(countUp); }
+      el.addEventListener('animationend', function done(e) {
+        if (e.target !== el || e.animationName !== 'fadeUp') { return; }
+        el.removeEventListener('animationend', done);
+        el.classList.remove('reveal', 'in');
+        el.style.removeProperty('--i');
+      });
+    }
+    var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+    revealEls.forEach(function (el) {
+      var siblings = Array.prototype.filter.call(el.parentElement.children, function (c) { return c.classList.contains('reveal'); });
+      el.style.setProperty('--i', String(Math.min(5, siblings.indexOf(el))));
+    });
+    document.querySelectorAll('.career .cbar').forEach(function (bar, i) { bar.style.setProperty('--i', String(i)); });
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      // No scroll animation: show everything as-is (bars full, numbers final).
+      document.documentElement.classList.remove('js');
+    } else {
+      var revealer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { revealer.unobserve(en.target); revealNow(en.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      var viewH = window.innerHeight || document.documentElement.clientHeight;
+      revealEls.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        // Already on screen at load: animate now instead of waiting for the observer's first pass.
+        if (r.top < viewH * 0.92 && r.bottom > 0) { revealNow(el); } else { revealer.observe(el); }
+      });
+    }
+    window.__revealReady = true;
+
+    /* ---------- Gentle parallax on the hero visual (mouse only) ---------- */
+    var heroEl = document.querySelector('.hero');
+    var visualEl = document.querySelector('.visual');
+    if (!reduceMotion && heroEl && visualEl && window.matchMedia('(pointer: fine)').matches) {
+      heroEl.addEventListener('pointermove', function (e) {
+        var r = heroEl.getBoundingClientRect();
+        visualEl.style.setProperty('--px', ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+        visualEl.style.setProperty('--py', ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+      });
+      heroEl.addEventListener('pointerleave', function () {
+        visualEl.style.setProperty('--px', '0');
+        visualEl.style.setProperty('--py', '0');
+      });
+    }
+
     /* ---------- Tech explorer ---------- */
     var techButtons = document.querySelectorAll('[data-tech-btn]');
     var techItems = document.querySelectorAll('[data-tech]');
@@ -1295,6 +1411,7 @@
     /* ---------- Scroll progress, back-to-top, active nav ---------- */
     var progress = document.getElementById('progress');
     var toTop = document.getElementById('to-top');
+    var siteHeader = document.querySelector('.site-header');
     var ticking = false;
     function onScroll() {
       if (ticking) { return; }
@@ -1304,6 +1421,7 @@
         var p = max > 0 ? window.scrollY / max : 0;
         progress.style.transform = 'scaleX(' + p.toFixed(4) + ')';
         toTop.classList.toggle('show', window.scrollY > 900);
+        siteHeader.classList.toggle('scrolled', window.scrollY > 8);
         ticking = false;
       });
     }
