@@ -5,38 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Muhammad Tayyab Portfolio</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Muhammad Tayyab, senior software engineer and team lead (.NET, Angular, SQL Server): case studies of NextMail, Orange Line OMS, Webinar CE Classes, Workforce AI, Sunwai and Nurtureful.">
+<meta name="description" content="Muhammad Tayyab, Senior Software Engineer / Team Lead (.NET, Angular, SQL Server). Case studies: NextMail, Orange Line OMS, Webinar CE Classes, Workforce AI, Sunwai and Nurtureful.">
 <meta name="author" content="Muhammad Tayyab">
 <meta name="color-scheme" content="light">
+<meta name="theme-color" content="#1f5fa8">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tayyabch-portfolio.vercel.app/">
+<meta property="og:title" content="Muhammad Tayyab | Senior Software Engineer / Team Lead">
+<meta property="og:description" content=".NET, Angular and SQL Server systems, taken safely to production. Six case studies with architecture and results.">
+<meta property="og:image" content="https://tayyabch-portfolio.vercel.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tayyabch-portfolio.vercel.app/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231f5fa8'/%3E%3Cstop offset='1' stop-color='%230f766e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='41' font-family='monospace' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3EMT%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <style>
-  /* Layout: bright hero on a dotted blueprint band; sticky project index beside colour-coded case studies
-     (one column under 960px); earlier-work grid; skills; timeline; one bold navy-teal contact band.
-     Deliberately a single light look: every colour is set explicitly. */
+  /* Layout: sticky glass header with scroll progress; split hero (story left, release-log terminal right);
+     product marquee; bento grid of colour-coded case studies with a tech explorer and a slide-in case drawer;
+     working principles; a career chart drawn to scale (Jul 2018 – Dec 2026); earlier-work grid; skills; contact band.
+     Deliberately a single light look: every colour below is explicit. */
   :root {
     color-scheme: light;
-    --bg: #f6f9fc;
+    --bg: #f6f8fb;
     --surface: #ffffff;
-    --fg: #0f2236;
-    --muted: #55657a;
-    --line: #e3e9f1;
+    --fg: #0e1f33;
+    --ink-soft: #33475b;
+    --muted: #586a7f;
+    --line: #e2e8f0;
+    --line-strong: #cfd9e5;
     --accent: #1f5fa8;
     --accent-ink: #ffffff;
     --teal: #0f766e;
     --amber: #f2b33d;
     --amber-ink: #8a5a00;
-    --chip: #eef4fb;
+    --green: #16a34a;
+    --chip: #eef3f9;
+    --term-bg: #0f2135;
+    --term-fg: #d6e4f2;
+    --term-dim: #7f98b2;
+    --term-ok: #5eead4;
     --band-from: #12355b;
     --band-to: #0f5f6b;
-    --shadow: 0 1px 2px rgba(15, 34, 54, 0.05), 0 10px 30px rgba(15, 34, 54, 0.07);
-    --shadow-hover: 0 2px 4px rgba(15, 34, 54, 0.06), 0 16px 40px rgba(15, 34, 54, 0.11);
+    --shadow-sm: 0 1px 2px rgba(14, 31, 51, 0.05);
+    --shadow: 0 1px 2px rgba(14, 31, 51, 0.05), 0 12px 32px rgba(14, 31, 51, 0.08);
+    --shadow-lg: 0 2px 6px rgba(14, 31, 51, 0.06), 0 24px 60px rgba(14, 31, 51, 0.14);
     --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
     --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
     --font-mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
-    --radius: 16px;
-    /* project colours */
+    --radius: 18px;
     --c-nextmail: #1d4ed8;
     --c-orangeline: #e0610f;
     --c-webinar: #0f766e;
@@ -46,657 +65,590 @@
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--bg); }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
-  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+  html { scroll-behavior: smooth; background: var(--bg); scroll-padding-top: 84px; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: rgba(255, 255, 255, 0.9); }
   a { color: var(--accent); text-underline-offset: 3px; }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
   img { max-width: 100%; }
   p { margin: 0; }
-  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.12; margin: 0; color: var(--fg); }
-  h2 { font-size: clamp(1.7rem, 3.2vw, 2.3rem); font-weight: 800; letter-spacing: -0.015em; }
-  h3 { font-size: 1.55rem; font-weight: 800; }
-  h4 { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin: 0 0 10px; font-weight: 600; }
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.1; margin: 0; color: var(--fg); }
+  h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); font-weight: 800; letter-spacing: -0.02em; }
+  h3 { font-weight: 800; }
+  h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.13em; color: var(--muted); margin: 0 0 10px; font-weight: 600; }
+  button { font-family: inherit; }
 
-  .wrap {
-    max-width: 1160px; margin: 0 auto;
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
-  }
-  .label {
-    display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.78rem;
-    font-weight: 600; letter-spacing: 0.04em; color: var(--amber-ink); background: #fff5df;
-    border: 1px solid #f6dfae; padding: 3px 10px; border-radius: 999px;
-  }
-  .label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--amber); }
+  .wrap { max-width: 1200px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+  .label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--amber-ink); }
+  .label::before { content: ""; width: 18px; height: 2px; background: var(--amber); border-radius: 2px; }
+  .section-head { display: grid; gap: 12px; margin-bottom: 34px; max-width: 760px; }
+  .section-head p { color: var(--muted); font-size: 1.05rem; }
+  section.block { padding-block: 88px; }
 
-  /* Top bar */
-  .topbar { background: rgba(255, 255, 255, 0.92); border-bottom: 1px solid var(--line); }
-  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; flex-wrap: wrap; }
-  .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 1.08rem; color: var(--fg); text-decoration: none; }
-  .mono-badge {
-    width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
-    background: linear-gradient(135deg, var(--accent), var(--teal)); color: #fff;
-    font-family: var(--font-mono); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.02em;
-  }
-  .topnav { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.93rem; font-weight: 500; }
-  .topnav a { color: var(--muted); text-decoration: none; }
-  .topnav a:hover { color: var(--accent); }
+  /* Header */
+  .site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(255, 255, 255, 0.78); backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px); border-bottom: 1px solid rgba(207, 217, 229, 0.7); }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-block: 12px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 1.08rem; color: var(--fg); text-decoration: none; white-space: nowrap; }
+  .mono-badge { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, var(--accent), var(--teal)); color: #fff; font-family: var(--font-mono); font-weight: 600; font-size: 0.8rem; box-shadow: 0 6px 14px rgba(31, 95, 168, 0.3); }
+  .nav { display: flex; align-items: center; gap: 4px; }
+  .nav a { color: var(--ink-soft); text-decoration: none; font-size: 0.92rem; font-weight: 500; padding: 7px 12px; border-radius: 999px; transition: background 0.2s ease, color 0.2s ease; }
+  .nav a:hover { background: var(--chip); color: var(--fg); }
+  .nav a.active { background: var(--fg); color: #fff; }
+  .nav .cta { background: var(--accent); color: #fff; margin-left: 6px; }
+  .nav .cta:hover { background: #184e8c; color: #fff; }
+  .progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: linear-gradient(90deg, var(--accent), var(--teal), var(--c-orangeline)); transform-origin: 0 50%; transform: scaleX(0); }
 
   /* Hero */
-  .hero {
-    background-color: #eef4fb;
-    background-image:
-      radial-gradient(rgba(31, 95, 168, 0.16) 1px, transparent 1.3px),
-      linear-gradient(180deg, #eaf2fc 0%, #f3f8f7 100%);
-    background-size: 22px 22px, 100% 100%;
-    border-bottom: 1px solid var(--line);
-  }
-  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 48px; padding-block: 70px 60px; align-items: center; }
+  .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); background:
+      radial-gradient(600px 380px at 8% 12%, rgba(31, 95, 168, 0.14), transparent 70%),
+      radial-gradient(520px 340px at 92% 8%, rgba(224, 97, 15, 0.11), transparent 70%),
+      radial-gradient(640px 420px at 70% 100%, rgba(15, 118, 110, 0.12), transparent 70%),
+      var(--bg); }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(31, 95, 168, 0.13) 1px, transparent 1.3px); background-size: 24px 24px; mask-image: linear-gradient(180deg, #000 0%, transparent 90%); -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 90%); pointer-events: none; }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 56px; padding-block: 84px 72px; align-items: center; }
   .hero .wrap > * { min-width: 0; }
-  .hero h1 { font-size: clamp(2.2rem, 7vw, 4.6rem); font-weight: 800; letter-spacing: -0.025em; margin-top: 16px; overflow-wrap: anywhere; }
-  .hero h1 .hl { color: var(--accent); background: linear-gradient(transparent 64%, #fde3a7 64%, #fde3a7 90%, transparent 90%); padding: 0 4px; }
-  .hero .role { font-size: 1.18rem; font-weight: 600; margin-top: 14px; color: var(--fg); }
-  .hero .thesis { color: var(--muted); max-width: 60ch; margin-top: 12px; font-size: 1.05rem; }
-  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 999px;
-    font: 600 0.95rem var(--font-body); text-decoration: none; cursor: pointer; border: 1px solid var(--accent);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
-  .btn.primary { background: var(--accent); color: var(--accent-ink); }
-  .btn.ghost { background: #ffffff; color: var(--accent); }
-  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0; }
-  .facts div { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; box-shadow: var(--shadow); }
-  .facts dt { font-family: var(--font-display); font-weight: 800; font-size: 2.1rem; line-height: 1.05; font-variant-numeric: tabular-nums; }
-  .facts div:nth-child(1) dt { color: var(--accent); }
-  .facts div:nth-child(2) dt { color: var(--teal); }
-  .facts div:nth-child(3) dt { color: var(--c-orangeline); }
-  .facts div:nth-child(4) dt { color: var(--c-workforce); }
-  .facts dd { margin: 6px 0 0; color: var(--muted); font-size: 0.88rem; line-height: 1.35; }
+  .avail { display: inline-flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px 6px 10px; font-size: 0.86rem; font-weight: 500; box-shadow: var(--shadow-sm); }
+  .pulse { position: relative; width: 10px; height: 10px; border-radius: 50%; background: var(--green); }
+  .pulse::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--green); animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite; }
+  @keyframes ping { 75%, 100% { transform: scale(2.4); opacity: 0; } }
+  .hero h1 { font-size: clamp(2.6rem, 7.4vw, 5.4rem); font-weight: 800; letter-spacing: -0.035em; margin-top: 22px; line-height: 0.98; overflow-wrap: anywhere; }
+  .hero h1 .grad { background: linear-gradient(100deg, var(--accent) 10%, var(--teal) 60%, var(--c-orangeline) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero .role { font-family: var(--font-display); font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 700; margin-top: 18px; color: var(--ink-soft); }
+  .hero .thesis { color: var(--muted); max-width: 56ch; margin-top: 14px; font-size: 1.06rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font: 600 0.96rem var(--font-body); text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--fg); color: #fff; box-shadow: 0 10px 24px rgba(14, 31, 51, 0.22); }
+  .btn.primary:hover { box-shadow: 0 14px 30px rgba(14, 31, 51, 0.28); }
+  .btn.ghost { background: var(--surface); color: var(--fg); border-color: var(--line-strong); }
+  .btn.ghost:hover { border-color: var(--fg); }
+  .btn svg { width: 16px; height: 16px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 0; margin: 36px 0 0; }
+  .stats div { padding: 4px 22px; border-left: 1px solid var(--line-strong); }
+  .stats div:first-child { padding-left: 0; border-left: none; }
+  .stats dt { font-family: var(--font-display); font-weight: 800; font-size: 2rem; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .stats div:nth-child(1) dt { color: var(--accent); }
+  .stats div:nth-child(2) dt { color: var(--teal); }
+  .stats div:nth-child(3) dt { color: var(--c-orangeline); }
+  .stats div:nth-child(4) dt { color: var(--c-workforce); }
+  .stats dd { margin: 4px 0 0; color: var(--muted); font-size: 0.84rem; line-height: 1.3; max-width: 13ch; }
 
-  /* Sections */
-  section.block { padding-block: 64px; }
-  section.block + section.block { border-top: 1px solid var(--line); }
-  .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 30px; }
-  .section-head > div { display: grid; gap: 10px; justify-items: start; }
-  .section-head p { color: var(--muted); max-width: 58ch; }
+  .terminal-wrap { position: relative; }
+  .terminal { background: var(--term-bg); color: var(--term-fg); border-radius: 18px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid #1d3550; transform: rotate(-1deg); }
+  .term-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: #13283f; border-bottom: 1px solid #1d3550; }
+  .term-bar i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+  .term-bar i:nth-child(1) { background: #ff6b6b; } .term-bar i:nth-child(2) { background: #f2b33d; } .term-bar i:nth-child(3) { background: #3ccf91; }
+  .term-bar span { margin-left: 10px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--term-dim); }
+  .term-body { font-family: var(--font-mono); font-size: 0.86rem; line-height: 1.75; padding: 18px 20px 20px; overflow-x: auto; }
+  .term-body p { white-space: pre; }
+  .term-body .cmd { color: #ffffff; }
+  .term-body .cmd b { color: var(--amber); font-weight: 600; }
+  .term-body .ok { color: var(--term-ok); }
+  .term-body .dim { color: var(--term-dim); }
+  .term-body .gap { height: 8px; }
+  .caret { display: inline-block; width: 9px; height: 1.05em; background: var(--term-ok); vertical-align: -2px; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .float { position: absolute; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; box-shadow: var(--shadow); display: grid; gap: 1px; animation: bob 6s ease-in-out infinite; }
+  .float b { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; }
+  .float span { font-size: 0.76rem; color: var(--muted); }
+  .float.f1 { left: -28px; bottom: -26px; } .float.f1 b { color: var(--accent); }
+  .float.f2 { right: -18px; top: -26px; animation-delay: -3s; } .float.f2 b { color: var(--teal); }
+  @keyframes bob { 50% { transform: translateY(-8px); } }
 
-  /* Work: index + cases */
-  .work { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 36px; align-items: start; }
-  .index { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 20px); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; box-shadow: var(--shadow); }
-  .index ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
-  .index a { display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 10px; align-items: start; padding: 9px 10px; border-radius: 10px; text-decoration: none; color: var(--fg); }
-  .index a::before { content: ""; width: 10px; height: 10px; border-radius: 3px; background: var(--c); margin-top: 7px; }
-  .index a:hover { background: var(--chip); }
-  .index a strong { font-weight: 600; display: block; }
-  .index a small { display: block; color: var(--muted); font-size: 0.78rem; line-height: 1.3; }
+  /* Marquee */
+  .marquee { border-bottom: 1px solid var(--line); background: var(--surface); }
+  .marquee .wrap { display: flex; align-items: center; gap: 24px; padding-block: 20px; }
+  .marquee .mlabel { flex: none; font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .mview { overflow: hidden; flex: 1; min-width: 0; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .mtrack { display: flex; width: max-content; animation: slide 46s linear infinite; }
+  .mview:hover .mtrack { animation-play-state: paused; }
+  .mtrack ul { list-style: none; margin: 0; padding: 0; display: flex; }
+  .mtrack li { font-family: var(--font-display); font-weight: 700; font-size: 1.12rem; color: var(--ink-soft); padding: 0 26px; white-space: nowrap; display: flex; align-items: center; gap: 26px; }
+  .mtrack li::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); }
+  @keyframes slide { to { transform: translateX(-50%); } }
 
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
-  .filters button {
-    font: 500 0.88rem var(--font-body); padding: 7px 15px; border-radius: 999px; cursor: pointer;
-    border: 1px solid var(--line); background: var(--surface); color: var(--fg); transition: background 0.15s ease;
-  }
-  .filters button:hover { background: var(--chip); }
-  .filters button[aria-pressed="true"] { background: var(--fg); color: #ffffff; border-color: var(--fg); }
+  /* Tech explorer */
+  .explorer { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .explorer button { font: 500 0.88rem var(--font-body); padding: 8px 15px; border-radius: 999px; cursor: pointer; border: 1px solid var(--line-strong); background: var(--surface); color: var(--fg); transition: all 0.18s ease; }
+  .explorer button:hover { border-color: var(--fg); }
+  .explorer button[aria-pressed="true"] { background: var(--fg); color: #fff; border-color: var(--fg); }
+  .tech-note { color: var(--muted); font-size: 0.9rem; min-height: 1.5em; margin-bottom: 22px; }
+  .tech-note b { color: var(--fg); }
 
-  .cases { display: grid; gap: 28px; min-width: 0; }
-  .case {
-    --c: var(--accent);
-    --tint: color-mix(in srgb, var(--c) 7%, #ffffff);
-    --tint-line: color-mix(in srgb, var(--c) 24%, #ffffff);
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px;
-    display: grid; gap: 24px; min-width: 0; scroll-margin-top: 20px; box-shadow: var(--shadow);
-    transition: box-shadow 0.2s ease;
-  }
-  .case:hover { box-shadow: var(--shadow-hover); }
-  .case-top { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 16px; align-items: start; }
-  .badge {
-    width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
-    background: var(--c); color: #ffffff; font-family: var(--font-mono); font-weight: 600; font-size: 1rem;
-    box-shadow: 0 6px 16px color-mix(in srgb, var(--c) 35%, transparent);
-  }
-  .case header { display: grid; gap: 8px; min-width: 0; }
-  .case .eyebrow { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; color: var(--c); }
-  .case .eyebrow a { color: inherit; }
-  .case .lede { font-size: 1.05rem; max-width: 70ch; color: var(--fg); }
-  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 0; }
-  .meta div { display: inline-flex; gap: 8px; align-items: baseline; background: var(--tint); border: 1px solid var(--tint-line); border-radius: 999px; padding: 4px 12px; font-size: 0.85rem; }
-  .meta dt { font-family: var(--font-mono); color: var(--c); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.72rem; font-weight: 600; }
-  .meta dd { margin: 0; font-weight: 500; }
-  .case-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr); gap: 30px; }
-  .context { background: var(--bg); border-radius: 12px; padding: 16px 18px; align-self: start; }
-  .context p { color: var(--muted); }
-  .case ul.built { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
-  .case ul.built li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 6px; }
-  .case ul.built li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); margin-top: 9px; }
-
-  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
-  .metric { background: var(--tint); border: 1px solid var(--tint-line); border-radius: 12px; padding: 14px 16px; }
-  .metric b { display: block; font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; color: var(--c); font-variant-numeric: tabular-nums; line-height: 1.15; }
-  .metric span { font-size: 0.86rem; color: var(--muted); }
-
-  figure.flow-wrap { margin: 0; overflow-x: auto; }
-  figure.flow-wrap figcaption { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
-  ol.flow { list-style: none; margin: 0; padding: 2px; display: flex; min-width: 640px; counter-reset: step; }
-  ol.flow li { flex: 1 1 0; position: relative; padding: 11px 12px; border: 1px solid var(--tint-line); border-radius: 12px; background: var(--tint); font-size: 0.84rem; line-height: 1.38; }
-  ol.flow li b { display: block; font-size: 0.9rem; color: var(--fg); margin-bottom: 3px; }
-  ol.flow li b::before { counter-increment: step; content: counter(step); display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--c); color: #fff; font-family: var(--font-mono); font-size: 0.68rem; margin-right: 6px; vertical-align: 1px; }
-  ol.flow li span { color: var(--muted); }
-  ol.flow li + li { margin-left: 28px; }
-  ol.flow li + li::before { content: "\2192"; position: absolute; left: -21px; top: 50%; transform: translateY(-50%); color: var(--c); font-weight: 700; }
-
+  /* Bento */
+  .bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px; }
+  .tile { --c: var(--accent); --tint: color-mix(in srgb, var(--c) 7%, #ffffff); --tint-line: color-mix(in srgb, var(--c) 24%, #ffffff);
+    position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px;
+    display: flex; flex-direction: column; gap: 14px; min-width: 0; box-shadow: var(--shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.3s ease, filter 0.3s ease; }
+  .tile::before { content: ""; position: absolute; width: 320px; height: 320px; right: -120px; top: -140px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--c) 18%, transparent), transparent 70%); pointer-events: none; }
+  .tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--tint-line); }
+  .tile > * { position: relative; }
+  .tile.dim { opacity: 0.32; filter: grayscale(0.7); }
+  .tile.match { border-color: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 22%, transparent), var(--shadow-lg); }
+  .t-nm { grid-column: span 4; grid-row: span 2; --c: var(--c-nextmail); }
+  .t-ol { grid-column: span 2; grid-row: span 2; --c: var(--c-orangeline); }
+  .t-wc { grid-column: span 3; --c: var(--c-webinar); }
+  .t-wa { grid-column: span 3; --c: var(--c-workforce); }
+  .t-sw { grid-column: span 3; --c: var(--c-sunwai); }
+  .t-nf { grid-column: span 3; --c: var(--c-nurtureful); }
+  .tile-top { display: flex; align-items: center; gap: 12px; }
+  .badge { width: 46px; height: 46px; flex: none; border-radius: 13px; display: grid; place-items: center; background: var(--c); color: #fff; font-family: var(--font-mono); font-weight: 600; font-size: 0.92rem; box-shadow: 0 8px 18px color-mix(in srgb, var(--c) 35%, transparent); }
+  .eyebrow { font-family: var(--font-mono); font-size: 0.76rem; font-weight: 500; color: var(--c); line-height: 1.35; }
+  .tile h3 { font-size: 1.55rem; letter-spacing: -0.01em; }
+  .t-nm h3 { font-size: clamp(1.8rem, 3vw, 2.3rem); }
+  .tile .lede { color: var(--ink-soft); }
+  .hl-line { font-family: var(--font-display); font-weight: 800; color: var(--c); font-size: 1.25rem; line-height: 1.2; }
+  .mrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .mcol { display: grid; gap: 10px; }
+  .m { background: var(--tint); border: 1px solid var(--tint-line); border-radius: 12px; padding: 12px 14px; }
+  .m b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; color: var(--c); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .m span { font-size: 0.8rem; color: var(--muted); line-height: 1.3; display: block; margin-top: 2px; }
+  .mini-flow { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .mini-flow li { font-size: 0.8rem; font-weight: 500; background: var(--surface); border: 1px solid var(--tint-line); color: var(--ink-soft); padding: 5px 10px; border-radius: 8px; }
+  .mini-flow li + li::before { content: "\2192"; color: var(--c); margin-right: 6px; font-weight: 700; }
+  .mini-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .mini-list li { display: grid; gap: 4px; padding: 12px 14px; border-radius: 12px; border: 1px dashed var(--tint-line); font-size: 0.86rem; color: var(--ink-soft); line-height: 1.4; }
+  .mini-list li b { font-family: var(--font-display); font-size: 0.98rem; color: var(--fg); }
   .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-  .chips li { font-family: var(--font-mono); font-size: 0.76rem; background: var(--chip); color: var(--fg); padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); }
-  .case .chips li { background: var(--tint); border-color: var(--tint-line); color: color-mix(in srgb, var(--c) 70%, #0f2236); }
+  .chips li { font-family: var(--font-mono); font-size: 0.74rem; padding: 3px 10px; border-radius: 999px; background: var(--chip); border: 1px solid var(--line); color: var(--ink-soft); }
+  .tile .chips li { background: var(--tint); border-color: var(--tint-line); color: color-mix(in srgb, var(--c) 72%, #0e1f33); }
+  .tile-foot { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 4px; }
+  .open-case { display: inline-flex; align-items: center; gap: 8px; border: none; background: var(--c); color: #fff; font: 600 0.88rem var(--font-body); padding: 9px 16px; border-radius: 999px; cursor: pointer; transition: gap 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 6px 16px color-mix(in srgb, var(--c) 30%, transparent); }
+  .open-case:hover { gap: 12px; }
+  .open-case span { font-size: 1.05em; }
 
-  #nextmail { --c: var(--c-nextmail); }
-  #orangeline { --c: var(--c-orangeline); }
-  #webinar { --c: var(--c-webinar); }
-  #workforce { --c: var(--c-workforce); }
-  #sunwai { --c: var(--c-sunwai); }
-  #nurtureful { --c: var(--c-nurtureful); }
-  [data-index="nextmail"] a { --c: var(--c-nextmail); }
-  [data-index="orangeline"] a { --c: var(--c-orangeline); }
-  [data-index="webinar"] a { --c: var(--c-webinar); }
-  [data-index="workforce"] a { --c: var(--c-workforce); }
-  [data-index="sunwai"] a { --c: var(--c-sunwai); }
-  [data-index="nurtureful"] a { --c: var(--c-nurtureful); }
+  /* Principles */
+  .principles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+  .principle { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); display: grid; gap: 10px; align-content: start; }
+  .picon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--chip); color: var(--accent); }
+  .picon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .principle:nth-child(2) .picon { color: var(--teal); background: #e7f5f3; }
+  .principle:nth-child(3) .picon { color: var(--c-orangeline); background: #fdf0e6; }
+  .principle:nth-child(4) .picon { color: var(--c-workforce); background: #eeedfb; }
+  .principle h3 { font-size: 1.15rem; }
+  .principle p { color: var(--muted); font-size: 0.95rem; }
+
+  /* Career chart */
+  .career { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 26px 18px; box-shadow: var(--shadow); }
+  .crow { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 18px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+  .crow:last-of-type { border-bottom: none; }
+  .clabel b { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; }
+  .clabel span { display: block; color: var(--muted); font-size: 0.82rem; line-height: 1.35; }
+  .clabel em { font-style: normal; font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-soft); }
+  .ctrack { position: relative; height: 34px; background-image: repeating-linear-gradient(90deg, transparent 0, transparent calc(11.7647% - 1px), var(--line) calc(11.7647% - 1px), var(--line) 11.7647%); background-position: 5.88% 0; border-radius: 8px; }
+  .cbar { position: absolute; top: 5px; bottom: 5px; left: var(--l); width: var(--w); border-radius: 7px; background: linear-gradient(90deg, var(--k), color-mix(in srgb, var(--k) 70%, #ffffff)); box-shadow: 0 4px 12px color-mix(in srgb, var(--k) 30%, transparent); min-width: 8px; }
+  .cbar.now::after { content: ""; position: absolute; right: -5px; top: 50%; width: 10px; height: 10px; margin-top: -5px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.2); }
+  .axis { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 18px; margin-top: 8px; }
+  .ticks { position: relative; height: 20px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+  .ticks span { position: absolute; transform: translateX(-50%); }
+  .roles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; margin-top: 22px; }
+  .role-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; box-shadow: var(--shadow-sm); display: grid; gap: 6px; }
+  .role-card.current { border-color: color-mix(in srgb, var(--accent) 40%, #ffffff); box-shadow: 0 0 0 3px rgba(31, 95, 168, 0.1), var(--shadow); }
+  .role-card .when { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+  .role-card h3 { font-size: 1.08rem; }
+  .role-card h3 em { font-style: normal; color: var(--accent); }
+  .role-card p { color: var(--muted); font-size: 0.93rem; }
+  .edu { margin-top: 18px; color: var(--muted); }
+  .edu b { color: var(--fg); }
 
   /* Earlier work */
-  .earlier-intro { color: var(--muted); max-width: 75ch; margin-bottom: 26px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 18px; }
-  .card {
-    --k: var(--accent);
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px;
-    display: flex; flex-direction: column; gap: 10px; min-width: 0; box-shadow: var(--shadow);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
-  .card .company { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; color: var(--k); }
-  .card h3 { font-size: 1.22rem; }
-  .card p { color: var(--muted); font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 18px; }
+  .card { --k: var(--accent); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0; box-shadow: var(--shadow-sm); transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.3s ease, filter 0.3s ease, border-color 0.22s ease; }
+  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  .card.dim { opacity: 0.32; filter: grayscale(0.7); }
+  .card.match { border-color: var(--k); box-shadow: 0 0 0 3px color-mix(in srgb, var(--k) 20%, transparent), var(--shadow); }
+  .card .company { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.76rem; font-weight: 600; color: var(--k); }
+  .card .company::before { content: ""; width: 9px; height: 9px; border-radius: 3px; background: var(--k); }
+  .card h3 { font-size: 1.2rem; }
+  .card p { color: var(--muted); font-size: 0.94rem; }
   .card .chips { margin-top: auto; padding-top: 4px; }
-  .card a.ext { font-size: 0.88rem; font-weight: 500; }
-  .card.ts { --k: var(--c-nextmail); }
-  .card.sz { --k: var(--c-webinar); }
-  .card.sb { --k: var(--amber-ink); }
+  .card a.ext { font-size: 0.86rem; font-weight: 500; overflow-wrap: anywhere; }
+  .card.ts { --k: var(--c-nextmail); } .card.sz { --k: var(--c-webinar); } .card.sb { --k: var(--amber-ink); }
+  .earlier-intro { color: var(--ink-soft); max-width: 75ch; margin-bottom: 26px; }
 
   /* Skills */
-  .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 18px; }
-  .skill { --k: var(--accent); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow); }
-  .skill h3 { font-size: 1.06rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 18px; }
+  .skill { --k: var(--accent); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow-sm); }
+  .skill h3 { font-size: 1.06rem; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
   .skill h3::before { content: ""; width: 12px; height: 12px; border-radius: 4px; background: var(--k); }
-  .skill:nth-child(1) { --k: var(--c-nextmail); }
-  .skill:nth-child(2) { --k: var(--c-nurtureful); }
-  .skill:nth-child(3) { --k: var(--c-webinar); }
-  .skill:nth-child(4) { --k: var(--c-orangeline); }
-  .skill:nth-child(5) { --k: var(--c-workforce); }
-  .skill:nth-child(6) { --k: var(--c-sunwai); }
+  .skill:nth-child(1) { --k: var(--c-nextmail); } .skill:nth-child(2) { --k: var(--c-nurtureful); } .skill:nth-child(3) { --k: var(--c-webinar); }
+  .skill:nth-child(4) { --k: var(--c-orangeline); } .skill:nth-child(5) { --k: var(--c-workforce); } .skill:nth-child(6) { --k: var(--c-sunwai); }
 
-  /* Timeline */
-  .timeline { list-style: none; margin: 0; padding: 0 0 0 26px; position: relative; display: grid; gap: 14px; }
-  .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--accent), var(--teal)); border-radius: 2px; }
-  .timeline li { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; box-shadow: var(--shadow); display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 18px; }
-  .timeline li::before { content: ""; position: absolute; left: -25px; top: 22px; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 3px solid var(--accent); }
-  .timeline li:first-child::before { background: var(--amber); border-color: var(--amber); }
-  .timeline .when { font-family: var(--font-mono); font-size: 0.84rem; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
-  .timeline h3 { font-size: 1.12rem; }
-  .timeline h3 em { font-style: normal; color: var(--accent); }
-  .timeline p { color: var(--muted); margin-top: 4px; }
-  .edu { margin-top: 20px; color: var(--muted); }
-  .edu strong { color: var(--fg); }
-
-  /* Contact band */
-  .contact-band { background: linear-gradient(135deg, var(--band-from), var(--band-to)); color: #ffffff; }
-  .contact-band .wrap { padding-block: 60px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: center; }
-  .contact-band h2 { color: #ffffff; margin-bottom: 12px; }
-  .contact-band p { color: #cfe3f2; max-width: 46ch; }
-  .contact-list { margin: 0; display: grid; gap: 10px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: var(--radius); padding: 20px 22px; }
-  .contact-list div { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 12px; align-items: center; }
-  .contact-list dt { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: #9fc6e2; }
-  .contact-list dd { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; overflow-wrap: anywhere; color: #ffffff; font-weight: 500; }
+  /* Contact */
+  .contact-band { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--band-from), var(--band-to)); color: #fff; }
+  .contact-band::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1.3px); background-size: 24px 24px; pointer-events: none; }
+  .contact-band .wrap { position: relative; padding-block: 84px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+  .contact-band h2 { color: #fff; font-size: clamp(2rem, 4.4vw, 3.2rem); }
+  .contact-band p { color: #cfe3f2; max-width: 46ch; margin-top: 14px; font-size: 1.05rem; }
+  .contact-band .actions .btn.primary { background: #fff; color: var(--band-from); }
+  .contact-band .actions .btn.ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.5); }
+  .contact-list { margin: 0; display: grid; gap: 12px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: var(--radius); padding: 22px 24px; backdrop-filter: blur(4px); }
+  .contact-list div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 12px; align-items: center; }
+  .contact-list dt { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #9fc6e2; }
+  .contact-list dd { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; overflow-wrap: anywhere; color: #fff; font-weight: 500; }
   .contact-list a { color: #ffe2a0; }
-  .copy { font: 600 0.78rem var(--font-body); border: 1px solid rgba(255, 255, 255, 0.5); background: transparent; color: #ffffff; border-radius: 999px; padding: 3px 11px; cursor: pointer; }
-  .copy:hover { background: rgba(255, 255, 255, 0.12); }
+  .copy { font: 600 0.78rem var(--font-body); border: 1px solid rgba(255, 255, 255, 0.5); background: transparent; color: #fff; border-radius: 999px; padding: 3px 11px; cursor: pointer; }
+  .copy:hover { background: rgba(255, 255, 255, 0.14); }
   .copy-status { font-size: 0.8rem; color: #ffe2a0; }
-
   footer { background: var(--surface); border-top: 1px solid var(--line); }
-  footer .wrap { padding-block: 22px 32px; color: var(--muted); font-size: 0.85rem; }
+  footer .wrap { padding-block: 22px 30px; color: var(--muted); font-size: 0.85rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
 
-  @media (max-width: 960px) {
-    .hero .wrap { grid-template-columns: 1fr; gap: 32px; padding-block: 48px 40px; }
-    .work { grid-template-columns: 1fr; }
-    .index { display: none; }
-    .case-body { grid-template-columns: 1fr; gap: 18px; }
-    .contact-band .wrap { grid-template-columns: 1fr; }
+  .to-top { position: fixed; right: max(18px, env(safe-area-inset-right, 0px)); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 40; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--surface); color: var(--fg); box-shadow: var(--shadow); cursor: pointer; font-size: 1.2rem; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease; }
+  .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+
+  /* Case drawer */
+  dialog.drawer { --c: var(--accent); --tint: color-mix(in srgb, var(--c) 7%, #ffffff); --tint-line: color-mix(in srgb, var(--c) 24%, #ffffff);
+    margin: 0 0 0 auto; height: 100%; max-height: 100%; width: min(780px, 100%); max-width: 100%; padding: 0; border: none; background: var(--surface); color: var(--fg); box-shadow: var(--shadow-lg); overflow: hidden; }
+  dialog.drawer[open] { display: flex; flex-direction: column; animation: drawerIn 0.32s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  dialog.drawer::backdrop { background: rgba(14, 31, 51, 0.42); backdrop-filter: blur(3px); animation: fadeIn 0.3s ease; }
+  @keyframes drawerIn { from { transform: translateX(40px); opacity: 0.4; } to { transform: none; opacity: 1; } }
+  @keyframes fadeIn { from { opacity: 0; } }
+  .d-head { display: flex; align-items: center; gap: 14px; padding: 18px max(24px, env(safe-area-inset-right, 0px)) 18px 28px; padding-top: calc(18px + env(safe-area-inset-top, 0px)); border-bottom: 1px solid var(--line); background: linear-gradient(180deg, var(--tint), var(--surface)); }
+  .d-head .eyebrow { display: block; }
+  .d-head h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  .d-close { margin-left: auto; width: 40px; height: 40px; flex: none; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--surface); cursor: pointer; font-size: 1.3rem; line-height: 1; color: var(--fg); }
+  .d-close:hover { background: var(--chip); }
+  .d-body { overflow-y: auto; padding: 26px 28px calc(40px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 26px; align-content: start; }
+  .d-lede { font-size: 1.08rem; color: var(--ink-soft); }
+  .d-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
+  .d-meta div { display: inline-flex; gap: 8px; align-items: baseline; background: var(--tint); border: 1px solid var(--tint-line); border-radius: 999px; padding: 4px 12px; font-size: 0.85rem; }
+  .d-meta dt { font-family: var(--font-mono); color: var(--c); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; font-weight: 600; }
+  .d-meta dd { margin: 0; font-weight: 500; }
+  .context { background: var(--bg); border-radius: 14px; padding: 16px 18px; }
+  .context p { color: var(--ink-soft); }
+  ul.built { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  ul.built li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 6px; }
+  ul.built li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); margin-top: 9px; box-shadow: 0 0 0 3px var(--tint); }
+  .d-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .d-metrics .m b { font-size: 1.7rem; }
+  figure.flow-wrap { margin: 0; overflow-x: auto; }
+  ol.flow { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: step; }
+  ol.flow li { position: relative; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; padding-bottom: 16px; }
+  ol.flow li::before { counter-increment: step; content: counter(step); width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--c); color: #fff; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; position: relative; z-index: 1; }
+  ol.flow li:not(:last-child)::after { content: ""; position: absolute; left: 14px; top: 30px; bottom: 0; width: 2px; background: var(--tint-line); }
+  ol.flow li b { display: block; font-size: 0.98rem; }
+  ol.flow li span { color: var(--muted); font-size: 0.9rem; }
+
+  /* Scroll reveal: progressive, transform only, so content is always visible. */
+  @supports (animation-timeline: view()) {
+    .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
+    @keyframes rise { from { transform: translateY(26px) scale(0.985); } to { transform: none; } }
   }
-  @media (max-width: 640px) {
-    .case { padding: 20px; }
-    .case-top { grid-template-columns: 1fr; gap: 12px; }
-    ol.flow { flex-direction: column; min-width: 0; }
-    ol.flow li + li { margin-left: 0; margin-top: 26px; }
-    ol.flow li + li::before { content: "\2193"; left: 16px; top: -22px; transform: none; }
-    .timeline li { grid-template-columns: 1fr; gap: 4px; }
+
+  @media (max-width: 1080px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 64px; padding-block: 60px 70px; }
+    .terminal-wrap { max-width: 620px; }
+    .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .t-nm { grid-column: span 2; grid-row: auto; }
+    .t-ol, .t-wc, .t-wa, .t-sw, .t-nf { grid-column: span 1; grid-row: auto; }
+    .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .contact-band .wrap { grid-template-columns: 1fr; }
+    .nav a:not(.cta) { display: none; }
+  }
+  @media (max-width: 680px) {
+    section.block { padding-block: 64px; }
+    .bento { grid-template-columns: 1fr; }
+    .t-nm, .t-ol, .t-wc, .t-wa, .t-sw, .t-nf { grid-column: auto; }
+    .mrow { grid-template-columns: 1fr; }
+    .principles { grid-template-columns: 1fr; }
+    .crow, .axis { grid-template-columns: 1fr; gap: 6px; }
+    .axis > div:first-child { display: none; }
+    .stats div { padding: 4px 16px; }
+    .stats dt { font-size: 1.6rem; }
+    .float { position: static; margin-top: 12px; animation: none; display: inline-grid; }
+    .terminal { transform: none; }
+    .term-body { font-size: 0.78rem; }
+    .term-body p { white-space: pre-wrap; }
+    .mini-list { grid-template-columns: 1fr; }
+    .marquee .mlabel { display: none; }
+    .d-body { padding-left: 20px; padding-right: 20px; }
+    .d-head { padding-left: 20px; }
     .contact-list div { grid-template-columns: 1fr; gap: 2px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .mtrack { width: auto; }
+    .mtrack ul { flex-wrap: wrap; row-gap: 8px; }
+    .mtrack ul[aria-hidden="true"] { display: none; }
   }
 </style>
 </head>
 <body>
 
-<div class="topbar">
+<header class="site-header">
   <div class="wrap">
     <a class="brand" href="#top"><span class="mono-badge" aria-hidden="true">MT</span>Muhammad Tayyab</a>
-    <nav class="topnav" aria-label="Sections">
-      <a href="#work">Case studies</a>
-      <a href="#earlier">Earlier work</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work" data-nav="work">Work</a>
+      <a href="#approach" data-nav="approach">Approach</a>
+      <a href="#career" data-nav="career">Career</a>
+      <a href="#earlier" data-nav="earlier">Earlier work</a>
+      <a href="#skills" data-nav="skills">Skills</a>
+      <a class="cta" href="#contact">Contact</a>
     </nav>
   </div>
-</div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
 
-<header class="hero" id="top">
+<section class="hero" id="top">
   <div class="wrap">
     <div>
-      <span class="label">Senior Software Engineer / Team Lead</span>
-      <h1>Muhammad <span class="hl">Tayyab</span></h1>
-      <p class="role">.NET, Angular and SQL Server systems, taken safely to production</p>
-      <p class="thesis">I build web applications, APIs and data pipelines for clients in the US and Pakistan, and I lead the releases that put them live. Below are the products I work on now, what I built in each, and the numbers that came out of it.</p>
+      <span class="avail"><span class="pulse" aria-hidden="true"></span>Open to remote roles, Lahore (UTC+5)</span>
+      <h1>Muhammad <span class="grad">Tayyab</span></h1>
+      <p class="role">Senior Software Engineer / Team Lead</p>
+      <p class="thesis">I build .NET, Angular and SQL Server systems for clients in the US and Pakistan, and I lead the releases that put them live: staging first, measured, and reversible.</p>
       <div class="actions">
-        <a class="btn primary" href="Muhammad-Tayyab-Resume.pdf">Download CV (PDF)</a>
+        <a class="btn primary" href="#work">See case studies <span aria-hidden="true">&#8594;</span></a>
+        <a class="btn ghost" href="Muhammad-Tayyab-Resume.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Download CV</a>
         <a class="btn ghost" href="https://www.linkedin.com/in/tayyab-ch-623024158/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn ghost" href="#contact">Contact</a>
+      </div>
+      <dl class="stats">
+        <div><dt>8+</dt><dd>years building .NET software</dd></div>
+        <div><dt>13</dt><dd>products shipped or maintained</dd></div>
+        <div><dt>6</dt><dd>client products at Visiomate</dd></div>
+        <div><dt>2</dt><dd>team-lead roles</dd></div>
+      </dl>
+    </div>
+
+    <div class="terminal-wrap">
+      <div class="terminal" role="img" aria-label="A condensed release log: web apps built, 25 of 25 tenant databases migrated, 12 Windows services deployed one at a time, staging verified, and a k6 soak test at 80 requests per second with 0% errors.">
+        <div class="term-bar"><i></i><i></i><i></i><span>release-window.log</span></div>
+        <div class="term-body" aria-hidden="true">
+<p class="cmd">$ release <b>--plan</b> production</p>
+<p><span class="ok">  &#10003; build   </span> <span class="dim">web + stats apps, 0 errors</span></p>
+<p><span class="ok">  &#10003; migrate </span> <span class="dim">25/25 tenant databases</span></p>
+<p><span class="ok">  &#10003; deploy  </span> <span class="dim">12 Windows services, one at a time</span></p>
+<p><span class="ok">  &#10003; verify  </span> <span class="dim">staging first, rollback ready</span></p>
+<p class="gap"></p>
+<p class="cmd">$ k6 run <b>soak.js</b></p>
+<p><span class="ok">  &#10003; 80 req/s</span> <span class="dim">for 3 min, 0% errors</span></p>
+<p class="gap"></p>
+<p class="cmd">$ <span class="caret"></span></p>
+        </div>
+      </div>
+      <div class="float f1"><b>25 / 25</b><span>tenant databases migrated</span></div>
+      <div class="float f2"><b>0% errors</b><span>at 80 req/s, k6 soak</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-label="Products I have built on">
+  <div class="wrap">
+    <span class="mlabel">Products I've built on</span>
+    <div class="mview">
+      <div class="mtrack">
+        <ul>
+          <li>NextMail</li><li>Lahore Orange Line Metro</li><li>State Bank of Pakistan · Sunwai</li><li>Webinar CE Classes</li><li>Nurtureful</li><li>SchoolCity</li><li>School Charts</li><li>Appraiser</li><li>Jobee</li><li>Mosino</li>
+        </ul>
+        <ul aria-hidden="true">
+          <li>NextMail</li><li>Lahore Orange Line Metro</li><li>State Bank of Pakistan · Sunwai</li><li>Webinar CE Classes</li><li>Nurtureful</li><li>SchoolCity</li><li>School Charts</li><li>Appraiser</li><li>Jobee</li><li>Mosino</li>
+        </ul>
       </div>
     </div>
-    <dl class="facts">
-      <div><dt>8+</dt><dd>years building .NET software</dd></div>
-      <div><dt>13</dt><dd>products shipped or maintained</dd></div>
-      <div><dt>6</dt><dd>client products at Visiomate now</dd></div>
-      <div><dt>2</dt><dd>team-lead roles, US and Pakistan clients</dd></div>
-    </dl>
   </div>
-</header>
+</div>
 
 <main>
   <section class="block" id="work" aria-labelledby="work-title">
     <div class="wrap">
       <div class="section-head">
-        <div><span class="label">Selected work</span><h2 id="work-title">Case studies at Visiomate</h2></div>
-        <p>Feb 2026 to present, as senior software engineer and team lead. Filter by the technology you care about.</p>
+        <span class="label">Selected work · Visiomate, 2026</span>
+        <h2 id="work-title">Six products I work on now</h2>
+        <p>Open any project for the full case study: context, what I built, results and how it fits together. Pick a technology to see where I used it.</p>
       </div>
 
-      <div class="work">
-        <nav class="index" aria-label="Case studies">
-          <ol>
-            <li data-index="nextmail"><a href="#nextmail"><span><strong>NextMail</strong><small>Email marketing SaaS</small></span></a></li>
-            <li data-index="orangeline"><a href="#orangeline"><span><strong>Orange Line OMS</strong><small>Metro-rail operations</small></span></a></li>
-            <li data-index="webinar"><a href="#webinar"><span><strong>Webinar CE Classes</strong><small>AI course generation</small></span></a></li>
-            <li data-index="workforce"><a href="#workforce"><span><strong>Workforce AI</strong><small>Forecasting and scheduling</small></span></a></li>
-            <li data-index="sunwai"><a href="#sunwai"><span><strong>Sunwai</strong><small>State Bank of Pakistan</small></span></a></li>
-            <li data-index="nurtureful"><a href="#nurtureful"><span><strong>Nurtureful</strong><small>Online therapy</small></span></a></li>
-          </ol>
-        </nav>
+      <div class="explorer" role="group" aria-label="Highlight projects by technology">
+        <button type="button" id="t-all" data-tech-btn="all" aria-pressed="true">Everything</button>
+        <button type="button" id="t-dotnet" data-tech-btn="dotnet" aria-pressed="false">.NET</button>
+        <button type="button" id="t-angular" data-tech-btn="angular" aria-pressed="false">Angular</button>
+        <button type="button" id="t-sql" data-tech-btn="sql" aria-pressed="false">SQL Server</button>
+        <button type="button" id="t-postgres" data-tech-btn="postgres" aria-pressed="false">PostgreSQL</button>
+        <button type="button" id="t-ai" data-tech-btn="ai" aria-pressed="false">AI and Python</button>
+        <button type="button" id="t-cicd" data-tech-btn="cicd" aria-pressed="false">Docker and CI/CD</button>
+        <button type="button" id="t-pay" data-tech-btn="payments" aria-pressed="false">Payments and messaging</button>
+      </div>
+      <p class="tech-note" id="tech-note" aria-live="polite">Showing all projects.</p>
 
-        <div>
-          <div class="filters" role="group" aria-label="Filter case studies">
-            <button type="button" id="f-all" data-filter="all" aria-pressed="true">All</button>
-            <button type="button" id="f-dotnet" data-filter="dotnet" aria-pressed="false">.NET</button>
-            <button type="button" id="f-angular" data-filter="angular" aria-pressed="false">Angular</button>
-            <button type="button" id="f-ai" data-filter="ai" aria-pressed="false">AI and Python</button>
-            <button type="button" id="f-devops" data-filter="devops" aria-pressed="false">Data and DevOps</button>
+      <div class="bento">
+        <article class="tile t-nm reveal" data-tech="dotnet sql cicd payments" data-name="NextMail">
+          <div class="tile-top"><span class="badge" aria-hidden="true">NM</span><p class="eyebrow">Email marketing SaaS<br>US client</p></div>
+          <h3>NextMail</h3>
+          <p class="lede">A multi-tenant email platform: campaigns, triggered and transactional mail for business clients, each on its own SQL Server database. I added a second mail engine, a migration pipeline and safer releases.</p>
+          <div class="mrow">
+            <div class="m"><b>25</b><span>tenant databases on one migration pipeline</span></div>
+            <div class="m"><b>12</b><span>Windows services in planned releases</span></div>
+            <div class="m"><b>1,592</b><span>bounced contacts correctly suppressed</span></div>
           </div>
-
-          <div class="cases">
-
-            <article class="case" id="nextmail" data-tags="dotnet devops">
-              <div class="case-top">
-                <span class="badge" aria-hidden="true">NM</span>
-                <header>
-                  <p class="eyebrow">Email marketing SaaS, US client</p>
-                  <h3>NextMail</h3>
-                  <p class="lede">A multi-tenant email platform that sends campaigns, triggered and transactional mail for business clients, each with its own SQL Server database.</p>
-                  <dl class="meta">
-                    <div><dt>Role</dt><dd>Team lead, full-stack engineer</dd></div>
-                    <div><dt>Platform</dt><dd>ASP.NET Web Forms, Windows Services</dd></div>
-                  </dl>
-                </header>
-              </div>
-              <div class="case-body">
-                <div class="context">
-                  <h4>Context</h4>
-                  <p>A mature platform that sent everything through PowerMTA. The client wanted a second mail engine, safer releases and tighter security, without interrupting live senders.</p>
-                </div>
-                <div>
-                  <h4>What I built</h4>
-                  <ul class="built">
-                    <li>Integrated KumoMTA as a second mail engine beside PowerMTA, chosen per client, across the web app and the sending services.</li>
-                    <li>Built a .NET tracking and webhook API that records opens, clicks and delivery events in each tenant database.</li>
-                    <li>Built a DbUp and GitHub Actions pipeline that applies versioned SQL migrations to 25 tenant databases, with schema snapshots in git.</li>
-                    <li>Planned production release windows for 12 Windows services: staging-first tests, per-service checks, rollback plans and pinned merges.</li>
-                    <li>Found and fixed a bounce-category gap that left 1,592 hard-bounced contacts mailable, and an unsubscribe race condition.</li>
-                    <li>Moved application secrets into server-side configuration managed outside source control, and retired unused pages.</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="metrics">
-                <div class="metric"><b>25</b><span>tenant databases on one migration pipeline</span></div>
-                <div class="metric"><b>12</b><span>Windows services in planned releases</span></div>
-                <div class="metric"><b>1,592</b><span>hard-bounced contacts correctly suppressed</span></div>
-              </div>
-              <figure class="flow-wrap">
-                <figcaption>How a campaign flows</figcaption>
-                <ol class="flow">
-                  <li><b>Web app</b><span>ASP.NET Web Forms: campaigns, lists, client settings</span></li>
-                  <li><b>Tenant DBs</b><span>SQL Server x25, DbUp migrations</span></li>
-                  <li><b>Services</b><span>12 Windows services: import, build, send, bounce</span></li>
-                  <li><b>Mail engine</b><span>PowerMTA or KumoMTA, per client</span></li>
-                  <li><b>Tracking</b><span>.NET API: opens, clicks and events back to the tenant</span></li>
-                </ol>
-              </figure>
-              <ul class="chips" aria-label="Stack">
-                <li>C#</li><li>.NET Framework 4.8</li><li>ASP.NET Web Forms</li><li>Windows Services</li><li>SQL Server</li><li>KumoMTA</li><li>PowerMTA</li><li>DbUp</li><li>GitHub Actions</li><li>IIS</li>
-              </ul>
-            </article>
-
-            <article class="case" id="orangeline" data-tags="dotnet angular devops">
-              <div class="case-top">
-                <span class="badge" aria-hidden="true">OL</span>
-                <header>
-                  <p class="eyebrow">Metro-rail operations, Lahore Orange Line Metro Train</p>
-                  <h3>Orange Line OMS</h3>
-                  <p class="lede">An operations management system for the metro's maintenance and operations teams: work permits, power isolation, ground-wire orders, dispatch and maintenance plans.</p>
-                  <dl class="meta">
-                    <div><dt>Role</dt><dd>Main contributor, frontend and API</dd></div>
-                    <div><dt>Platform</dt><dd>Angular 21, .NET 10, PostgreSQL</dd></div>
-                  </dl>
-                </header>
-              </div>
-              <div class="case-body">
-                <div class="context">
-                  <h4>Context</h4>
-                  <p>Permits and approval chains for track and power work had to move into one system, with live updates for the next person in the chain and documents that print correctly.</p>
-                </div>
-                <div>
-                  <h4>What I built</h4>
-                  <ul class="built">
-                    <li>Angular 21 app with server-side rendering, Tailwind CSS, Angular Material and a shared design library.</li>
-                    <li>.NET 10 Web API with JWT, ASP.NET Identity and EF Core on PostgreSQL: 28 controllers for tickets, plans, power and ground-wire workflows.</li>
-                    <li>Multi-step approvals for work-permit tickets, power-isolation and ground-wire requests, dispatch orders and construction registrations.</li>
-                    <li>Feature-based access control: every route, menu item and action checks the user's role features.</li>
-                    <li>Live notifications through SignalR and Firebase push, plus PDF tickets and orders and Excel exports.</li>
-                    <li>Docker image published to GHCR, with a GitHub Actions deploy that restarts only the backend container on a shared host.</li>
-                    <li>k6 load tests: 80 req/s held for 3 minutes at 0% errors; traced the ~100 req/s limit to sequential database calls in list endpoints.</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="metrics">
-                <div class="metric"><b>479 / 984</b><span>commits across frontend and API</span></div>
-                <div class="metric"><b>28</b><span>API controllers</span></div>
-                <div class="metric"><b>80 req/s</b><span>sustained at 0% errors in k6 soak test</span></div>
-              </div>
-              <figure class="flow-wrap">
-                <figcaption>How an approval moves</figcaption>
-                <ol class="flow">
-                  <li><b>Raised</b><span>Angular 21 form, checked against role features</span></li>
-                  <li><b>Approved</b><span>.NET 10 API validates and records the step</span></li>
-                  <li><b>Stored</b><span>PostgreSQL through EF Core</span></li>
-                  <li><b>Notified</b><span>Next approver: SignalR in the app, Firebase push</span></li>
-                  <li><b>Printed</b><span>PDF ticket or dispatch order</span></li>
-                </ol>
-              </figure>
-              <ul class="chips" aria-label="Stack">
-                <li>Angular 21</li><li>TypeScript</li><li>Tailwind CSS</li><li>.NET 10</li><li>EF Core</li><li>PostgreSQL</li><li>SignalR</li><li>Firebase</li><li>Docker</li><li>GitHub Actions</li><li>k6</li>
-              </ul>
-            </article>
-
-            <article class="case" id="webinar" data-tags="dotnet ai">
-              <div class="case-top">
-                <span class="badge" aria-hidden="true">WC</span>
-                <header>
-                  <p class="eyebrow">Continuing education, <a href="https://webinarceclasses.com" target="_blank" rel="noopener">webinarceclasses.com</a></p>
-                  <h3>Webinar CE Classes</h3>
-                  <p class="lede">A platform where professionals take live webinars, recorded webinars and home-study courses for continuing-education credit, with tests and certificates.</p>
-                  <dl class="meta">
-                    <div><dt>Role</dt><dd>Lead developer, 44 of 52 commits</dd></div>
-                    <div><dt>Platform</dt><dd>ASP.NET Core MVC, SQL Server</dd></div>
-                  </dl>
-                </header>
-              </div>
-              <div class="case-body">
-                <div class="context">
-                  <h4>Context</h4>
-                  <p>The client wanted to grow the home-study catalog faster and sell it in new ways, on an existing ASP.NET Core MVC codebase with Stripe and PayPal checkout.</p>
-                </div>
-                <div>
-                  <h4>What I built</h4>
-                  <ul class="built">
-                    <li>AI course generation: extract a source article, have GPT-4o draft the course content and test, and queue auto-builds for review.</li>
-                    <li>Per-model AI usage and cost tracking, so the client sees what each generated course costs.</li>
-                    <li>A pricing module with unlimited home-study plans, coupons, a newsletter, an admin mailbox and reCAPTCHA on public forms.</li>
-                    <li>Test rules (3 attempts per course), evaluation reports by date range, and course cards rebuilt to the client's new design.</li>
-                    <li>Contact, feedback and grievance mail routed to separate inboxes.</li>
-                  </ul>
-                </div>
-              </div>
-              <figure class="flow-wrap">
-                <figcaption>How a course gets built</figcaption>
-                <ol class="flow">
-                  <li><b>Source</b><span>Article chosen by the admin</span></li>
-                  <li><b>Extract</b><span>Article text and structure pulled out</span></li>
-                  <li><b>Draft</b><span>GPT-4o writes content and test, cost logged</span></li>
-                  <li><b>Queue</b><span>Auto-build, then admin review</span></li>
-                  <li><b>Publish</b><span>Test, IronPDF certificate, Stripe or PayPal checkout</span></li>
-                </ol>
-              </figure>
-              <ul class="chips" aria-label="Stack">
-                <li>ASP.NET Core MVC</li><li>EF Core</li><li>SQL Server</li><li>OpenAI GPT-4o</li><li>Stripe</li><li>PayPal</li><li>SendGrid</li><li>IronPDF</li><li>reCAPTCHA</li>
-              </ul>
-            </article>
-
-            <article class="case" id="workforce" data-tags="ai angular devops">
-              <div class="case-top">
-                <span class="badge" aria-hidden="true">WA</span>
-                <header>
-                  <p class="eyebrow">Contact-center workforce management</p>
-                  <h3>Workforce AI</h3>
-                  <p class="lede">Forecasts call volume and generates agent shift schedules that cover demand with the fewest agents, for planners to review and edit.</p>
-                  <dl class="meta">
-                    <div><dt>Role</dt><dd>Built the forecasting and scheduling engine</dd></div>
-                    <div><dt>Platform</dt><dd>Python, Flask, Angular, .NET</dd></div>
-                  </dl>
-                </header>
-              </div>
-              <div class="case-body">
-                <div class="context">
-                  <h4>Context</h4>
-                  <p>The product needed demand forecasts and agent schedules generated from historical call data, then editable by planners in the dashboard.</p>
-                </div>
-                <div>
-                  <h4>What I built</h4>
-                  <ul class="built">
-                    <li>Call-volume forecasting with Prophet from historical interval data.</li>
-                    <li>An OR-Tools CP-SAT scheduler with continuous shift patterns, breaks and multi-day plans.</li>
-                    <li>Soft demand constraints, so it always returns a schedule and reports any demand it could not cover.</li>
-                    <li>A two-level objective: minimize unmet demand first, then the number of agents.</li>
-                    <li>A Flask REST API for forecasts, schedules, edits and agents, packaged with Docker for the Angular dashboard.</li>
-                    <li>Moved the .NET backend's data layer to PostgreSQL.</li>
-                  </ul>
-                </div>
-              </div>
-              <figure class="flow-wrap">
-                <figcaption>How a schedule is produced</figcaption>
-                <ol class="flow">
-                  <li><b>History</b><span>Interval call volumes</span></li>
-                  <li><b>Forecast</b><span>Prophet predicts demand per interval</span></li>
-                  <li><b>Optimize</b><span>CP-SAT assigns shifts and breaks</span></li>
-                  <li><b>Serve</b><span>Flask REST API</span></li>
-                  <li><b>Review</b><span>Angular dashboard: edits, adherence, compliance</span></li>
-                </ol>
-              </figure>
-              <ul class="chips" aria-label="Stack">
-                <li>Python</li><li>Flask</li><li>Google OR-Tools</li><li>Prophet</li><li>pandas</li><li>Docker</li><li>Angular</li><li>.NET</li><li>PostgreSQL</li>
-              </ul>
-            </article>
-
-            <article class="case" id="sunwai" data-tags="dotnet">
-              <div class="case-top">
-                <span class="badge" aria-hidden="true">SW</span>
-                <header>
-                  <p class="eyebrow">Banking regulator, State Bank of Pakistan</p>
-                  <h3>Sunwai</h3>
-                  <p class="lede">Sunwai is the State Bank of Pakistan's complaint portal. I work on its user-management web app: bank users, administrators and complaint screens.</p>
-                  <dl class="meta">
-                    <div><dt>Role</dt><dd>Maintenance and production releases</dd></div>
-                    <div><dt>Platform</dt><dd>ASP.NET Core (.NET 10), SQL Server</dd></div>
-                  </dl>
-                </header>
-              </div>
-              <div class="case-body">
-                <div class="context">
-                  <h4>Context</h4>
-                  <p>A public-facing government system, so changes go out as small, well-tested releases.</p>
-                </div>
-                <div>
-                  <h4>What I built</h4>
-                  <ul class="built">
-                    <li>Maintained bank, admin and portal-admin user management, including Active Directory-linked bank accounts.</li>
-                    <li>Released Google reCAPTCHA Enterprise to production (Feb 2026).</li>
-                    <li>Released an OTP resend flow to production (Jun 2026).</li>
-                  </ul>
-                </div>
-              </div>
-              <ul class="chips" aria-label="Stack">
-                <li>ASP.NET Core</li><li>.NET 10</li><li>SQL Server</li><li>Active Directory</li><li>reCAPTCHA Enterprise</li><li>Serilog</li>
-              </ul>
-            </article>
-
-            <article class="case" id="nurtureful" data-tags="angular dotnet ai">
-              <div class="case-top">
-                <span class="badge" aria-hidden="true">NF</span>
-                <header>
-                  <p class="eyebrow">Online therapy</p>
-                  <h3>Nurtureful</h3>
-                  <p class="lede">Patients find a therapist, book sessions and meet over video; therapists manage their profiles, skills and session notes.</p>
-                  <dl class="meta">
-                    <div><dt>Role</dt><dd>Main frontend contributor, 46 of 75 commits</dd></div>
-                    <div><dt>Platform</dt><dd>Angular 19, .NET 9</dd></div>
-                  </dl>
-                </header>
-              </div>
-              <div class="case-body">
-                <div class="context">
-                  <h4>Context</h4>
-                  <p>Patients needed better ways to find the right therapist and stay informed through booking, on an Angular and .NET 9 clean-architecture codebase.</p>
-                </div>
-                <div>
-                  <h4>What I built</h4>
-                  <ul class="built">
-                    <li>Therapist skills and needs configuration, with patient-side filters that match them, across Angular and the .NET API.</li>
-                    <li>Therapist ratings, and extra acknowledgements during patient onboarding.</li>
-                    <li>Sign-up and sign-in notifications when a patient books an appointment.</li>
-                    <li>An AI assistant chatbot for signed-in users.</li>
-                    <li>A cost estimate for the chatbot and Twilio video sessions.</li>
-                  </ul>
-                </div>
-              </div>
-              <ul class="chips" aria-label="Stack">
-                <li>Angular 19</li><li>Tailwind CSS</li><li>.NET 9</li><li>Twilio Video</li><li>Stripe</li>
-              </ul>
-            </article>
-
+          <ul class="mini-flow" aria-label="How a campaign flows">
+            <li>Web app</li><li>Tenant DBs</li><li>Sending services</li><li>PowerMTA or KumoMTA</li><li>Tracking API</li>
+          </ul>
+          <ul class="mini-list">
+            <li><b>Second mail engine</b>KumoMTA beside PowerMTA, switchable per client</li>
+            <li><b>Tracking API</b>Opens, clicks and delivery events back to each tenant</li>
+            <li><b>Release windows</b>Staging first, per-service checks, rollback plans</li>
+          </ul>
+          <div class="tile-foot">
+            <ul class="chips"><li>.NET Framework</li><li>Web Forms</li><li>SQL Server</li><li>KumoMTA</li><li>DbUp</li></ul>
+            <button type="button" class="open-case" data-case="nextmail">Read case study <span aria-hidden="true">&#8594;</span></button>
           </div>
+        </article>
+
+        <article class="tile t-ol reveal" data-tech="dotnet angular postgres cicd" data-name="Orange Line OMS">
+          <div class="tile-top"><span class="badge" aria-hidden="true">OL</span><p class="eyebrow">Metro-rail operations<br>Lahore Orange Line</p></div>
+          <h3>Orange Line OMS</h3>
+          <p class="lede">Work permits, power isolation, ground-wire orders and dispatch for the metro's operations teams.</p>
+          <div class="mcol">
+            <div class="m"><b>479 / 984</b><span>commits, main contributor</span></div>
+            <div class="m"><b>28</b><span>API controllers</span></div>
+            <div class="m"><b>80 req/s</b><span>at 0% errors in k6 soak test</span></div>
+          </div>
+          <div class="tile-foot">
+            <ul class="chips"><li>Angular 21</li><li>.NET 10</li><li>PostgreSQL</li></ul>
+            <button type="button" class="open-case" data-case="orangeline">Read case study <span aria-hidden="true">&#8594;</span></button>
+          </div>
+        </article>
+
+        <article class="tile t-wc reveal" data-tech="dotnet sql ai payments" data-name="Webinar CE Classes">
+          <div class="tile-top"><span class="badge" aria-hidden="true">WC</span><p class="eyebrow">Continuing education<br>webinarceclasses.com</p></div>
+          <h3>Webinar CE Classes</h3>
+          <p class="hl-line">AI course builds with GPT-4o</p>
+          <p class="lede">Article to course, test and certificate, with per-model AI cost tracking and a new pricing module.</p>
+          <div class="tile-foot">
+            <ul class="chips"><li>ASP.NET Core</li><li>OpenAI</li><li>Stripe</li></ul>
+            <button type="button" class="open-case" data-case="webinar">Read case study <span aria-hidden="true">&#8594;</span></button>
+          </div>
+        </article>
+
+        <article class="tile t-wa reveal" data-tech="ai angular dotnet postgres cicd" data-name="Workforce AI">
+          <div class="tile-top"><span class="badge" aria-hidden="true">WA</span><p class="eyebrow">Contact-center<br>workforce management</p></div>
+          <h3>Workforce AI</h3>
+          <p class="hl-line">Prophet forecasts + OR-Tools schedules</p>
+          <p class="lede">Call-volume forecasting and shift scheduling that covers demand with the fewest agents.</p>
+          <div class="tile-foot">
+            <ul class="chips"><li>Python</li><li>CP-SAT</li><li>Flask</li></ul>
+            <button type="button" class="open-case" data-case="workforce">Read case study <span aria-hidden="true">&#8594;</span></button>
+          </div>
+        </article>
+
+        <article class="tile t-sw reveal" data-tech="dotnet sql" data-name="Sunwai">
+          <div class="tile-top"><span class="badge" aria-hidden="true">SW</span><p class="eyebrow">Banking regulator<br>State Bank of Pakistan</p></div>
+          <h3>Sunwai</h3>
+          <p class="hl-line">2 production releases in 2026</p>
+          <p class="lede">User management for the SBP complaint portal, with reCAPTCHA Enterprise and an OTP resend flow.</p>
+          <div class="tile-foot">
+            <ul class="chips"><li>.NET 10</li><li>SQL Server</li><li>AD</li></ul>
+            <button type="button" class="open-case" data-case="sunwai">Read case study <span aria-hidden="true">&#8594;</span></button>
+          </div>
+        </article>
+
+        <article class="tile t-nf reveal" data-tech="angular dotnet ai payments" data-name="Nurtureful">
+          <div class="tile-top"><span class="badge" aria-hidden="true">NF</span><p class="eyebrow">Online therapy<br>patients and therapists</p></div>
+          <h3>Nurtureful</h3>
+          <p class="hl-line">46 of 75 frontend commits</p>
+          <p class="lede">Therapist matching filters, ratings, onboarding, booking notifications and an AI assistant chatbot.</p>
+          <div class="tile-foot">
+            <ul class="chips"><li>Angular 19</li><li>.NET 9</li><li>Twilio</li></ul>
+            <button type="button" class="open-case" data-case="nurtureful">Read case study <span aria-hidden="true">&#8594;</span></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="approach" aria-labelledby="approach-title" style="background: var(--surface); border-block: 1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Approach</span>
+        <h2 id="approach-title">How I take work to production</h2>
+      </div>
+      <div class="principles">
+        <div class="principle reveal">
+          <span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span>
+          <h3>Staging first</h3>
+          <p>Every change runs on staging before production. NextMail services, Orange Line deploys and SQL migrations all ship this way.</p>
+        </div>
+        <div class="principle reveal">
+          <span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></span>
+          <h3>Reversible releases</h3>
+          <p>Release windows come with per-step checks, a rollback plan and merges pinned to a known commit.</p>
+        </div>
+        <div class="principle reveal">
+          <span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.3 17a9 9 0 1 1 17.4 0"/><path d="m12 14 4-4"/></svg></span>
+          <h3>Measured, not guessed</h3>
+          <p>k6 load tests, counts before and after every data fix, and the same check run on all 25 tenant databases.</p>
+        </div>
+        <div class="principle reveal">
+          <span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="m13 7 4 4"/></svg></span>
+          <h3>Written clearly</h3>
+          <p>Tickets, pull requests and release notes that a US client can act on without a meeting.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="block" id="earlier" aria-labelledby="earlier-title">
+  <section class="block" id="career" aria-labelledby="career-title">
     <div class="wrap">
       <div class="section-head">
-        <div><span class="label">2018 to 2026</span><h2 id="earlier-title">Earlier work</h2></div>
-        <p>At Team Solution, SirizApps and Softbeats Business Solutions.</p>
+        <span class="label">Career · Jul 2018 to now</span>
+        <h2 id="career-title">Eight years, five roles</h2>
+        <p>Each bar is drawn to scale on the same timeline.</p>
+      </div>
+      <div class="career reveal" role="img" aria-label="Career timeline: Softbeats Jul 2018 to Jan 2019; Fahmir Pharma Feb to Nov 2019; SirizApps May 2020 to Jul 2021; Team Solution Aug 2021 to Jan 2026; Visiomate Feb 2026 to present.">
+        <div class="crow"><div class="clabel"><b>Visiomate</b><span>Senior Software Engineer / Team Lead</span><em>Feb 2026 – Present</em></div><div class="ctrack"><span class="cbar now" style="--l: 89.22%; --w: 8.82%; --k: var(--accent);"></span></div></div>
+        <div class="crow"><div class="clabel"><b>Team Solution</b><span>Software Engineer / Team Lead</span><em>Aug 2021 – Jan 2026</em></div><div class="ctrack"><span class="cbar" style="--l: 36.27%; --w: 52.94%; --k: var(--teal);"></span></div></div>
+        <div class="crow"><div class="clabel"><b>SirizApps</b><span>Software Developer</span><em>May 2020 – Jul 2021</em></div><div class="ctrack"><span class="cbar" style="--l: 21.57%; --w: 14.71%; --k: var(--c-orangeline);"></span></div></div>
+        <div class="crow"><div class="clabel"><b>Fahmir Pharma</b><span>ERP Support Manager</span><em>Feb 2019 – Nov 2019</em></div><div class="ctrack"><span class="cbar" style="--l: 6.86%; --w: 9.80%; --k: var(--c-workforce);"></span></div></div>
+        <div class="crow"><div class="clabel"><b>Softbeats</b><span>Technical Support Specialist</span><em>Jul 2018 – Jan 2019</em></div><div class="ctrack"><span class="cbar" style="--l: 0%; --w: 6.86%; --k: var(--c-nurtureful);"></span></div></div>
+        <div class="axis" aria-hidden="true"><div></div><div class="ticks">
+          <span style="left: 5.88%;">2019</span><span style="left: 17.65%;">2020</span><span style="left: 29.41%;">2021</span><span style="left: 41.18%;">2022</span><span style="left: 52.94%;">2023</span><span style="left: 64.71%;">2024</span><span style="left: 76.47%;">2025</span><span style="left: 88.24%;">2026</span>
+        </div></div>
+      </div>
+      <div class="roles">
+        <div class="role-card current reveal"><p class="when">Feb 2026 – Present</p><h3>Senior Software Engineer / Team Lead, <em>Visiomate</em></h3><p>Team lead and full-stack engineer on six client products, from requirements to production support.</p></div>
+        <div class="role-card reveal"><p class="when">Aug 2021 – Jan 2026</p><h3>Software Engineer / Team Lead, <em>Team Solution</em></h3><p>Scrum Master on US K-12 products; built SSO, an export service, and tuned SQL Server.</p></div>
+        <div class="role-card reveal"><p class="when">May 2020 – Jul 2021</p><h3>Software Developer, <em>SirizApps</em></h3><p>ASP.NET Web Forms and SQL Server apps including Mosino; code reviews and mentoring.</p></div>
+        <div class="role-card reveal"><p class="when">Feb 2019 – Nov 2019</p><h3>ERP Support Manager, <em>Fahmir Pharma</em></h3><p>Led ERP support, user training and customization with finance and operations.</p></div>
+        <div class="role-card reveal"><p class="when">Jul 2018 – Jan 2019</p><h3>Technical Support Specialist, <em>Softbeats</em></h3><p>Developed and supported Gluon ERP modules in ASP.NET Web Forms.</p></div>
+      </div>
+      <p class="edu"><b>Education:</b> Master of Computer Science (MCS), Superior University, Lahore, 2019.</p>
+    </div>
+  </section>
+
+  <section class="block" id="earlier" aria-labelledby="earlier-title" style="background: var(--surface); border-block: 1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">2018 to 2026</span>
+        <h2 id="earlier-title">Earlier work</h2>
       </div>
       <p class="earlier-intro">At Team Solution I led the team as Scrum Master on US K-12 education products. Across them I built OAuth2/JWT single sign-on, an asynchronous export service for PDF, Excel and CSV, and tuned SQL Server for high-traffic use.</p>
       <div class="grid">
-        <article class="card ts">
-          <p class="company">Team Solution, US K-12</p>
-          <h3>SchoolCity</h3>
-          <p>Platform for US schools and districts to visualize, compare and report on educational data, with custom reports for administrators.</p>
-          <a class="ext" href="https://www.illuminateed.com/products/schoolcity/" target="_blank" rel="noopener">illuminateed.com/products/schoolcity</a>
-          <ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li><li>AWS</li><li>Scrum</li></ul>
-        </article>
-        <article class="card ts">
-          <p class="company">Team Solution, US K-12</p>
-          <h3>School Charts</h3>
-          <p>Charts, graphs and maps that compare schools and districts side by side, to support resource and curriculum decisions.</p>
-          <a class="ext" href="https://schoolcharts.schoolcity.com/" target="_blank" rel="noopener">schoolcharts.schoolcity.com</a>
-          <ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li><li>Jira</li></ul>
-        </article>
-        <article class="card ts">
-          <p class="company">Team Solution, US K-12</p>
-          <h3>Appraiser</h3>
-          <p>Teacher Incentive Allotment management: configurable designations, nightly roster sync, SSO, mid-year and year-end evaluations, and automated payout scheduling.</p>
-          <a class="ext" href="https://everman.ilm.school/" target="_blank" rel="noopener">everman.ilm.school</a>
-          <ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li><li>SSO</li></ul>
-        </article>
-        <article class="card ts">
-          <p class="company">Team Solution</p>
-          <h3>GradeCam</h3>
-          <p>Scanner-based capture and evaluation of documents, turning scanned pages into structured data.</p>
-          <ul class="chips"><li>.NET</li><li>JavaScript</li><li>CSS</li></ul>
-        </article>
-        <article class="card ts">
-          <p class="company">Team Solution</p>
-          <h3>Jobee</h3>
-          <p>Free resume builder with professional, modern, creative, executive and simple templates, plus matching cover letters.</p>
-          <a class="ext" href="https://jobee.io/" target="_blank" rel="noopener">jobee.io</a>
-          <ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li></ul>
-        </article>
-        <article class="card sz">
-          <p class="company">SirizApps</p>
-          <h3>Mosino</h3>
-          <p>Multi-language platform that runs several businesses from one place: restaurant reservations, hospital management and spa management.</p>
-          <a class="ext" href="https://www.mosinoone.com/" target="_blank" rel="noopener">mosinoone.com</a>
-          <ul class="chips"><li>ASP.NET Web Forms</li><li>SQL Server</li></ul>
-        </article>
-        <article class="card sb">
-          <p class="company">Softbeats Business Solutions</p>
-          <h3>Gluon ERP</h3>
-          <p>ERP modules for business clients, built and supported in ASP.NET Web Forms on SQL Server.</p>
-          <ul class="chips"><li>ASP.NET Web Forms</li><li>SQL Server</li></ul>
-        </article>
+        <article class="card ts reveal" data-tech="dotnet sql cicd" data-name="SchoolCity"><p class="company">Team Solution · US K-12</p><h3>SchoolCity</h3><p>Platform for US schools and districts to visualize, compare and report on educational data, with custom reports for administrators.</p><a class="ext" href="https://www.illuminateed.com/products/schoolcity/" target="_blank" rel="noopener">illuminateed.com/products/schoolcity</a><ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li><li>AWS</li></ul></article>
+        <article class="card ts reveal" data-tech="dotnet sql" data-name="School Charts"><p class="company">Team Solution · US K-12</p><h3>School Charts</h3><p>Charts, graphs and maps that compare schools and districts side by side, to support resource and curriculum decisions.</p><a class="ext" href="https://schoolcharts.schoolcity.com/" target="_blank" rel="noopener">schoolcharts.schoolcity.com</a><ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li></ul></article>
+        <article class="card ts reveal" data-tech="dotnet sql" data-name="Appraiser"><p class="company">Team Solution · US K-12</p><h3>Appraiser</h3><p>Teacher Incentive Allotment: configurable designations, nightly roster sync, SSO, mid-year and year-end evaluations, and automated payout scheduling.</p><a class="ext" href="https://everman.ilm.school/" target="_blank" rel="noopener">everman.ilm.school</a><ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SSO</li></ul></article>
+        <article class="card ts reveal" data-tech="dotnet" data-name="GradeCam"><p class="company">Team Solution</p><h3>GradeCam</h3><p>Scanner-based capture and evaluation of documents, turning scanned pages into structured data.</p><ul class="chips"><li>.NET</li><li>JavaScript</li></ul></article>
+        <article class="card ts reveal" data-tech="dotnet sql" data-name="Jobee"><p class="company">Team Solution</p><h3>Jobee</h3><p>Free resume builder with professional, modern, creative, executive and simple templates, plus matching cover letters.</p><a class="ext" href="https://jobee.io/" target="_blank" rel="noopener">jobee.io</a><ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li></ul></article>
+        <article class="card sz reveal" data-tech="dotnet sql" data-name="Mosino"><p class="company">SirizApps</p><h3>Mosino</h3><p>Multi-language platform that runs restaurant reservations, hospital management and spa management from one place.</p><a class="ext" href="https://www.mosinoone.com/" target="_blank" rel="noopener">mosinoone.com</a><ul class="chips"><li>Web Forms</li><li>SQL Server</li></ul></article>
+        <article class="card sb reveal" data-tech="dotnet sql" data-name="Gluon ERP"><p class="company">Softbeats Business Solutions</p><h3>Gluon ERP</h3><p>ERP modules for business clients, built and supported in ASP.NET Web Forms on SQL Server.</p><ul class="chips"><li>Web Forms</li><li>SQL Server</li></ul></article>
       </div>
     </div>
   </section>
 
   <section class="block" id="skills" aria-labelledby="skills-title">
     <div class="wrap">
-      <div class="section-head"><div><span class="label">Toolbox</span><h2 id="skills-title">Skills</h2></div></div>
-      <div class="skills">
-        <div class="skill"><h3>Backend</h3><ul class="chips"><li>C#</li><li>.NET 10</li><li>ASP.NET Core Web API</li><li>ASP.NET Core MVC</li><li>EF Core</li><li>SignalR</li><li>ASP.NET Web Forms</li><li>Windows Services</li></ul></div>
-        <div class="skill"><h3>Frontend</h3><ul class="chips"><li>Angular</li><li>TypeScript</li><li>JavaScript</li><li>RxJS</li><li>Tailwind CSS</li><li>Angular Material</li><li>Razor</li></ul></div>
-        <div class="skill"><h3>Databases</h3><ul class="chips"><li>SQL Server</li><li>T-SQL</li><li>Stored procedures</li><li>Query tuning</li><li>PostgreSQL</li><li>DbUp</li></ul></div>
-        <div class="skill"><h3>DevOps and Cloud</h3><ul class="chips"><li>GitHub Actions</li><li>Docker</li><li>IIS</li><li>Linux</li><li>AWS</li><li>Git</li><li>k6</li></ul></div>
-        <div class="skill"><h3>AI and Python</h3><ul class="chips"><li>Python</li><li>Flask</li><li>OpenAI GPT-4o</li><li>Google OR-Tools</li><li>Prophet</li></ul></div>
-        <div class="skill"><h3>Integrations</h3><ul class="chips"><li>Stripe</li><li>PayPal</li><li>Twilio</li><li>SendGrid</li><li>Firebase</li><li>OAuth2 / JWT / SSO</li><li>KumoMTA</li><li>PowerMTA</li></ul></div>
+      <div class="section-head">
+        <span class="label">Toolbox</span>
+        <h2 id="skills-title">Skills</h2>
       </div>
-    </div>
-  </section>
-
-  <section class="block" id="experience" aria-labelledby="experience-title">
-    <div class="wrap">
-      <div class="section-head"><div><span class="label">Since 2018</span><h2 id="experience-title">Experience</h2></div></div>
-      <ol class="timeline">
-        <li><p class="when">Feb 2026 – Present</p><div><h3>Senior Software Engineer / Team Lead, <em>Visiomate</em></h3><p>Team lead and full-stack engineer on six client products, from requirements to production support.</p></div></li>
-        <li><p class="when">Aug 2021 – Jan 2026</p><div><h3>Software Engineer / Team Lead, <em>Team Solution</em>, Lahore</h3><p>Scrum Master for the team on US K-12 products; SSO, export service and SQL Server tuning.</p></div></li>
-        <li><p class="when">May 2020 – Jul 2021</p><div><h3>Software Developer, <em>SirizApps</em>, Lahore</h3><p>ASP.NET Web Forms and SQL Server apps including Mosino; code reviews and mentoring.</p></div></li>
-        <li><p class="when">Feb 2019 – Nov 2019</p><div><h3>ERP Support Manager, <em>Fahmir Pharma</em>, Lahore</h3><p>Led ERP support, user training and customization with finance and operations.</p></div></li>
-        <li><p class="when">Jul 2018 – Jan 2019</p><div><h3>Technical Support Specialist, <em>Softbeats Business Solutions</em>, Lahore</h3><p>Developed and supported Gluon ERP modules.</p></div></li>
-      </ol>
-      <p class="edu"><strong>Education:</strong> Master of Computer Science (MCS), Superior University, Lahore, 2019.</p>
+      <div class="skills">
+        <div class="skill reveal"><h3>Backend</h3><ul class="chips"><li>C#</li><li>.NET 10</li><li>ASP.NET Core Web API</li><li>ASP.NET Core MVC</li><li>EF Core</li><li>SignalR</li><li>ASP.NET Web Forms</li><li>Windows Services</li></ul></div>
+        <div class="skill reveal"><h3>Frontend</h3><ul class="chips"><li>Angular</li><li>TypeScript</li><li>JavaScript</li><li>RxJS</li><li>Tailwind CSS</li><li>Angular Material</li><li>Razor</li></ul></div>
+        <div class="skill reveal"><h3>Databases</h3><ul class="chips"><li>SQL Server</li><li>T-SQL</li><li>Stored procedures</li><li>Query tuning</li><li>PostgreSQL</li><li>DbUp</li></ul></div>
+        <div class="skill reveal"><h3>DevOps and Cloud</h3><ul class="chips"><li>GitHub Actions</li><li>Docker</li><li>IIS</li><li>Linux</li><li>AWS</li><li>Git</li><li>k6</li></ul></div>
+        <div class="skill reveal"><h3>AI and Python</h3><ul class="chips"><li>Python</li><li>Flask</li><li>OpenAI GPT-4o</li><li>Google OR-Tools</li><li>Prophet</li></ul></div>
+        <div class="skill reveal"><h3>Integrations</h3><ul class="chips"><li>Stripe</li><li>PayPal</li><li>Twilio</li><li>SendGrid</li><li>Firebase</li><li>OAuth2 / JWT / SSO</li><li>KumoMTA</li><li>PowerMTA</li></ul></div>
+      </div>
     </div>
   </section>
 </main>
@@ -704,38 +656,252 @@
 <section class="contact-band" id="contact" aria-labelledby="contact-title">
   <div class="wrap">
     <div>
-      <h2 id="contact-title">Let's build something reliable</h2>
+      <span class="label" style="color: #ffd88a;">Contact</span>
+      <h2 id="contact-title" style="margin-top: 12px;">Let's build something reliable</h2>
       <p>Open to remote and on-site roles. I work with US teams across time zones from Lahore, Pakistan.</p>
+      <div class="actions">
+        <a class="btn primary" href="Muhammad-Tayyab-Resume.pdf">Download CV</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/tayyab-ch-623024158/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
     <dl class="contact-list">
       <div><dt>Email</dt><dd><span id="email-text">tayyabch380@gmail.com</span><button type="button" class="copy" id="copy-email">Copy</button><span class="copy-status" id="copy-status" aria-live="polite"></span></dd></div>
       <div><dt>Phone</dt><dd>+92 323 4508663</dd></div>
       <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/tayyab-ch-623024158/" target="_blank" rel="noopener">linkedin.com/in/tayyab-ch-623024158</a></dd></div>
-      <div><dt>CV</dt><dd><a href="Muhammad-Tayyab-Resume.pdf">Muhammad-Tayyab-Resume.pdf</a></dd></div>
+      <div><dt>Location</dt><dd>Lahore, Pakistan (UTC+5)</dd></div>
     </dl>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">Muhammad Tayyab, Lahore, Pakistan. Project details describe my own work; client names appear only where the product is public.</div>
+  <div class="wrap"><span>© 2026 Muhammad Tayyab</span><span>Project details describe my own work; client names appear only where the product is public.</span></div>
 </footer>
+
+<button type="button" class="to-top" id="to-top" aria-label="Back to top">&#8593;</button>
+
+<dialog class="drawer" id="case-dialog" aria-labelledby="d-title">
+  <div class="d-head">
+    <span class="badge" id="d-badge" aria-hidden="true"></span>
+    <div><span class="eyebrow" id="d-eyebrow"></span><h2 id="d-title"></h2></div>
+    <button type="button" class="d-close" id="d-close" aria-label="Close case study">&#215;</button>
+  </div>
+  <div class="d-body" id="d-body"></div>
+</dialog>
+
+<!-- Case study content -->
+<template id="tpl-nextmail" data-badge="NM" data-color="--c-nextmail" data-title="NextMail" data-eyebrow="Email marketing SaaS, US client">
+  <p class="d-lede">A multi-tenant email platform that sends campaigns, triggered and transactional mail for business clients, each with its own SQL Server database.</p>
+  <dl class="d-meta"><div><dt>Role</dt><dd>Team lead, full-stack engineer</dd></div><div><dt>Platform</dt><dd>ASP.NET Web Forms, Windows Services, SQL Server</dd></div></dl>
+  <div class="context"><h4>Context</h4><p>A mature platform that sent everything through PowerMTA. The client wanted a second mail engine, safer releases and tighter security, without interrupting live senders.</p></div>
+  <div><h4>What I built</h4><ul class="built">
+    <li>Integrated KumoMTA as a second mail engine beside PowerMTA, chosen per client, across the web app and the sending services.</li>
+    <li>Built a .NET tracking and webhook API that records opens, clicks and delivery events in each tenant database.</li>
+    <li>Built a DbUp and GitHub Actions pipeline that applies versioned SQL migrations to 25 tenant databases, with schema snapshots in git.</li>
+    <li>Planned production release windows for 12 Windows services: staging-first tests, per-service checks, rollback plans and pinned merges.</li>
+    <li>Found and fixed a bounce-category gap that left 1,592 hard-bounced contacts mailable, and an unsubscribe race condition.</li>
+    <li>Moved application secrets into server-side configuration managed outside source control, and retired unused pages.</li>
+  </ul></div>
+  <div class="d-metrics"><div class="m"><b>25</b><span>tenant databases on one migration pipeline</span></div><div class="m"><b>12</b><span>Windows services in planned releases</span></div><div class="m"><b>1,592</b><span>hard-bounced contacts correctly suppressed</span></div></div>
+  <figure class="flow-wrap"><h4>How a campaign flows</h4><ol class="flow">
+    <li><div><b>Web app</b><span>ASP.NET Web Forms: campaigns, lists, client settings</span></div></li>
+    <li><div><b>Tenant databases</b><span>SQL Server x25, versioned with DbUp</span></div></li>
+    <li><div><b>Sending services</b><span>12 Windows services: import, build, send, bounce</span></div></li>
+    <li><div><b>Mail engine</b><span>PowerMTA or KumoMTA, chosen per client</span></div></li>
+    <li><div><b>Tracking API</b><span>.NET: opens, clicks and events back to the tenant</span></div></li>
+  </ol></figure>
+  <div><h4>Stack</h4><ul class="chips"><li>C#</li><li>.NET Framework 4.8</li><li>ASP.NET Web Forms</li><li>Windows Services</li><li>SQL Server</li><li>KumoMTA</li><li>PowerMTA</li><li>DbUp</li><li>GitHub Actions</li><li>IIS</li></ul></div>
+</template>
+
+<template id="tpl-orangeline" data-badge="OL" data-color="--c-orangeline" data-title="Orange Line OMS" data-eyebrow="Metro-rail operations, Lahore Orange Line Metro Train">
+  <p class="d-lede">An operations management system for the metro's maintenance and operations teams: work permits, power isolation, ground-wire orders, dispatch and maintenance plans.</p>
+  <dl class="d-meta"><div><dt>Role</dt><dd>Main contributor, frontend and API</dd></div><div><dt>Platform</dt><dd>Angular 21, .NET 10, PostgreSQL</dd></div></dl>
+  <div class="context"><h4>Context</h4><p>Permits and approval chains for track and power work had to move into one system, with live updates for the next person in the chain and documents that print correctly.</p></div>
+  <div><h4>What I built</h4><ul class="built">
+    <li>Angular 21 app with server-side rendering, Tailwind CSS, Angular Material and a shared design library.</li>
+    <li>.NET 10 Web API with JWT, ASP.NET Identity and EF Core on PostgreSQL: 28 controllers for tickets, plans, power and ground-wire workflows.</li>
+    <li>Multi-step approvals for work-permit tickets, power-isolation and ground-wire requests, dispatch orders and construction registrations.</li>
+    <li>Feature-based access control: every route, menu item and action checks the user's role features.</li>
+    <li>Live notifications through SignalR and Firebase push, plus PDF tickets and orders and Excel exports.</li>
+    <li>Docker image published to GHCR, with a GitHub Actions deploy that restarts only the backend container on a shared host.</li>
+    <li>k6 load tests: 80 req/s held for 3 minutes at 0% errors; traced the ~100 req/s limit to sequential database calls in list endpoints.</li>
+  </ul></div>
+  <div class="d-metrics"><div class="m"><b>479 / 984</b><span>commits across frontend and API</span></div><div class="m"><b>28</b><span>API controllers</span></div><div class="m"><b>80 req/s</b><span>sustained at 0% errors in k6 soak test</span></div></div>
+  <figure class="flow-wrap"><h4>How an approval moves</h4><ol class="flow">
+    <li><div><b>Raised</b><span>Angular 21 form, checked against the user's role features</span></div></li>
+    <li><div><b>Approved</b><span>.NET 10 API validates and records the workflow step</span></div></li>
+    <li><div><b>Stored</b><span>PostgreSQL through EF Core</span></div></li>
+    <li><div><b>Next approver notified</b><span>SignalR in the app, Firebase push on devices</span></div></li>
+    <li><div><b>Printed</b><span>PDF ticket or dispatch order</span></div></li>
+  </ol></figure>
+  <div><h4>Stack</h4><ul class="chips"><li>Angular 21</li><li>TypeScript</li><li>Tailwind CSS</li><li>.NET 10</li><li>EF Core</li><li>PostgreSQL</li><li>SignalR</li><li>Firebase</li><li>Docker</li><li>GitHub Actions</li><li>k6</li></ul></div>
+</template>
+
+<template id="tpl-webinar" data-badge="WC" data-color="--c-webinar" data-title="Webinar CE Classes" data-eyebrow="Continuing education, webinarceclasses.com">
+  <p class="d-lede">A platform where professionals take live webinars, recorded webinars and home-study courses for continuing-education credit, with tests and certificates. <a href="https://webinarceclasses.com" target="_blank" rel="noopener">Visit the site</a>.</p>
+  <dl class="d-meta"><div><dt>Role</dt><dd>Lead developer, 44 of 52 commits</dd></div><div><dt>Platform</dt><dd>ASP.NET Core MVC, SQL Server</dd></div></dl>
+  <div class="context"><h4>Context</h4><p>The client wanted to grow the home-study catalog faster and sell it in new ways, on an existing ASP.NET Core MVC codebase with Stripe and PayPal checkout.</p></div>
+  <div><h4>What I built</h4><ul class="built">
+    <li>AI course generation: extract a source article, have GPT-4o draft the course content and test, and queue auto-builds for review.</li>
+    <li>Per-model AI usage and cost tracking, so the client sees what each generated course costs.</li>
+    <li>A pricing module with unlimited home-study plans, coupons, a newsletter, an admin mailbox and reCAPTCHA on public forms.</li>
+    <li>Test rules (3 attempts per course), evaluation reports by date range, and course cards rebuilt to the client's new design.</li>
+    <li>Contact, feedback and grievance mail routed to separate inboxes.</li>
+  </ul></div>
+  <figure class="flow-wrap"><h4>How a course gets built</h4><ol class="flow">
+    <li><div><b>Source</b><span>Article chosen by the admin</span></div></li>
+    <li><div><b>Extract</b><span>Article text and structure pulled out</span></div></li>
+    <li><div><b>Draft</b><span>GPT-4o writes the content and test; cost is logged</span></div></li>
+    <li><div><b>Queue</b><span>Auto-build, then admin review</span></div></li>
+    <li><div><b>Publish</b><span>Test, IronPDF certificate, Stripe or PayPal checkout</span></div></li>
+  </ol></figure>
+  <div><h4>Stack</h4><ul class="chips"><li>ASP.NET Core MVC</li><li>EF Core</li><li>SQL Server</li><li>OpenAI GPT-4o</li><li>Stripe</li><li>PayPal</li><li>SendGrid</li><li>IronPDF</li><li>reCAPTCHA</li></ul></div>
+</template>
+
+<template id="tpl-workforce" data-badge="WA" data-color="--c-workforce" data-title="Workforce AI" data-eyebrow="Contact-center workforce management">
+  <p class="d-lede">Forecasts call volume and generates agent shift schedules that cover demand with the fewest agents, for planners to review and edit.</p>
+  <dl class="d-meta"><div><dt>Role</dt><dd>Built the forecasting and scheduling engine</dd></div><div><dt>Platform</dt><dd>Python, Flask, Angular, .NET</dd></div></dl>
+  <div class="context"><h4>Context</h4><p>The product needed demand forecasts and agent schedules generated from historical call data, then editable by planners in the dashboard.</p></div>
+  <div><h4>What I built</h4><ul class="built">
+    <li>Call-volume forecasting with Prophet from historical interval data.</li>
+    <li>An OR-Tools CP-SAT scheduler with continuous shift patterns, breaks and multi-day plans.</li>
+    <li>Soft demand constraints, so it always returns a schedule and reports any demand it could not cover.</li>
+    <li>A two-level objective: minimize unmet demand first, then the number of agents.</li>
+    <li>A Flask REST API for forecasts, schedules, edits and agents, packaged with Docker for the Angular dashboard.</li>
+    <li>Moved the .NET backend's data layer to PostgreSQL.</li>
+  </ul></div>
+  <figure class="flow-wrap"><h4>How a schedule is produced</h4><ol class="flow">
+    <li><div><b>History</b><span>Interval call volumes</span></div></li>
+    <li><div><b>Forecast</b><span>Prophet predicts demand per interval</span></div></li>
+    <li><div><b>Optimize</b><span>CP-SAT assigns shifts and breaks</span></div></li>
+    <li><div><b>Serve</b><span>Flask REST API</span></div></li>
+    <li><div><b>Review</b><span>Angular dashboard: edits, adherence, compliance</span></div></li>
+  </ol></figure>
+  <div><h4>Stack</h4><ul class="chips"><li>Python</li><li>Flask</li><li>Google OR-Tools</li><li>Prophet</li><li>pandas</li><li>Docker</li><li>Angular</li><li>.NET</li><li>PostgreSQL</li></ul></div>
+</template>
+
+<template id="tpl-sunwai" data-badge="SW" data-color="--c-sunwai" data-title="Sunwai" data-eyebrow="Banking regulator, State Bank of Pakistan">
+  <p class="d-lede">Sunwai is the State Bank of Pakistan's complaint portal. I work on its user-management web app: bank users, administrators and complaint screens.</p>
+  <dl class="d-meta"><div><dt>Role</dt><dd>Maintenance and production releases</dd></div><div><dt>Platform</dt><dd>ASP.NET Core (.NET 10), SQL Server</dd></div></dl>
+  <div class="context"><h4>Context</h4><p>A public-facing government system, so changes go out as small, well-tested releases.</p></div>
+  <div><h4>What I built</h4><ul class="built">
+    <li>Maintained bank, admin and portal-admin user management, including Active Directory-linked bank accounts.</li>
+    <li>Released Google reCAPTCHA Enterprise to production (Feb 2026).</li>
+    <li>Released an OTP resend flow to production (Jun 2026).</li>
+  </ul></div>
+  <div><h4>Stack</h4><ul class="chips"><li>ASP.NET Core</li><li>.NET 10</li><li>SQL Server</li><li>Active Directory</li><li>reCAPTCHA Enterprise</li><li>Serilog</li></ul></div>
+</template>
+
+<template id="tpl-nurtureful" data-badge="NF" data-color="--c-nurtureful" data-title="Nurtureful" data-eyebrow="Online therapy">
+  <p class="d-lede">Patients find a therapist, book sessions and meet over video; therapists manage their profiles, skills and session notes.</p>
+  <dl class="d-meta"><div><dt>Role</dt><dd>Main frontend contributor, 46 of 75 commits</dd></div><div><dt>Platform</dt><dd>Angular 19, .NET 9</dd></div></dl>
+  <div class="context"><h4>Context</h4><p>Patients needed better ways to find the right therapist and stay informed through booking, on an Angular and .NET 9 clean-architecture codebase.</p></div>
+  <div><h4>What I built</h4><ul class="built">
+    <li>Therapist skills and needs configuration, with patient-side filters that match them, across Angular and the .NET API.</li>
+    <li>Therapist ratings, and extra acknowledgements during patient onboarding.</li>
+    <li>Sign-up and sign-in notifications when a patient books an appointment.</li>
+    <li>An AI assistant chatbot for signed-in users.</li>
+    <li>A cost estimate for the chatbot and Twilio video sessions.</li>
+  </ul></div>
+  <div><h4>Stack</h4><ul class="chips"><li>Angular 19</li><li>Tailwind CSS</li><li>.NET 9</li><li>Twilio Video</li><li>Stripe</li></ul></div>
+</template>
 
 <script>
   (function () {
-    var buttons = document.querySelectorAll('[data-filter]');
-    var cases = document.querySelectorAll('.case');
-    var indexItems = document.querySelectorAll('[data-index]');
+    // Tech explorer: highlight projects that use a technology, dim the rest. Layout never moves.
+    var techButtons = document.querySelectorAll('[data-tech-btn]');
+    var techItems = document.querySelectorAll('[data-tech]');
+    var note = document.getElementById('tech-note');
+    function highlight(tech) {
+      var label = '';
+      var names = [];
+      techButtons.forEach(function (b) {
+        var on = b.dataset.techBtn === tech;
+        b.setAttribute('aria-pressed', String(on));
+        if (on) { label = b.textContent; }
+      });
+      techItems.forEach(function (el) {
+        var match = tech === 'all' || el.dataset.tech.split(' ').indexOf(tech) !== -1;
+        el.classList.toggle('dim', tech !== 'all' && !match);
+        el.classList.toggle('match', tech !== 'all' && match);
+        if (tech !== 'all' && match) { names.push(el.dataset.name); }
+      });
+      if (tech === 'all') {
+        note.textContent = 'Showing all projects.';
+      } else {
+        note.innerHTML = '';
+        var b = document.createElement('b');
+        b.textContent = label;
+        note.append('Where I used ', b, ': ' + names.join(', ') + '.');
+      }
+    }
+    techButtons.forEach(function (b) { b.addEventListener('click', function () { highlight(b.dataset.techBtn); }); });
 
-    function applyFilter(tag) {
-      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.filter === tag)); });
-      cases.forEach(function (c) {
-        var show = tag === 'all' || c.dataset.tags.split(' ').indexOf(tag) !== -1;
-        c.hidden = !show;
-        indexItems.forEach(function (i) { if (i.dataset.index === c.id) { i.hidden = !show; } });
+    // Case drawer
+    var dialog = document.getElementById('case-dialog');
+    var body = document.getElementById('d-body');
+    var caseIds = ['nextmail', 'orangeline', 'webinar', 'workforce', 'sunwai', 'nurtureful'];
+    var lastTrigger = null;
+    function openCase(id, push) {
+      var tpl = document.getElementById('tpl-' + id);
+      if (!tpl) { return; }
+      dialog.style.setProperty('--c', 'var(' + tpl.dataset.color + ')');
+      document.getElementById('d-badge').textContent = tpl.dataset.badge;
+      document.getElementById('d-title').textContent = tpl.dataset.title;
+      document.getElementById('d-eyebrow').textContent = tpl.dataset.eyebrow;
+      body.replaceChildren(tpl.content.cloneNode(true));
+      body.scrollTop = 0;
+      if (!dialog.open) { dialog.showModal(); }
+      if (push && location.hash !== '#' + id) { history.pushState(null, '', '#' + id); }
+    }
+    function closeCase() { if (dialog.open) { dialog.close(); } }
+    dialog.addEventListener('close', function () {
+      if (caseIds.indexOf(location.hash.slice(1)) !== -1) { history.pushState(null, '', location.pathname + location.search); }
+      if (lastTrigger) { lastTrigger.focus(); }
+    });
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) { closeCase(); } });
+    document.getElementById('d-close').addEventListener('click', closeCase);
+    document.querySelectorAll('[data-case]').forEach(function (b) {
+      b.addEventListener('click', function () { lastTrigger = b; openCase(b.dataset.case, true); });
+    });
+    function syncHash() {
+      var id = location.hash.slice(1);
+      if (caseIds.indexOf(id) !== -1) { openCase(id, false); } else { closeCase(); }
+    }
+    window.addEventListener('popstate', syncHash);
+    syncHash();
+
+    // Scroll progress, back-to-top and active nav
+    var progress = document.getElementById('progress');
+    var toTop = document.getElementById('to-top');
+    var ticking = false;
+    function onScroll() {
+      if (ticking) { return; }
+      ticking = true;
+      requestAnimationFrame(function () {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        var p = max > 0 ? window.scrollY / max : 0;
+        progress.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+        toTop.classList.toggle('show', window.scrollY > 900);
+        ticking = false;
       });
     }
-    buttons.forEach(function (b) { b.addEventListener('click', function () { applyFilter(b.dataset.filter); }); });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    toTop.addEventListener('click', function () { window.scrollTo({ top: 0 }); });
 
+    var navLinks = document.querySelectorAll('[data-nav]');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) {
+            navLinks.forEach(function (a) { a.classList.toggle('active', a.dataset.nav === en.target.id); });
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      navLinks.forEach(function (a) { var s = document.getElementById(a.dataset.nav); if (s) { io.observe(s); } });
+    }
+
+    // Copy email
     var copyBtn = document.getElementById('copy-email');
     var status = document.getElementById('copy-status');
     var emailText = document.getElementById('email-text');
@@ -749,12 +915,8 @@
     }
     copyBtn.addEventListener('click', function () {
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(emailText.textContent)
-          .then(function () { status.textContent = 'Copied'; })
-          .catch(selectEmail);
-      } else {
-        selectEmail();
-      }
+        navigator.clipboard.writeText(emailText.textContent).then(function () { status.textContent = 'Copied'; }).catch(selectEmail);
+      } else { selectEmail(); }
     });
   })();
 </script>
