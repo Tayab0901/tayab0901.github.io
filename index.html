@@ -8,7 +8,7 @@
 <meta name="description" content="Muhammad Tayyab, Senior Software Engineer / Team Lead (.NET, Angular, SQL Server, AI). Case studies: NextMail, Orange Line OMS, Webinar CE Classes, Workforce AI, Sunwai and Nurtureful. Ask the AI assistant about his work.">
 <meta name="author" content="Muhammad Tayyab">
 <meta name="color-scheme" content="light">
-<meta name="theme-color" content="#1f5fa8">
+<meta name="theme-color" content="#2457d6">
 <script>
   // Scroll-reveal hides content only while the page script is alive; if it never starts, show everything.
   document.documentElement.classList.add('js');
@@ -23,312 +23,406 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://tayyabch-portfolio.vercel.app/og.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231f5fa8'/%3E%3Cstop offset='1' stop-color='%230f766e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='41' font-family='monospace' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3EMT%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232457d6'/%3E%3Cstop offset='1' stop-color='%230e8a7e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='41' font-family='monospace' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3EMT%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="image" href="tayyab.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <style>
-  /* Layout: sticky glass header (search ⌘K, scroll progress, active nav); split hero (story left; portrait,
-     release-log terminal and badges right); product marquee; bento of colour-coded case studies with a tech
-     explorer, cursor spotlight and slide-in case drawer; "AI in my work"; working principles; career chart to
-     scale (Jul 2018 – Dec 2026); earlier work; skills; contact band; floating AI assistant; command palette.
-     Deliberately a single light look: every colour below is explicit. */
+  /* Layout: premium light. A drifting colour-mesh hero with an editorial headline (serif italic accent), portrait in a
+     glass card with a rotating gradient rim, release-log terminal and glass chips; a stats strip; product marquee;
+     six full-width alternating case-study rows, each with an illustrated UI mockup in a browser frame; an AI panel with
+     a sample chat; principles; a career chart to scale; an earlier-work list; skills; a light mesh contact block.
+     Single light look: every colour is explicit. Fine grain over the page for texture. */
   :root {
     color-scheme: light;
-    --bg: #f6f8fb;
+    --bg: #f6f7fb;
     --surface: #ffffff;
-    --fg: #0e1f33;
-    --ink-soft: #33475b;
-    --muted: #586a7f;
-    --line: #e2e8f0;
-    --line-strong: #cfd9e5;
-    --accent: #1f5fa8;
+    --fg: #0b1626;
+    --ink-soft: #2f4258;
+    --muted: #5d6b7e;
+    --line: #e4e8f0;
+    --line-strong: #d3dae5;
+    --accent: #2457d6;
     --accent-ink: #ffffff;
-    --teal: #0f766e;
+    --teal: #0e8a7e;
+    --violet: #6d4ae0;
     --amber: #f2b33d;
     --amber-ink: #8a5a00;
     --green: #16a34a;
-    --violet: #6d4ae0;
-    --chip: #eef3f9;
-    --term-bg: #0f2135;
+    --chip: #eef2f8;
+    --glass: rgba(255, 255, 255, 0.66);
+    --glass-line: rgba(255, 255, 255, 0.85);
+    --term-bg: #0d1d31;
     --term-fg: #d6e4f2;
     --term-dim: #7f98b2;
     --term-ok: #5eead4;
-    --band-from: #12355b;
-    --band-to: #0f5f6b;
-    --shadow-sm: 0 1px 2px rgba(14, 31, 51, 0.05);
-    --shadow: 0 1px 2px rgba(14, 31, 51, 0.05), 0 12px 32px rgba(14, 31, 51, 0.08);
-    --shadow-lg: 0 2px 6px rgba(14, 31, 51, 0.06), 0 24px 60px rgba(14, 31, 51, 0.14);
+    --shadow-sm: 0 1px 2px rgba(11, 22, 38, 0.05);
+    --shadow: 0 1px 2px rgba(11, 22, 38, 0.04), 0 14px 36px rgba(11, 22, 38, 0.08);
+    --shadow-lg: 0 2px 6px rgba(11, 22, 38, 0.06), 0 30px 70px rgba(11, 22, 38, 0.14);
     --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
     --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
     --font-mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
-    --radius: 18px;
-    --ai-grad: linear-gradient(120deg, #1f5fa8, #6d4ae0 55%, #0f766e);
-    --c-nextmail: #1d4ed8;
+    --radius: 22px;
+    --ai-grad: linear-gradient(120deg, #2457d6, #6d4ae0 55%, #0e8a7e);
+    --c-nextmail: #2457d6;
     --c-orangeline: #e0610f;
-    --c-webinar: #0f766e;
-    --c-workforce: #4338ca;
+    --c-webinar: #0e8a7e;
+    --c-workforce: #5b3fd6;
     --c-sunwai: #15803d;
-    --c-nurtureful: #be185d;
+    --c-nurtureful: #c0266d;
   }
 
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
   html { scroll-behavior: smooth; background: var(--bg); scroll-padding-top: 84px; }
-  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: rgba(255, 255, 255, 0.9); }
+  body::after { content: ""; position: fixed; inset: 0; z-index: 70; pointer-events: none; opacity: 0.35; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
   a { color: var(--accent); text-underline-offset: 3px; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
   img { max-width: 100%; }
   p { margin: 0; }
-  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.1; margin: 0; color: var(--fg); }
-  h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); font-weight: 800; letter-spacing: -0.02em; }
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.05; margin: 0; color: var(--fg); }
+  h2 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); font-weight: 800; letter-spacing: -0.03em; }
+  h2 em, h1 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
   h3 { font-weight: 800; }
-  h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.13em; color: var(--muted); margin: 0 0 10px; font-weight: 600; }
+  h4 { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); margin: 0 0 10px; font-weight: 600; }
   button { font-family: inherit; }
   kbd { font-family: var(--font-mono); font-size: 0.72rem; border: 1px solid var(--line-strong); border-bottom-width: 2px; border-radius: 6px; padding: 1px 6px; background: var(--surface); color: var(--ink-soft); }
 
-  .wrap { max-width: 1200px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
-  .label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--amber-ink); }
-  .label::before { content: ""; width: 18px; height: 2px; background: var(--amber); border-radius: 2px; }
-  .section-head { display: grid; gap: 12px; margin-bottom: 34px; max-width: 760px; }
-  .section-head p { color: var(--muted); font-size: 1.05rem; }
-  section.block { padding-block: 88px; }
-  section.alt { background: var(--surface); border-block: 1px solid var(--line); }
+  .wrap { max-width: 1220px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  .label { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+  .label::before { content: ""; width: 22px; height: 2px; background: var(--ai-grad); border-radius: 2px; }
+  .section-head { display: grid; gap: 14px; margin-bottom: 44px; max-width: 820px; justify-items: start; }
+  .section-head p { color: var(--muted); font-size: 1.08rem; max-width: 62ch; }
+  section.block { position: relative; padding-block: 110px; }
+  .grad-text { background: var(--ai-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .glass { background: var(--glass); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); border: 1px solid var(--glass-line); box-shadow: var(--shadow); }
 
   /* Header */
-  .site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(255, 255, 255, 0.78); backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px); border-bottom: 1px solid rgba(207, 217, 229, 0.7); }
+  .site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(255, 255, 255, 0.72); backdrop-filter: saturate(170%) blur(16px); -webkit-backdrop-filter: saturate(170%) blur(16px); border-bottom: 1px solid rgba(211, 218, 229, 0.6); }
   .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-block: 12px; }
   .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 1.08rem; color: var(--fg); text-decoration: none; white-space: nowrap; }
-  .brand img { width: 34px; height: 34px; border-radius: 10px; object-fit: cover; object-position: 50% 12%; box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(31, 95, 168, 0.35); }
-  .nav { display: flex; align-items: center; gap: 4px; }
-  .nav a { color: var(--ink-soft); text-decoration: none; font-size: 0.92rem; font-weight: 500; padding: 7px 12px; border-radius: 999px; transition: background 0.2s ease, color 0.2s ease; }
-  .nav a:hover { background: var(--chip); color: var(--fg); }
+  .brand img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; object-position: 50% 12%; box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(36, 87, 214, 0.35); }
+  .nav { display: flex; align-items: center; gap: 2px; }
+  .nav a { color: var(--ink-soft); text-decoration: none; font-size: 0.92rem; font-weight: 500; padding: 7px 13px; border-radius: 999px; transition: background 0.2s ease, color 0.2s ease; }
+  .nav a:hover { background: rgba(11, 22, 38, 0.05); color: var(--fg); }
   .nav a.active { background: var(--fg); color: #fff; }
-  .search-btn { display: inline-flex; align-items: center; gap: 8px; margin-left: 6px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--muted); border-radius: 999px; padding: 6px 8px 6px 14px; font-size: 0.88rem; cursor: pointer; }
+  .search-btn { display: inline-flex; align-items: center; gap: 8px; margin-left: 8px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--muted); border-radius: 999px; padding: 6px 8px 6px 14px; font-size: 0.88rem; cursor: pointer; }
   .search-btn:hover { border-color: var(--fg); color: var(--fg); }
-  .nav .cta { background: var(--accent); color: #fff; margin-left: 4px; }
-  .nav .cta:hover { background: #184e8c; color: #fff; }
-  .progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: linear-gradient(90deg, var(--accent), var(--violet), var(--teal), var(--c-orangeline)); transform-origin: 0 50%; transform: scaleX(0); }
+  .nav .cta { background: var(--fg); color: #fff; margin-left: 6px; }
+  .nav .cta:hover { background: #1c2c44; color: #fff; }
+  .progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ai-grad); transform-origin: 0 50%; transform: scaleX(0); }
 
   /* Hero */
-  .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); background:
-      radial-gradient(600px 380px at 8% 12%, rgba(31, 95, 168, 0.14), transparent 70%),
-      radial-gradient(520px 340px at 92% 8%, rgba(224, 97, 15, 0.11), transparent 70%),
-      radial-gradient(640px 420px at 70% 100%, rgba(15, 118, 110, 0.12), transparent 70%),
-      var(--bg); }
-  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(31, 95, 168, 0.13) 1px, transparent 1.3px); background-size: 24px 24px; mask-image: linear-gradient(180deg, #000 0%, transparent 90%); -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 90%); pointer-events: none; }
-  .hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; padding-block: 72px 76px; align-items: center; }
+  .hero { position: relative; overflow: hidden; }
+  .mesh { position: absolute; inset: -20% -10% auto -10%; height: 140%; pointer-events: none; filter: blur(60px); opacity: 0.9; }
+  .mesh i { position: absolute; border-radius: 50%; display: block; }
+  .mesh i:nth-child(1) { width: 560px; height: 560px; left: 2%; top: 4%; background: rgba(36, 87, 214, 0.28); }
+  .mesh i:nth-child(2) { width: 520px; height: 520px; right: 6%; top: 0; background: rgba(109, 74, 224, 0.22); }
+  .mesh i:nth-child(3) { width: 600px; height: 600px; left: 38%; top: 34%; background: rgba(14, 138, 126, 0.18); }
+  .mesh i:nth-child(4) { width: 420px; height: 420px; right: 0; top: 46%; background: rgba(242, 179, 61, 0.2); }
+  .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(11, 22, 38, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(11, 22, 38, 0.05) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse at 50% 30%, #000 10%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 10%, transparent 70%); }
+  .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 56px; padding-block: 84px 40px; align-items: center; }
   .hero .wrap > * { min-width: 0; }
-  .avail { display: inline-flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px 6px 10px; font-size: 0.86rem; font-weight: 500; box-shadow: var(--shadow-sm); }
-  .pulse { position: relative; width: 10px; height: 10px; border-radius: 50%; background: var(--green); flex: none; }
+  .avail { display: inline-flex; align-items: center; gap: 10px; background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--glass-line); border-radius: 999px; padding: 7px 16px 7px 12px; font-size: 0.86rem; font-weight: 500; box-shadow: var(--shadow-sm); }
+  .pulse { position: relative; width: 9px; height: 9px; border-radius: 50%; background: var(--green); flex: none; }
   .pulse::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--green); animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite; }
   @keyframes ping { 75%, 100% { transform: scale(2.4); opacity: 0; } }
-  .hero h1 { font-size: clamp(2.6rem, 7.4vw, 5.4rem); font-weight: 800; letter-spacing: -0.035em; margin-top: 22px; line-height: 0.98; overflow-wrap: anywhere; }
-  .hero h1 .grad { background: linear-gradient(100deg, var(--accent) 10%, var(--teal) 60%, var(--c-orangeline) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .hero .role { font-family: var(--font-display); font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 700; margin-top: 18px; color: var(--ink-soft); }
-  .hero .thesis { color: var(--muted); max-width: 56ch; margin-top: 14px; font-size: 1.06rem; }
-  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px; font: 600 0.96rem var(--font-body); text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease; }
+  .hero h1 { font-size: clamp(3rem, 6.8vw, 6.2rem); font-weight: 800; letter-spacing: -0.045em; line-height: 0.95; margin-top: 26px; }
+  .hero h1 em { font-size: 1.08em; background: linear-gradient(100deg, #2457d6 5%, #6d4ae0 40%, #0e8a7e 75%, #e0610f 100%); -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: 0.06em; }
+  .who { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin-top: 28px; font-weight: 600; color: var(--ink-soft); }
+  .who b { font-family: var(--font-display); font-size: 1.2rem; color: var(--fg); }
+  .who span { color: var(--muted); font-weight: 500; }
+  .who::before { content: ""; width: 34px; height: 2px; background: var(--fg); border-radius: 2px; }
+  .hero .thesis { color: var(--muted); max-width: 54ch; margin-top: 12px; font-size: 1.08rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 999px; font: 600 0.96rem var(--font-body); text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease; }
   .btn:hover { transform: translateY(-2px); }
-  .btn.primary { background: var(--fg); color: #fff; box-shadow: 0 10px 24px rgba(14, 31, 51, 0.22); }
-  .btn.ghost { background: var(--surface); color: var(--fg); border-color: var(--line-strong); }
+  .btn.primary { background: var(--fg); color: #fff; box-shadow: 0 12px 28px rgba(11, 22, 38, 0.24); }
+  .btn.ghost { background: var(--glass); color: var(--fg); border-color: var(--line-strong); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
   .btn.ghost:hover { border-color: var(--fg); }
-  .btn.ai { background: var(--ai-grad); color: #fff; box-shadow: 0 10px 24px rgba(109, 74, 224, 0.3); }
+  .btn.ai { background: var(--ai-grad); color: #fff; box-shadow: 0 12px 28px rgba(109, 74, 224, 0.32); }
   .btn svg { width: 16px; height: 16px; flex: none; }
-  .stats { display: flex; flex-wrap: wrap; gap: 14px 0; margin: 36px 0 0; }
-  .stats div { padding: 4px 22px; border-left: 1px solid var(--line-strong); }
-  .stats div:first-child { padding-left: 0; border-left: none; }
-  .stats dt { font-family: var(--font-display); font-weight: 800; font-size: 2rem; line-height: 1.05; font-variant-numeric: tabular-nums; }
-  .stats div:nth-child(1) dt { color: var(--accent); }
-  .stats div:nth-child(2) dt { color: var(--teal); }
-  .stats div:nth-child(3) dt { color: var(--c-orangeline); }
-  .stats div:nth-child(4) dt { color: var(--c-workforce); }
-  .stats dd { margin: 4px 0 0; color: var(--muted); font-size: 0.84rem; line-height: 1.3; max-width: 13ch; }
+  .btn .arr { display: inline-block; transition: transform 0.2s ease; }
+  .btn:hover .arr { transform: translateX(4px); }
 
-  .visual { position: relative; min-height: 560px; }
-  .portrait { position: absolute; right: 12px; top: 0; width: min(330px, 62%); aspect-ratio: 4 / 5; border-radius: 30px; padding: 6px; background: linear-gradient(140deg, var(--accent), var(--violet) 45%, var(--teal) 75%, var(--c-orangeline)); box-shadow: var(--shadow-lg); }
-  .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; border-radius: 24px; background: #dfe7f1; }
-  .portrait .name-tag { position: absolute; right: -14px; top: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 8px 14px; box-shadow: var(--shadow); font-size: 0.8rem; line-height: 1.3; }
+  .visual { position: relative; min-height: 600px; }
+  .portrait { position: absolute; right: 24px; top: 6px; width: min(360px, 66%); aspect-ratio: 4 / 5; margin: 0; border-radius: 34px; padding: 7px; isolation: isolate; box-shadow: var(--shadow-lg); }
+  .portrait::before { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1; background: conic-gradient(from var(--rim, 0deg), #2457d6, #6d4ae0, #0e8a7e, #f2b33d, #e0610f, #2457d6); }
+  .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; border-radius: 28px; background: #dfe7f1; }
+  .portrait .name-tag { position: absolute; left: -26px; top: 30px; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 16px; font-size: 0.8rem; line-height: 1.3; }
   .portrait .name-tag b { display: block; font-family: var(--font-display); font-size: 0.98rem; }
   .portrait .name-tag span { color: var(--muted); }
-  .terminal-wrap { position: absolute; left: 0; bottom: 0; width: min(430px, 82%); }
-  .terminal { background: var(--term-bg); color: var(--term-fg); border-radius: 18px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid #1d3550; transform: rotate(-1.5deg); }
-  .term-bar { display: flex; align-items: center; gap: 8px; padding: 11px 16px; background: #13283f; border-bottom: 1px solid #1d3550; }
-  .term-bar i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+  .terminal-wrap { position: absolute; left: 0; bottom: 18px; width: min(410px, 78%); z-index: 2; }
+  .terminal { background: var(--term-bg); color: var(--term-fg); border-radius: 18px; box-shadow: var(--shadow-lg); overflow: hidden; border: 1px solid #1d3550; }
+  .term-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #13283f; border-bottom: 1px solid #1d3550; }
+  .term-bar i { width: 10px; height: 10px; border-radius: 50%; display: block; }
   .term-bar i:nth-child(1) { background: #ff6b6b; } .term-bar i:nth-child(2) { background: #f2b33d; } .term-bar i:nth-child(3) { background: #3ccf91; }
-  .term-bar span { margin-left: 10px; font-family: var(--font-mono); font-size: 0.76rem; color: var(--term-dim); }
-  .term-body { font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.7; padding: 14px 18px 16px; overflow-x: auto; }
+  .term-bar span { margin-left: 8px; font-family: var(--font-mono); font-size: 0.74rem; color: var(--term-dim); }
+  .term-body { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.7; padding: 12px 16px 14px; overflow-x: auto; }
   .term-body p { white-space: pre; }
   .term-body .cmd { color: #ffffff; }
   .term-body .cmd b { color: var(--amber); font-weight: 600; }
   .term-body .ok { color: var(--term-ok); }
   .term-body .dim { color: var(--term-dim); }
   .term-body .gap { height: 6px; }
-  .caret { display: inline-block; width: 9px; height: 1.05em; background: var(--term-ok); vertical-align: -2px; animation: blink 1.1s steps(1) infinite; }
+  .caret { display: inline-block; width: 8px; height: 1.05em; background: var(--term-ok); vertical-align: -2px; animation: blink 1.1s steps(1) infinite; }
   @keyframes blink { 50% { opacity: 0; } }
-  .float { position: absolute; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; box-shadow: var(--shadow); display: grid; gap: 1px; animation: bob 6s ease-in-out infinite; z-index: 2; }
-  .float b { font-family: var(--font-display); font-size: 1.12rem; font-weight: 800; }
+  .float { position: absolute; z-index: 3; display: grid; gap: 1px; padding: 12px 16px; border-radius: 16px; }
+  .float b { font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; }
   .float span { font-size: 0.75rem; color: var(--muted); }
-  .float.f1 { right: 0; bottom: 90px; } .float.f1 b { color: var(--accent); }
-  .float.f2 { left: 8%; top: 40px; animation-delay: -3s; } .float.f2 b { color: var(--teal); }
+  .float.f1 { right: 0; bottom: 120px; } .float.f1 b { color: var(--accent); }
+  .float.f2 { left: 0; top: 150px; } .float.f2 b { color: var(--teal); }
   @keyframes bob { 50% { transform: translateY(-8px); } }
 
+  .stats-strip { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 30px 0 0; border-radius: 24px; overflow: hidden; }
+  .stats-strip div { padding: 22px 26px; }
+  .stats-strip div + div { border-left: 1px solid rgba(211, 218, 229, 0.7); }
+  .stats-strip dt { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .stats-strip div:nth-child(1) dt { color: var(--accent); }
+  .stats-strip div:nth-child(2) dt { color: var(--teal); }
+  .stats-strip div:nth-child(3) dt { color: var(--c-orangeline); }
+  .stats-strip div:nth-child(4) dt { color: var(--violet); }
+  .stats-strip dd { margin: 8px 0 0; color: var(--muted); font-size: 0.9rem; line-height: 1.35; }
+  .hero .wrap.hero-bottom { display: block; padding-block: 0 70px; }
+
   /* Marquee */
-  .marquee { border-bottom: 1px solid var(--line); background: var(--surface); }
-  .marquee .wrap { display: flex; align-items: center; gap: 24px; padding-block: 20px; }
-  .marquee .mlabel { flex: none; font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .marquee { position: relative; z-index: 1; }
+  .marquee .wrap { display: flex; align-items: center; gap: 28px; padding-block: 26px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .marquee .mlabel { flex: none; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
   .mview { overflow: hidden; flex: 1; min-width: 0; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-  .mtrack { display: flex; width: max-content; animation: slide 46s linear infinite; }
+  .mtrack { display: flex; width: max-content; animation: slide 50s linear infinite; }
   .mview:hover .mtrack { animation-play-state: paused; }
   .mtrack ul { list-style: none; margin: 0; padding: 0; display: flex; }
-  .mtrack li { font-family: var(--font-display); font-weight: 700; font-size: 1.12rem; color: var(--ink-soft); padding: 0 26px; white-space: nowrap; display: flex; align-items: center; gap: 26px; }
-  .mtrack li::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); }
+  .mtrack li { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; letter-spacing: -0.01em; color: #8a97a8; padding: 0 30px; white-space: nowrap; display: flex; align-items: center; gap: 30px; }
+  .mtrack li::after { content: "\2726"; font-size: 0.8rem; color: var(--line-strong); }
   @keyframes slide { to { transform: translateX(-50%); } }
 
-  /* Tech explorer */
-  .explorer { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px; }
-  .explorer button { font: 500 0.88rem var(--font-body); padding: 8px 15px; border-radius: 999px; cursor: pointer; border: 1px solid var(--line-strong); background: var(--surface); color: var(--fg); transition: all 0.18s ease; }
+  /* Work */
+  .explorer { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .explorer button { font: 500 0.88rem var(--font-body); padding: 8px 16px; border-radius: 999px; cursor: pointer; border: 1px solid var(--line-strong); background: var(--surface); color: var(--fg); transition: all 0.18s ease; }
   .explorer button:hover { border-color: var(--fg); }
   .explorer button[aria-pressed="true"] { background: var(--fg); color: #fff; border-color: var(--fg); }
-  .tech-note { color: var(--muted); font-size: 0.9rem; min-height: 1.5em; margin-bottom: 22px; }
+  .tech-note { color: var(--muted); font-size: 0.9rem; min-height: 1.5em; margin-bottom: 30px; }
   .tech-note b { color: var(--fg); }
-
-  /* Bento */
-  .bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px; }
-  .tile { --c: var(--accent); --tint: color-mix(in srgb, var(--c) 7%, #ffffff); --tint-line: color-mix(in srgb, var(--c) 24%, #ffffff);
-    position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px;
-    display: flex; flex-direction: column; gap: 14px; min-width: 0; box-shadow: var(--shadow);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.3s ease, filter 0.3s ease; }
-  .tile::before { content: ""; position: absolute; width: 320px; height: 320px; right: -120px; top: -140px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--c) 18%, transparent), transparent 70%); pointer-events: none; }
-  .tile::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.3s ease; background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--c) 13%, transparent), transparent 65%); }
-  .tile:hover::after { opacity: 1; }
-  .tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--tint-line); }
-  .tile > * { position: relative; z-index: 1; }
-  .tile.dim, .card.dim { opacity: 0.32; filter: grayscale(0.7); }
-  .tile.match { border-color: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 22%, transparent), var(--shadow-lg); }
-  .t-nm { grid-column: span 4; grid-row: span 2; --c: var(--c-nextmail); }
-  .t-ol { grid-column: span 2; grid-row: span 2; --c: var(--c-orangeline); }
-  .t-wc { grid-column: span 3; --c: var(--c-webinar); }
-  .t-wa { grid-column: span 3; --c: var(--c-workforce); }
-  .t-sw { grid-column: span 3; --c: var(--c-sunwai); }
-  .t-nf { grid-column: span 3; --c: var(--c-nurtureful); }
-  .tile-top { display: flex; align-items: center; gap: 12px; }
-  .badge { width: 46px; height: 46px; flex: none; border-radius: 13px; display: grid; place-items: center; background: var(--c); color: #fff; font-family: var(--font-mono); font-weight: 600; font-size: 0.92rem; box-shadow: 0 8px 18px color-mix(in srgb, var(--c) 35%, transparent); }
-  .eyebrow { font-family: var(--font-mono); font-size: 0.76rem; font-weight: 500; color: var(--c); line-height: 1.35; }
-  .tile h3 { font-size: 1.55rem; letter-spacing: -0.01em; }
-  .t-nm h3 { font-size: clamp(1.8rem, 3vw, 2.3rem); }
-  .tile .lede { color: var(--ink-soft); }
-  .hl-line { font-family: var(--font-display); font-weight: 800; color: var(--c); font-size: 1.25rem; line-height: 1.2; }
-  .mrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-  .mcol { display: grid; gap: 10px; }
-  .m { background: var(--tint); border: 1px solid var(--tint-line); border-radius: 12px; padding: 12px 14px; }
-  .m b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; color: var(--c); line-height: 1.1; font-variant-numeric: tabular-nums; }
-  .m span { font-size: 0.8rem; color: var(--muted); line-height: 1.3; display: block; margin-top: 2px; }
-  .mini-flow { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-  .mini-flow li { font-size: 0.8rem; font-weight: 500; background: var(--surface); border: 1px solid var(--tint-line); color: var(--ink-soft); padding: 5px 10px; border-radius: 8px; }
-  .mini-flow li + li::before { content: "\2192"; color: var(--c); margin-right: 6px; font-weight: 700; }
-  .mini-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-  .mini-list li { display: grid; gap: 4px; padding: 12px 14px; border-radius: 12px; border: 1px dashed var(--tint-line); font-size: 0.86rem; color: var(--ink-soft); line-height: 1.4; background: rgba(255, 255, 255, 0.6); }
-  .mini-list li b { font-family: var(--font-display); font-size: 0.98rem; color: var(--fg); }
+  .work-list { display: grid; gap: 30px; }
+  .work-row { --c: var(--accent); --tint: color-mix(in srgb, var(--c) 7%, #ffffff); --tint-line: color-mix(in srgb, var(--c) 22%, #ffffff);
+    position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr); gap: 52px; align-items: center;
+    padding: 46px; border-radius: 30px; border: 1px solid var(--line); box-shadow: var(--shadow);
+    background: radial-gradient(900px 420px at 100% 0%, color-mix(in srgb, var(--c) 9%, transparent), transparent 60%), var(--surface);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, opacity 0.35s ease, filter 0.35s ease; }
+  .work-row.flip { background: radial-gradient(900px 420px at 0% 0%, color-mix(in srgb, var(--c) 9%, transparent), transparent 60%), var(--surface); }
+  .work-row.flip .copy { order: 2; }
+  .work-row::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.3s ease; background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--c) 10%, transparent), transparent 65%); }
+  .work-row:hover::after { opacity: 1; }
+  .work-row:hover { box-shadow: var(--shadow-lg); border-color: var(--tint-line); }
+  .work-row > * { position: relative; z-index: 1; min-width: 0; }
+  .work-row.dim, .ew-item.dim { opacity: 0.3; filter: grayscale(0.8); }
+  .work-row.match { border-color: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 20%, transparent), var(--shadow-lg); }
+  .copy { display: grid; gap: 16px; align-content: start; }
+  .copy-top { display: flex; align-items: center; gap: 12px; }
+  .badge { width: 46px; height: 46px; flex: none; border-radius: 14px; display: grid; place-items: center; background: var(--c); color: #fff; font-family: var(--font-mono); font-weight: 600; font-size: 0.9rem; box-shadow: 0 8px 18px color-mix(in srgb, var(--c) 35%, transparent); }
+  .eyebrow { font-family: var(--font-mono); font-size: 0.76rem; font-weight: 500; color: var(--c); line-height: 1.4; text-transform: uppercase; letter-spacing: 0.05em; }
+  .copy h3 { font-size: clamp(2.1rem, 3.8vw, 3.1rem); letter-spacing: -0.035em; }
+  .copy .lede { color: var(--ink-soft); font-size: 1.04rem; }
+  .hl { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .hl li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; color: var(--ink-soft); font-size: 0.95rem; }
+  .hl li::before { content: "\2713"; width: 20px; height: 20px; margin-top: 2px; border-radius: 50%; display: grid; place-items: center; font-size: 0.7rem; font-weight: 700; color: var(--c); background: var(--tint); border: 1px solid var(--tint-line); }
+  .mrow { display: flex; flex-wrap: wrap; gap: 10px; }
+  .m { flex: 1 1 120px; background: var(--tint); border: 1px solid var(--tint-line); border-radius: 14px; padding: 12px 14px; }
+  .m b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 1.55rem; color: var(--c); line-height: 1.1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .m span { font-size: 0.78rem; color: var(--muted); line-height: 1.3; display: block; margin-top: 2px; }
   .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-  .chips li { font-family: var(--font-mono); font-size: 0.74rem; padding: 3px 10px; border-radius: 999px; background: var(--chip); border: 1px solid var(--line); color: var(--ink-soft); }
-  .tile .chips li { background: var(--tint); border-color: var(--tint-line); color: color-mix(in srgb, var(--c) 72%, #0e1f33); }
-  .tile-foot { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 4px; }
-  .open-case { display: inline-flex; align-items: center; gap: 8px; border: none; background: var(--c); color: #fff; font: 600 0.88rem var(--font-body); padding: 9px 16px; border-radius: 999px; cursor: pointer; transition: gap 0.2s ease; box-shadow: 0 6px 16px color-mix(in srgb, var(--c) 30%, transparent); }
-  .open-case:hover { gap: 12px; }
+  .chips li { font-family: var(--font-mono); font-size: 0.74rem; padding: 4px 10px; border-radius: 999px; background: var(--chip); border: 1px solid var(--line); color: var(--ink-soft); }
+  .work-row .chips li { background: var(--surface); border-color: var(--tint-line); color: color-mix(in srgb, var(--c) 70%, #0b1626); }
+  .row-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .open-case { display: inline-flex; align-items: center; gap: 8px; border: none; background: var(--c); color: #fff; font: 600 0.92rem var(--font-body); padding: 11px 20px; border-radius: 999px; cursor: pointer; transition: gap 0.2s ease, transform 0.2s ease; box-shadow: 0 8px 20px color-mix(in srgb, var(--c) 32%, transparent); }
+  .open-case:hover { gap: 12px; transform: translateY(-2px); }
+  .ask-mini { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--fg); font: 500 0.88rem var(--font-body); padding: 10px 16px; border-radius: 999px; cursor: pointer; }
+  .ask-mini:hover { border-color: var(--fg); }
 
-  /* AI section */
-  .ai-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 22px; }
-  .ai-card { position: relative; overflow: hidden; border-radius: var(--radius); padding: 28px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
-  .ai-card.shipped::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background: var(--ai-grad); }
-  .ai-card h3 { font-size: 1.35rem; margin-bottom: 18px; }
-  .ai-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-  .ai-list li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; align-items: start; }
-  .ai-ico { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; color: #fff; }
-  .ai-ico svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .ai-list b { display: block; font-family: var(--font-display); font-size: 1.02rem; }
-  .ai-list span { color: var(--muted); font-size: 0.93rem; }
-  .ai-card.workflow { background: linear-gradient(160deg, #f4f1ff, #eef7f6); }
-  .ai-card.workflow .ai-list li { grid-template-columns: 26px minmax(0, 1fr); }
-  .ai-card.workflow .ai-list li::before { content: "\2713"; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--violet); font-weight: 700; font-size: 0.8rem; border: 1px solid #ddd5fb; }
-  .ai-card .try { margin-top: 22px; }
+  /* Illustrated mockups */
+  .stage { position: relative; perspective: 1400px; padding: 10px; }
+  .stage::before { content: ""; position: absolute; inset: 8% 6%; border-radius: 40px; background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--c) 26%, transparent), transparent 70%); filter: blur(30px); }
+  .mock { position: relative; border-radius: 18px; background: #fff; border: 1px solid #e3e7ef; box-shadow: 0 30px 60px rgba(11, 22, 38, 0.16), 0 2px 6px rgba(11, 22, 38, 0.06); overflow: hidden; transform: rotateY(-7deg) rotateX(3deg); transform-origin: 50% 50%; transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); font-size: 0.78rem; color: var(--ink-soft); }
+  .work-row.flip .mock { transform: rotateY(7deg) rotateX(3deg); }
+  .work-row:hover .mock { transform: none; }
+  .mock-bar { display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; background: #f4f6fa; border-bottom: 1px solid #e6eaf1; }
+  .mock-bar > i { width: 10px; height: 10px; border-radius: 50%; background: #dfe3ea; display: block; }
+  .mock-url { margin-left: 12px; font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); background: #fff; border: 1px solid #e6eaf1; border-radius: 999px; padding: 2px 12px; }
+  .mock-body { padding: 18px; display: grid; gap: 12px; }
+  .mock .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--tint); color: var(--c); border: 1px solid var(--tint-line); white-space: nowrap; }
+  .mock .muted-line { display: block; height: 7px; border-radius: 4px; background: #e9edf3; }
+  .mk-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .mk-head b { font-family: var(--font-display); font-size: 1rem; color: var(--fg); }
+  .seg { display: inline-flex; padding: 3px; border-radius: 999px; background: #f0f2f7; border: 1px solid #e3e7ef; }
+  .seg i { font-style: normal; font-size: 0.68rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; color: var(--muted); }
+  .seg i.on { background: var(--c); color: #fff; box-shadow: 0 3px 8px color-mix(in srgb, var(--c) 35%, transparent); }
+  .kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .kpis div { border: 1px solid #e9edf3; border-radius: 12px; padding: 10px 12px; background: #fbfcfe; }
+  .kpis span { display: block; font-size: 0.66rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .kpis b { font-family: var(--font-display); font-size: 1.25rem; color: var(--fg); }
+  .chart { border: 1px solid #e9edf3; border-radius: 12px; padding: 10px 12px 6px; background: linear-gradient(180deg, #fbfcfe, #fff); }
+  .chart svg { display: block; width: 100%; height: 86px; }
+  .list-rows { display: grid; gap: 6px; }
+  .list-rows div { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 10px; background: #fbfcfe; border: 1px solid #eef1f6; }
+  .list-rows .d { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+  .list-rows .d.g { background: var(--green); }
+  .list-rows .d.a { background: var(--amber); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; position: relative; }
+  .steps li { display: grid; justify-items: center; gap: 6px; text-align: center; font-size: 0.66rem; font-weight: 600; color: var(--muted); }
+  .steps li::before { content: ""; width: 22px; height: 22px; border-radius: 50%; background: #eef1f6; border: 2px solid #dfe4ec; box-sizing: border-box; }
+  .steps li.done { color: var(--fg); }
+  .steps li.done::before { background: var(--c); border-color: var(--c); box-shadow: inset 0 0 0 4px #fff; }
+  .steps li.now { color: var(--c); }
+  .steps li.now::before { border-color: var(--c); background: #fff; box-shadow: 0 0 0 5px var(--tint); }
+  .card-mini { border: 1px solid #e9edf3; border-radius: 14px; padding: 12px; background: #fbfcfe; display: grid; gap: 8px; }
+  .toast { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; background: #0d1d31; color: #e4edf6; font-size: 0.74rem; box-shadow: 0 10px 24px rgba(11, 22, 38, 0.25); }
+  .toast .bell { width: 22px; height: 22px; border-radius: 7px; background: var(--c); display: grid; place-items: center; color: #fff; font-size: 0.7rem; flex: none; }
+  .spark { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .spark svg { width: 120px; height: 34px; }
+  .spark b { font-family: var(--font-display); color: var(--fg); font-size: 0.95rem; }
+  .field { border: 1px dashed var(--tint-line); border-radius: 12px; padding: 10px 12px; background: var(--tint); display: grid; gap: 6px; }
+  .field > span { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c); }
+  .pipeline { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .pipeline span { font-size: 0.7rem; font-weight: 600; padding: 5px 10px; border-radius: 999px; background: #f0f2f7; color: var(--muted); border: 1px solid #e3e7ef; }
+  .pipeline span.done { background: var(--c); color: #fff; border-color: var(--c); }
+  .pipeline span.now { background: #fff; color: var(--c); border-color: var(--c); box-shadow: 0 0 0 4px var(--tint); }
+  .pipeline span + span::before { content: "\2192"; margin-right: 6px; opacity: 0.7; }
+  .course { display: grid; grid-template-columns: 54px minmax(0, 1fr) auto; gap: 12px; align-items: center; border: 1px solid #e9edf3; border-radius: 14px; padding: 10px; background: #fff; }
+  .course .thumb { width: 54px; height: 54px; border-radius: 12px; background: linear-gradient(135deg, var(--c), #6d4ae0); }
+  .course b { display: block; color: var(--fg); font-size: 0.85rem; }
+  .course span { font-size: 0.7rem; color: var(--muted); }
+  .heat { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 3px; padding: 10px; border: 1px solid #e9edf3; border-radius: 12px; background: #fbfcfe; }
+  .heat i { height: 14px; border-radius: 3px; background: #eef0f6; display: block; }
+  .heat i.s0 { background: color-mix(in srgb, var(--c) 88%, #fff); }
+  .heat i.s1 { background: color-mix(in srgb, var(--c) 68%, #fff); }
+  .heat i.s2 { background: color-mix(in srgb, var(--c) 50%, #fff); }
+  .heat i.b { background: #fde3a7; }
+  .legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.68rem; color: var(--muted); }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+  .login { max-width: 300px; margin: 6px auto; width: 100%; display: grid; gap: 10px; border: 1px solid #e9edf3; border-radius: 16px; padding: 18px; background: #fff; box-shadow: 0 10px 30px rgba(11, 22, 38, 0.08); }
+  .login .in { display: block; height: 32px; border-radius: 9px; border: 1px solid #e3e7ef; background: #fbfcfe; }
+  .otp { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+  .otp span { height: 36px; border-radius: 9px; border: 1px solid #e3e7ef; background: #fbfcfe; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; color: var(--fg); font-size: 1rem; }
+  .otp span.f { border-color: var(--c); box-shadow: 0 0 0 3px var(--tint); }
+  .login .row2 { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 0.7rem; }
+  .login .row2 a { color: var(--c); font-weight: 600; text-decoration: none; }
+  .login .go { display: block; text-align: center; padding: 9px; border-radius: 10px; background: var(--c); color: #fff; font-weight: 600; font-size: 0.8rem; }
+  .filters-mock { display: flex; flex-wrap: wrap; gap: 6px; }
+  .filters-mock span { font-size: 0.7rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; border: 1px solid #e3e7ef; background: #fff; color: var(--muted); }
+  .filters-mock span.on { background: var(--tint); border-color: var(--tint-line); color: var(--c); }
+  .person { display: grid; grid-template-columns: 38px minmax(0, 1fr) auto; gap: 10px; align-items: center; border: 1px solid #e9edf3; border-radius: 14px; padding: 10px; background: #fff; }
+  .person .av { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 700; font-family: var(--font-display); }
+  .person b { display: block; color: var(--fg); font-size: 0.82rem; }
+  .person .stars { color: #f2b33d; letter-spacing: 1px; font-size: 0.72rem; }
+  .person .book { font-size: 0.7rem; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: var(--c); color: #fff; }
+  .bubble { justify-self: start; max-width: 90%; padding: 9px 12px; border-radius: 14px 14px 14px 4px; background: var(--fg); color: #fff; font-size: 0.74rem; }
+  .bubble b { color: #ffd88a; font-weight: 600; }
+
+  /* AI panel */
+  .ai-panel { position: relative; border-radius: 32px; padding: 3px; background: var(--ai-grad); box-shadow: var(--shadow-lg); }
+  .ai-inner { border-radius: 29px; background: linear-gradient(160deg, #ffffff 0%, #f6f3ff 55%, #eef8f6 100%); padding: 44px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 40px; }
+  .ai-inner h3 { font-size: 1.5rem; margin-bottom: 20px; }
+  .ai-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+  .ai-list li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: start; }
+  .ai-ico { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; color: #fff; box-shadow: 0 8px 18px rgba(11, 22, 38, 0.15); }
+  .ai-ico svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ai-list b { display: block; font-family: var(--font-display); font-size: 1.05rem; }
+  .ai-list span { color: var(--muted); font-size: 0.94rem; }
+  .ai-how { margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(109, 74, 224, 0.18); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; }
+  .ai-how div { font-size: 0.88rem; color: var(--ink-soft); display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 8px; }
+  .ai-how div::before { content: "\2713"; color: var(--violet); font-weight: 700; }
+  .ai-how b { color: var(--fg); }
+  .chat-demo { align-self: start; border-radius: 22px; background: #fff; border: 1px solid #e6e1fb; box-shadow: 0 24px 50px rgba(109, 74, 224, 0.16); overflow: hidden; }
+  .chat-demo .cd-head { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: var(--ai-grad); color: #fff; }
+  .chat-demo .cd-head img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; object-position: 50% 15%; border: 2px solid rgba(255, 255, 255, 0.7); }
+  .chat-demo .cd-head b { font-family: var(--font-display); font-size: 0.95rem; display: block; line-height: 1.2; }
+  .chat-demo .cd-head span { font-size: 0.72rem; opacity: 0.9; }
+  .cd-body { padding: 16px; display: grid; gap: 10px; background: #f8f8fd; font-size: 0.86rem; }
+  .cd-q { justify-self: end; background: var(--fg); color: #fff; padding: 9px 13px; border-radius: 14px 14px 4px 14px; max-width: 85%; }
+  .cd-a { justify-self: start; background: #fff; border: 1px solid #ebe7fb; padding: 10px 13px; border-radius: 14px 14px 14px 4px; max-width: 92%; color: var(--ink-soft); }
+  .cd-foot { padding: 12px 16px 16px; display: flex; justify-content: space-between; align-items: center; gap: 10px; background: #fff; border-top: 1px solid #f0edfb; font-size: 0.76rem; color: var(--muted); }
 
   /* Principles */
-  .principles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
-  .principle { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); display: grid; gap: 10px; align-content: start; }
-  .picon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--chip); color: var(--accent); }
+  .principles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-radius: 28px; overflow: hidden; }
+  .principle { padding: 32px 28px; display: grid; gap: 12px; align-content: start; }
+  .principle + .principle { border-left: 1px solid rgba(211, 218, 229, 0.7); }
+  .picon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; color: #fff; box-shadow: 0 10px 22px rgba(11, 22, 38, 0.14); }
   .picon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .principle:nth-child(2) .picon { color: var(--teal); background: #e7f5f3; }
-  .principle:nth-child(3) .picon { color: var(--c-orangeline); background: #fdf0e6; }
-  .principle:nth-child(4) .picon { color: var(--c-workforce); background: #eeedfb; }
-  .principle h3 { font-size: 1.15rem; }
+  .principle:nth-child(1) .picon { background: linear-gradient(135deg, #2457d6, #5b8af0); }
+  .principle:nth-child(2) .picon { background: linear-gradient(135deg, #0e8a7e, #38c2b0); }
+  .principle:nth-child(3) .picon { background: linear-gradient(135deg, #e0610f, #f2b33d); }
+  .principle:nth-child(4) .picon { background: linear-gradient(135deg, #6d4ae0, #a78bfa); }
+  .principle h3 { font-size: 1.2rem; }
   .principle p { color: var(--muted); font-size: 0.95rem; }
 
-  /* Career chart */
-  .career { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 26px 18px; box-shadow: var(--shadow); }
-  .crow { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 18px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+  /* Career */
+  .career { border-radius: 28px; padding: 30px 30px 20px; }
+  .crow { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 20px; align-items: center; padding: 12px 0; border-bottom: 1px dashed var(--line); }
   .crow:last-of-type { border-bottom: none; }
-  .clabel b { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; }
+  .clabel b { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
   .clabel span { display: block; color: var(--muted); font-size: 0.82rem; line-height: 1.35; }
   .clabel em { font-style: normal; font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-soft); }
-  .ctrack { position: relative; height: 34px; background-image: repeating-linear-gradient(90deg, transparent 0, transparent calc(11.7647% - 1px), var(--line) calc(11.7647% - 1px), var(--line) 11.7647%); background-position: 5.88% 0; border-radius: 8px; }
-  .cbar { position: absolute; top: 5px; bottom: 5px; left: var(--l); width: var(--w); border-radius: 7px; background: linear-gradient(90deg, var(--k), color-mix(in srgb, var(--k) 70%, #ffffff)); box-shadow: 0 4px 12px color-mix(in srgb, var(--k) 30%, transparent); min-width: 8px; }
+  .ctrack { position: relative; height: 36px; background-image: repeating-linear-gradient(90deg, transparent 0, transparent calc(11.7647% - 1px), var(--line) calc(11.7647% - 1px), var(--line) 11.7647%); background-position: 5.88% 0; border-radius: 8px; }
+  .cbar { position: absolute; top: 6px; bottom: 6px; left: var(--l); width: var(--w); border-radius: 8px; background: linear-gradient(90deg, var(--k), color-mix(in srgb, var(--k) 65%, #ffffff)); box-shadow: 0 6px 14px color-mix(in srgb, var(--k) 30%, transparent); min-width: 8px; }
   .cbar.now::after { content: ""; position: absolute; right: -5px; top: 50%; width: 10px; height: 10px; margin-top: -5px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.2); }
-  .axis { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 18px; margin-top: 8px; }
+  .axis { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 20px; margin-top: 8px; }
   .ticks { position: relative; height: 20px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
   .ticks span { position: absolute; transform: translateX(-50%); }
-  .roles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; margin-top: 22px; }
-  .role-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; box-shadow: var(--shadow-sm); display: grid; gap: 6px; }
-  .role-card.current { border-color: color-mix(in srgb, var(--accent) 40%, #ffffff); box-shadow: 0 0 0 3px rgba(31, 95, 168, 0.1), var(--shadow); }
+  .roles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr)); gap: 16px; margin-top: 24px; }
+  .role-card { border-radius: 20px; padding: 20px 22px; display: grid; gap: 6px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+  .role-card.current { border: 2px solid transparent; background: linear-gradient(var(--surface), var(--surface)) padding-box, var(--ai-grad) border-box; box-shadow: var(--shadow); }
   .role-card .when { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
-  .role-card h3 { font-size: 1.08rem; }
+  .role-card h3 { font-size: 1.1rem; }
   .role-card h3 em { font-style: normal; color: var(--accent); }
   .role-card p { color: var(--muted); font-size: 0.93rem; }
-  .edu { margin-top: 18px; color: var(--muted); }
+  .edu { margin-top: 20px; color: var(--muted); }
   .edu b { color: var(--fg); }
 
   /* Earlier work */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 18px; }
-  .card { --k: var(--accent); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0; box-shadow: var(--shadow-sm); transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.3s ease, filter 0.3s ease, border-color 0.22s ease; }
-  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-  .card.match { border-color: var(--k); box-shadow: 0 0 0 3px color-mix(in srgb, var(--k) 20%, transparent), var(--shadow); }
-  .card .company { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.76rem; font-weight: 600; color: var(--k); }
-  .card .company::before { content: ""; width: 9px; height: 9px; border-radius: 3px; background: var(--k); }
-  .card h3 { font-size: 1.2rem; }
-  .card p { color: var(--muted); font-size: 0.94rem; }
-  .card .chips { margin-top: auto; padding-top: 4px; }
-  .card a.ext { font-size: 0.86rem; font-weight: 500; overflow-wrap: anywhere; }
-  .card.ts { --k: var(--c-nextmail); } .card.sz { --k: var(--c-webinar); } .card.sb { --k: var(--amber-ink); }
-  .earlier-intro { color: var(--ink-soft); max-width: 75ch; margin-bottom: 26px; }
+  .earlier-intro { color: var(--ink-soft); max-width: 75ch; margin-bottom: 26px; font-size: 1.04rem; }
+  .ew-list { border-radius: 28px; overflow: hidden; }
+  .ew-item { --k: var(--accent); display: grid; grid-template-columns: 200px minmax(0, 1fr) auto; gap: 24px; align-items: center; padding: 22px 28px; transition: background 0.2s ease, opacity 0.35s ease, filter 0.35s ease; }
+  .ew-item + .ew-item { border-top: 1px solid rgba(211, 218, 229, 0.7); }
+  .ew-item:hover { background: rgba(255, 255, 255, 0.7); }
+  .ew-item.match { background: color-mix(in srgb, var(--k) 7%, #fff); }
+  .ew-item .company { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; color: var(--k); text-transform: uppercase; letter-spacing: 0.05em; }
+  .ew-item .company::before { content: ""; width: 9px; height: 9px; border-radius: 3px; background: var(--k); }
+  .ew-item h3 { font-size: 1.25rem; }
+  .ew-item p { color: var(--muted); font-size: 0.94rem; margin-top: 2px; }
+  .ew-item a.ext { font-size: 0.86rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .ew-item a.ext:hover { text-decoration: underline; }
+  .ew-item.ts { --k: var(--c-nextmail); } .ew-item.sz { --k: var(--c-webinar); } .ew-item.sb { --k: var(--amber-ink); }
 
   /* Skills */
-  .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 18px; }
-  .skill { --k: var(--accent); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow-sm); }
-  .skill h3 { font-size: 1.06rem; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
-  .skill h3::before { content: ""; width: 12px; height: 12px; border-radius: 4px; background: var(--k); }
+  .skills { border-radius: 28px; padding: 12px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+  .skill { padding: 22px 24px; }
+  .skill h3 { font-size: 1.05rem; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .skill h3::before { content: ""; width: 12px; height: 12px; border-radius: 4px; background: var(--k, var(--accent)); }
   .skill:nth-child(1) { --k: var(--c-nextmail); } .skill:nth-child(2) { --k: var(--c-nurtureful); } .skill:nth-child(3) { --k: var(--c-webinar); }
   .skill:nth-child(4) { --k: var(--c-orangeline); } .skill:nth-child(5) { --k: var(--violet); } .skill:nth-child(6) { --k: var(--c-sunwai); }
+  .skill:nth-child(n+4) { border-top: 1px solid rgba(211, 218, 229, 0.7); }
+  .skill:not(:nth-child(3n+1)) { border-left: 1px solid rgba(211, 218, 229, 0.7); }
 
   /* Contact */
-  .contact-band { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--band-from), var(--band-to)); color: #fff; }
-  .contact-band::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1.3px); background-size: 24px 24px; pointer-events: none; }
-  .contact-band .wrap { position: relative; padding-block: 84px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
-  .contact-band h2 { color: #fff; font-size: clamp(2rem, 4.4vw, 3.2rem); }
-  .contact-band p { color: #cfe3f2; max-width: 46ch; margin-top: 14px; font-size: 1.05rem; }
-  .contact-band .btn.primary { background: #fff; color: var(--band-from); }
-  .contact-band .btn.ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.5); }
-  .contact-list { margin: 0; display: grid; gap: 12px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: var(--radius); padding: 22px 24px; }
-  .contact-list div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 12px; align-items: center; }
-  .contact-list dt { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #9fc6e2; }
-  .contact-list dd { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; overflow-wrap: anywhere; color: #fff; font-weight: 500; }
-  .contact-list a { color: #ffe2a0; }
-  .copy { font: 600 0.78rem var(--font-body); border: 1px solid rgba(255, 255, 255, 0.5); background: transparent; color: #fff; border-radius: 999px; padding: 3px 11px; cursor: pointer; }
-  .copy:hover { background: rgba(255, 255, 255, 0.14); }
-  .copy-status { font-size: 0.8rem; color: #ffe2a0; }
-  footer { background: var(--surface); border-top: 1px solid var(--line); }
-  footer .wrap { padding-block: 22px 30px; color: var(--muted); font-size: 0.85rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+  .contact { position: relative; overflow: hidden; }
+  .contact .mesh { inset: 0 -10%; height: 100%; opacity: 0.8; }
+  .contact .wrap { position: relative; z-index: 1; padding-block: 120px; text-align: center; display: grid; justify-items: center; gap: 18px; }
+  .contact h2 { font-size: clamp(2.6rem, 6.4vw, 5.2rem); letter-spacing: -0.045em; max-width: 14ch; }
+  .contact p { color: var(--muted); max-width: 52ch; font-size: 1.08rem; }
+  .email-big { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; margin-top: 8px; padding: 12px 14px 12px 24px; border-radius: 999px; }
+  .email-big span { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.1rem, 2.4vw, 1.6rem); color: var(--fg); overflow-wrap: anywhere; }
+  .copy-btn { font: 600 0.84rem var(--font-body); border: none; background: var(--fg); color: #fff; border-radius: 999px; padding: 9px 16px; cursor: pointer; }
+  .copy-status { font-size: 0.86rem; color: var(--teal); min-height: 1.3em; }
+  .contact-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; color: var(--muted); font-size: 0.95rem; }
+  .contact-meta a { color: var(--fg); font-weight: 600; }
+  footer { border-top: 1px solid var(--line); }
+  footer .wrap { padding-block: 24px 32px; color: var(--muted); font-size: 0.85rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
 
   /* Floating controls */
   .to-top { position: fixed; right: max(18px, env(safe-area-inset-right, 0px)); bottom: calc(92px + env(safe-area-inset-bottom, 0px)); z-index: 40; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--surface); color: var(--fg); box-shadow: var(--shadow); cursor: pointer; font-size: 1.15rem; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease; }
@@ -423,42 +517,48 @@
   .pal-empty { padding: 18px; color: var(--muted); text-align: center; }
   .pal-foot { display: flex; gap: 14px; padding: 10px 16px; border-top: 1px solid var(--line); font-size: 0.76rem; color: var(--muted); }
 
-  /* Motion: calm entrances and small accents. Only the marquee and tiny details loop. */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+  /* Motion */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
   @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: none; } }
   @keyframes lineIn { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
   @keyframes shimmer { to { background-position: 100% 50%; } }
-  .hero .intro > * { animation: fadeUp 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  @keyframes drift { 0% { transform: translate3d(0, 0, 0) scale(1); } 50% { transform: translate3d(3%, 2%, 0) scale(1.05); } 100% { transform: translate3d(-2%, -1%, 0) scale(1); } }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: none; } }
+  @property --rim { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+  @keyframes rim { to { --rim: 360deg; } }
+  .mesh i { animation: drift 18s ease-in-out infinite alternate; }
+  .mesh i:nth-child(2) { animation-duration: 22s; animation-delay: -6s; }
+  .mesh i:nth-child(3) { animation-duration: 26s; animation-delay: -12s; }
+  .mesh i:nth-child(4) { animation-duration: 20s; animation-delay: -3s; }
+  .portrait::before { animation: rim 9s linear infinite; }
+  .hero .intro > * { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
   .hero .intro > :nth-child(1) { animation-delay: 0.05s; }
-  .hero .intro > :nth-child(2) { animation-delay: 0.14s; }
-  .hero .intro > :nth-child(3) { animation-delay: 0.23s; }
-  .hero .intro > :nth-child(4) { animation-delay: 0.32s; }
-  .hero .intro > :nth-child(5) { animation-delay: 0.41s; }
-  .hero .intro > :nth-child(6) { animation-delay: 0.5s; }
-  .hero h1 .grad { background-size: 200% auto; animation: shimmer 7s ease-in-out 1.2s infinite alternate; }
+  .hero .intro > :nth-child(2) { animation-delay: 0.15s; }
+  .hero .intro > :nth-child(3) { animation-delay: 0.27s; }
+  .hero .intro > :nth-child(4) { animation-delay: 0.36s; }
+  .hero .intro > :nth-child(5) { animation-delay: 0.45s; }
   .portrait { animation: scaleIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both; }
-  .terminal-wrap { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.45s both; }
+  .terminal-wrap { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.5s both; }
   .term-body p { animation: lineIn 0.4s ease both; }
-  .term-body p:nth-child(1) { animation-delay: 0.9s; }
-  .term-body p:nth-child(2) { animation-delay: 1.12s; }
-  .term-body p:nth-child(3) { animation-delay: 1.34s; }
-  .term-body p:nth-child(4) { animation-delay: 1.56s; }
-  .term-body p:nth-child(5) { animation-delay: 1.78s; }
-  .term-body p:nth-child(6) { animation-delay: 1.9s; }
-  .term-body p:nth-child(7) { animation-delay: 2.1s; }
-  .term-body p:nth-child(8) { animation-delay: 2.35s; }
+  .term-body p:nth-child(1) { animation-delay: 0.95s; }
+  .term-body p:nth-child(2) { animation-delay: 1.15s; }
+  .term-body p:nth-child(3) { animation-delay: 1.35s; }
+  .term-body p:nth-child(4) { animation-delay: 1.55s; }
+  .term-body p:nth-child(5) { animation-delay: 1.75s; }
+  .term-body p:nth-child(6) { animation-delay: 1.85s; }
+  .term-body p:nth-child(7) { animation-delay: 2.05s; }
+  .term-body p:nth-child(8) { animation-delay: 2.3s; }
   .float { animation: fadeUp 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 1s both, bob 6s ease-in-out 1.6s infinite; }
   .float.f2 { animation-delay: 1.15s, 3.4s; }
+  .stats-strip { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.6s both; }
   .visual .portrait, .visual .terminal-wrap { transition: translate 0.45s ease-out; }
   .visual .portrait { translate: calc(var(--px, 0) * -10px) calc(var(--py, 0) * -8px); }
   .visual .terminal-wrap { translate: calc(var(--px, 0) * 8px) calc(var(--py, 0) * 6px); }
   .site-header { transition: box-shadow 0.3s ease, background 0.3s ease; }
-  .site-header.scrolled { box-shadow: 0 8px 28px rgba(14, 31, 51, 0.08); background: rgba(255, 255, 255, 0.9); }
-  .btn .arr { display: inline-block; transition: transform 0.2s ease; }
-  .btn:hover .arr { transform: translateX(4px); }
-  @keyframes grow { from { transform: scaleX(0); } to { transform: none; } }
+  .site-header.scrolled { box-shadow: 0 8px 28px rgba(11, 22, 38, 0.08); background: rgba(255, 255, 255, 0.88); }
   .js .reveal { opacity: 0; }
-  .js .reveal.in { animation: fadeUp 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 80ms); }
+  .js .reveal.in { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 90ms); }
   .js .career .cbar { transform: scaleX(0); transform-origin: 0 50%; }
   .js .career.grown .cbar { animation: grow 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(0.25s + var(--i, 0) * 120ms); }
   .d-body > * { animation: fadeUp 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
@@ -471,40 +571,51 @@
   .msg { animation: fadeUp 0.3s ease both; }
 
   @media (max-width: 1080px) {
-    .hero .wrap { grid-template-columns: 1fr; gap: 40px; padding-block: 56px 64px; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 40px; padding-block: 60px 30px; }
     .visual { min-height: 0; display: grid; justify-items: center; }
-    .portrait { position: relative; right: auto; top: auto; width: min(300px, 78vw); }
-    .terminal-wrap { position: relative; left: auto; bottom: auto; width: min(520px, 100%); margin-top: -46px; z-index: 2; }
-    .float { position: static; animation: none; margin-top: 12px; }
-    .visual .floats { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-    .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .t-nm { grid-column: span 2; grid-row: auto; }
-    .t-ol, .t-wc, .t-wa, .t-sw, .t-nf { grid-column: span 1; grid-row: auto; }
-    .ai-grid { grid-template-columns: 1fr; }
+    .portrait { position: relative; right: auto; top: auto; width: min(320px, 80vw); }
+    .portrait .name-tag { left: auto; right: -12px; top: 18px; }
+    .terminal-wrap { position: relative; left: auto; bottom: auto; width: min(520px, 100%); margin-top: -50px; }
+    .float { position: static; animation: none; }
+    .visual .floats { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 14px; }
+    .work-row, .work-row.flip { grid-template-columns: 1fr; gap: 34px; padding: 34px; }
+    .work-row.flip .copy { order: 0; }
+    .mock, .work-row.flip .mock { transform: none; }
+    .ai-inner { grid-template-columns: 1fr; padding: 34px; }
     .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .contact-band .wrap { grid-template-columns: 1fr; }
+    .principle:nth-child(3) { border-left: none; }
+    .principle:nth-child(n+3) { border-top: 1px solid rgba(211, 218, 229, 0.7); }
+    .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .skill { border-left: none !important; border-top: none !important; }
+    .skill:nth-child(even) { border-left: 1px solid rgba(211, 218, 229, 0.7) !important; }
+    .skill:nth-child(n+3) { border-top: 1px solid rgba(211, 218, 229, 0.7) !important; }
     .nav a:not(.cta) { display: none; }
   }
   @media (max-width: 680px) {
-    section.block { padding-block: 64px; }
-    .bento { grid-template-columns: 1fr; }
-    .t-nm, .t-ol, .t-wc, .t-wa, .t-sw, .t-nf { grid-column: auto; }
-    .mrow, .mini-list { grid-template-columns: 1fr; }
+    section.block { padding-block: 76px; }
+    .stats-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stats-strip div:nth-child(3) { border-left: none; }
+    .stats-strip div:nth-child(n+3) { border-top: 1px solid rgba(211, 218, 229, 0.7); }
+    .work-row, .work-row.flip { padding: 24px 20px; border-radius: 24px; }
+    .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .steps li { font-size: 0.58rem; }
+    .ai-inner { padding: 24px 20px; }
+    .ai-how { grid-template-columns: 1fr; }
     .principles { grid-template-columns: 1fr; }
+    .principle + .principle { border-left: none; border-top: 1px solid rgba(211, 218, 229, 0.7); }
     .crow, .axis { grid-template-columns: 1fr; gap: 6px; }
     .axis > div:first-child { display: none; }
-    .stats div { padding: 4px 16px; }
-    .stats div:nth-child(3) { padding-left: 0; border-left: none; }
-    .stats dt { font-size: 1.6rem; }
-    .terminal { transform: none; }
+    .ew-item { grid-template-columns: 1fr; gap: 6px; padding: 20px; }
+    .skills { grid-template-columns: 1fr; }
+    .skill { border-left: none !important; }
+    .skill + .skill { border-top: 1px solid rgba(211, 218, 229, 0.7) !important; }
     .term-body p { white-space: pre-wrap; }
     .marquee .mlabel { display: none; }
     .search-btn .sb-label, .search-btn kbd { display: none; }
-    .avail .loc { display: none; }
     .search-btn { padding: 7px 10px; }
+    .avail .loc { display: none; }
     .d-body { padding-left: 20px; padding-right: 20px; }
     .d-head { padding-left: 20px; }
-    .contact-list div { grid-template-columns: 1fr; gap: 2px; }
     .chat { right: 0; bottom: 0; width: 100vw; height: min(86vh, 720px); border-radius: 22px 22px 0 0; }
     .ai-fab .fab-label { display: none; }
     .ai-fab { padding: 12px; }
@@ -537,29 +648,24 @@
 </header>
 
 <section class="hero" id="top">
+  <div class="mesh" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="intro">
       <span class="avail"><span class="pulse" aria-hidden="true"></span>Building .NET, Angular &amp; AI products<span class="loc"> · Lahore, Pakistan</span></span>
-      <h1>Muhammad <span class="grad">Tayyab</span></h1>
-      <p class="role">Senior Software Engineer / Team Lead</p>
-      <p class="thesis">I build .NET, Angular, SQL Server and AI-powered systems for clients in the US and Pakistan, and I lead the releases that put them live: staging first, measured, and reversible.</p>
+      <h1>I build software that <em>ships safely.</em></h1>
+      <p class="who"><b>Muhammad Tayyab</b><span>Senior Software Engineer &amp; Team Lead</span></p>
+      <p class="thesis">.NET, Angular, SQL Server and AI-powered systems for clients in the US and Pakistan, and the releases that put them live: staging first, measured, and reversible.</p>
       <div class="actions">
-        <a class="btn primary" href="#work">See case studies <span class="arr" aria-hidden="true">&#8594;</span></a>
+        <a class="btn primary" href="#work">See my work <span class="arr" aria-hidden="true">&#8594;</span></a>
         <button type="button" class="btn ai" data-open-chat><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg>Ask AI about me</button>
         <a class="btn ghost" href="Muhammad-Tayyab-Resume.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>CV</a>
       </div>
-      <dl class="stats">
-        <div><dt>8+</dt><dd>years building .NET software</dd></div>
-        <div><dt>13</dt><dd>products shipped or maintained</dd></div>
-        <div><dt>6</dt><dd>client products at Visiomate</dd></div>
-        <div><dt>2</dt><dd>team-lead roles</dd></div>
-      </dl>
     </div>
 
     <div class="visual">
-      <figure class="portrait" style="margin: 0;">
+      <figure class="portrait">
         <img src="tayyab.jpg" alt="Muhammad Tayyab" width="448" height="560" fetchpriority="high">
-        <figcaption class="name-tag"><b>Tayyab CH</b><span>Team Lead, Visiomate</span></figcaption>
+        <figcaption class="name-tag glass"><span class="pulse" aria-hidden="true"></span><span><b>Tayyab CH</b><span>Team Lead, Visiomate</span></span></figcaption>
       </figure>
       <div class="terminal-wrap">
         <div class="terminal" role="img" aria-label="A condensed release log: web apps built, 25 of 25 tenant databases migrated, 12 Windows services deployed one at a time, staging verified, and a k6 soak test at 80 requests per second with 0% errors.">
@@ -577,10 +683,18 @@
         </div>
       </div>
       <div class="floats">
-        <div class="float f1"><b>25 / 25</b><span>tenant DBs migrated</span></div>
-        <div class="float f2"><b>0% errors</b><span>at 80 req/s, k6 soak</span></div>
+        <div class="float f1 glass"><b>25 / 25</b><span>tenant DBs migrated</span></div>
+        <div class="float f2 glass"><b>0% errors</b><span>at 80 req/s, k6 soak</span></div>
       </div>
     </div>
+  </div>
+  <div class="wrap hero-bottom">
+    <dl class="stats-strip glass">
+      <div><dt>8+</dt><dd>years building .NET software since 2018</dd></div>
+      <div><dt>13</dt><dd>products shipped or maintained</dd></div>
+      <div><dt>6</dt><dd>client products at Visiomate now</dd></div>
+      <div><dt>2</dt><dd>team-lead roles, US and Pakistan clients</dd></div>
+    </dl>
   </div>
 </section>
 
@@ -605,8 +719,8 @@
     <div class="wrap">
       <div class="section-head">
         <span class="label">Selected work · Visiomate, 2026</span>
-        <h2 id="work-title">Six products I work on now</h2>
-        <p>Open any project for the full case study: context, what I built, results and how it fits together. Pick a technology to see where I used it.</p>
+        <h2 id="work-title">Six products, <em>built and shipped.</em></h2>
+        <p>Each one below: what it is, what I built, and the numbers behind it. Open a case study for the full story, or pick a technology to see where I used it.</p>
       </div>
 
       <div class="explorer" role="group" aria-label="Highlight projects by technology">
@@ -621,118 +735,228 @@
       </div>
       <p class="tech-note" id="tech-note" aria-live="polite">Showing all projects.</p>
 
-      <div class="bento">
-        <article class="tile t-nm reveal" data-tech="dotnet sql cicd payments" data-name="NextMail">
-          <div class="tile-top"><span class="badge" aria-hidden="true">NM</span><p class="eyebrow">Email marketing SaaS<br>US client</p></div>
-          <h3>NextMail</h3>
-          <p class="lede">A multi-tenant email platform: campaigns, triggered and transactional mail for business clients, each on its own SQL Server database. I added a second mail engine, a migration pipeline and safer releases.</p>
-          <div class="mrow">
-            <div class="m"><b>25</b><span>tenant databases on one migration pipeline</span></div>
-            <div class="m"><b>12</b><span>Windows services in planned releases</span></div>
-            <div class="m"><b>1,592</b><span>bounced contacts correctly suppressed</span></div>
-          </div>
-          <ul class="mini-flow" aria-label="How a campaign flows">
-            <li>Web app</li><li>Tenant DBs</li><li>Sending services</li><li>PowerMTA or KumoMTA</li><li>Tracking API</li>
-          </ul>
-          <ul class="mini-list">
-            <li><b>Second mail engine</b>KumoMTA beside PowerMTA, switchable per client</li>
-            <li><b>Tracking API</b>Opens, clicks and delivery events back to each tenant</li>
-            <li><b>Release windows</b>Staging first, per-service checks, rollback plans</li>
-          </ul>
-          <div class="tile-foot">
+      <div class="work-list">
+
+        <article class="work-row reveal spot" style="--c: var(--c-nextmail);" data-tech="dotnet sql cicd payments" data-name="NextMail">
+          <div class="copy">
+            <div class="copy-top"><span class="badge" aria-hidden="true">NM</span><p class="eyebrow">Email marketing SaaS · US client</p></div>
+            <h3>NextMail</h3>
+            <p class="lede">A multi-tenant email platform sending campaigns, triggered and transactional mail, with one SQL Server database per client.</p>
+            <ul class="hl">
+              <li>KumoMTA added beside PowerMTA, switchable per client</li>
+              <li>.NET tracking and webhook API for opens, clicks and events</li>
+              <li>DbUp + GitHub Actions pipeline across every tenant database</li>
+            </ul>
+            <div class="mrow">
+              <div class="m"><b>25</b><span>tenant databases, one pipeline</span></div>
+              <div class="m"><b>12</b><span>Windows services released</span></div>
+              <div class="m"><b>1,592</b><span>bounced contacts suppressed</span></div>
+            </div>
             <ul class="chips"><li>.NET Framework</li><li>Web Forms</li><li>SQL Server</li><li>KumoMTA</li><li>DbUp</li></ul>
-            <button type="button" class="open-case" data-case="nextmail">Read case study <span aria-hidden="true">&#8594;</span></button>
+            <div class="row-actions"><button type="button" class="open-case" data-case="nextmail">Read case study <span aria-hidden="true">&#8594;</span></button><button type="button" class="ask-mini" data-ask-q="What did he build at NextMail?">Ask AI</button></div>
+          </div>
+          <div class="stage" aria-hidden="true">
+            <div class="mock">
+              <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">nextmail · illustration</span></div>
+              <div class="mock-body">
+                <div class="mk-head"><b>Sending engine</b><span class="seg"><i>PowerMTA</i><i class="on">KumoMTA</i></span></div>
+                <div class="kpis"><div><span>Tenants</span><b>25</b></div><div><span>Services</span><b>12</b></div><div><span>Suppressed</span><b>1,592</b></div></div>
+                <div class="chart"><svg viewBox="0 0 300 86" preserveAspectRatio="none"><defs><linearGradient id="nmA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2457d6" stop-opacity="0.28"/><stop offset="1" stop-color="#2457d6" stop-opacity="0"/></linearGradient></defs><path d="M0 70 C 30 62, 50 66, 75 50 S 120 30, 150 38 S 200 18, 225 24 S 270 10, 300 8 L 300 86 L 0 86 Z" fill="url(#nmA)"/><path d="M0 70 C 30 62, 50 66, 75 50 S 120 30, 150 38 S 200 18, 225 24 S 270 10, 300 8" fill="none" stroke="#2457d6" stroke-width="2.5"/><path d="M0 78 C 40 74, 80 72, 120 66 S 200 58, 300 50" fill="none" stroke="#0e8a7e" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+                <div class="list-rows">
+                  <div><i class="d g"></i><span>Newsletter</span><span class="tag">KumoMTA</span></div>
+                  <div><i class="d"></i><span>Welcome series</span><span class="tag">PowerMTA</span></div>
+                  <div><i class="d a"></i><span>Bounce suppression</span><span class="tag">Fixed</span></div>
+                </div>
+              </div>
+            </div>
           </div>
         </article>
 
-        <article class="tile t-ol reveal" data-tech="dotnet angular postgres cicd" data-name="Orange Line OMS">
-          <div class="tile-top"><span class="badge" aria-hidden="true">OL</span><p class="eyebrow">Metro-rail operations<br>Lahore Orange Line</p></div>
-          <h3>Orange Line OMS</h3>
-          <p class="lede">Work permits, power isolation, ground-wire orders and dispatch for the metro's operations teams.</p>
-          <div class="mcol">
-            <div class="m"><b>479 / 984</b><span>commits, main contributor</span></div>
-            <div class="m"><b>28</b><span>API controllers</span></div>
-            <div class="m"><b>80 req/s</b><span>at 0% errors in k6 soak test</span></div>
+        <article class="work-row flip reveal spot" style="--c: var(--c-orangeline);" data-tech="dotnet angular postgres cicd" data-name="Orange Line OMS">
+          <div class="copy">
+            <div class="copy-top"><span class="badge" aria-hidden="true">OL</span><p class="eyebrow">Metro-rail operations · Lahore Orange Line</p></div>
+            <h3>Orange Line OMS</h3>
+            <p class="lede">Work permits, power isolation, ground-wire orders and dispatch for the metro's operations and maintenance teams.</p>
+            <ul class="hl">
+              <li>Angular 21 app and .NET 10 API on PostgreSQL</li>
+              <li>Multi-step approvals with live SignalR and Firebase alerts</li>
+              <li>Docker + GitHub Actions deploys; k6 load testing</li>
+            </ul>
+            <div class="mrow">
+              <div class="m"><b>479 / 984</b><span>commits, main contributor</span></div>
+              <div class="m"><b>28</b><span>API controllers</span></div>
+              <div class="m"><b>80 req/s</b><span>at 0% errors</span></div>
+            </div>
+            <ul class="chips"><li>Angular 21</li><li>.NET 10</li><li>PostgreSQL</li><li>SignalR</li><li>Docker</li></ul>
+            <div class="row-actions"><button type="button" class="open-case" data-case="orangeline">Read case study <span aria-hidden="true">&#8594;</span></button><button type="button" class="ask-mini" data-ask-q="How did he load test the metro system?">Ask AI</button></div>
           </div>
-          <div class="tile-foot">
-            <ul class="chips"><li>Angular 21</li><li>.NET 10</li><li>PostgreSQL</li></ul>
-            <button type="button" class="open-case" data-case="orangeline">Read case study <span aria-hidden="true">&#8594;</span></button>
-          </div>
-        </article>
-
-        <article class="tile t-wc reveal" data-tech="dotnet sql ai payments" data-name="Webinar CE Classes">
-          <div class="tile-top"><span class="badge" aria-hidden="true">WC</span><p class="eyebrow">Continuing education<br>webinarceclasses.com</p></div>
-          <h3>Webinar CE Classes</h3>
-          <p class="hl-line">AI course builds with GPT-4o</p>
-          <p class="lede">Article to course, test and certificate, with per-model AI cost tracking and a new pricing module.</p>
-          <div class="tile-foot">
-            <ul class="chips"><li>ASP.NET Core</li><li>OpenAI</li><li>Stripe</li></ul>
-            <button type="button" class="open-case" data-case="webinar">Read case study <span aria-hidden="true">&#8594;</span></button>
-          </div>
-        </article>
-
-        <article class="tile t-wa reveal" data-tech="ai angular dotnet postgres cicd" data-name="Workforce AI">
-          <div class="tile-top"><span class="badge" aria-hidden="true">WA</span><p class="eyebrow">Contact-center<br>workforce management</p></div>
-          <h3>Workforce AI</h3>
-          <p class="hl-line">Prophet forecasts + OR-Tools schedules</p>
-          <p class="lede">Call-volume forecasting and shift scheduling that covers demand with the fewest agents.</p>
-          <div class="tile-foot">
-            <ul class="chips"><li>Python</li><li>CP-SAT</li><li>Flask</li></ul>
-            <button type="button" class="open-case" data-case="workforce">Read case study <span aria-hidden="true">&#8594;</span></button>
+          <div class="stage" aria-hidden="true">
+            <div class="mock">
+              <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">orange-line-oms · illustration</span></div>
+              <div class="mock-body">
+                <div class="mk-head"><b>Work permit</b><span class="tag">Awaiting approval</span></div>
+                <ol class="steps"><li class="done">Raised</li><li class="done">Approved</li><li class="now">Power isolated</li><li>Ground wire</li><li>Dispatched</li></ol>
+                <div class="card-mini"><span class="muted-line" style="width: 70%;"></span><span class="muted-line" style="width: 92%;"></span><span class="muted-line" style="width: 54%;"></span></div>
+                <div class="toast"><span class="bell">&#9679;</span>Next approver notified via SignalR and Firebase push</div>
+                <div class="card-mini spark"><span><span style="display: block; font-size: 0.66rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em;">k6 soak test</span><b>80 req/s · 0% errors</b></span><svg viewBox="0 0 120 34"><path d="M0 26 L15 22 L30 24 L45 14 L60 16 L75 10 L90 12 L105 6 L120 8" fill="none" stroke="#e0610f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+            </div>
           </div>
         </article>
 
-        <article class="tile t-sw reveal" data-tech="dotnet sql" data-name="Sunwai">
-          <div class="tile-top"><span class="badge" aria-hidden="true">SW</span><p class="eyebrow">Banking regulator<br>State Bank of Pakistan</p></div>
-          <h3>Sunwai</h3>
-          <p class="hl-line">2 production releases in 2026</p>
-          <p class="lede">User management for the SBP complaint portal, with reCAPTCHA Enterprise and an OTP resend flow.</p>
-          <div class="tile-foot">
-            <ul class="chips"><li>.NET 10</li><li>SQL Server</li><li>AD</li></ul>
-            <button type="button" class="open-case" data-case="sunwai">Read case study <span aria-hidden="true">&#8594;</span></button>
+        <article class="work-row reveal spot" style="--c: var(--c-webinar);" data-tech="dotnet sql ai payments" data-name="Webinar CE Classes">
+          <div class="copy">
+            <div class="copy-top"><span class="badge" aria-hidden="true">WC</span><p class="eyebrow">Continuing education · webinarceclasses.com</p></div>
+            <h3>Webinar CE Classes</h3>
+            <p class="lede">Live webinars, recorded sessions and home-study courses for continuing-education credit, with tests and certificates.</p>
+            <ul class="hl">
+              <li>AI course generation with GPT-4o and an auto-build queue</li>
+              <li>Per-model AI cost tracking for every generated course</li>
+              <li>Pricing plans, coupons, newsletter and a redesigned catalog</li>
+            </ul>
+            <div class="mrow">
+              <div class="m"><b>44 / 52</b><span>commits, lead developer</span></div>
+              <div class="m"><b>GPT-4o</b><span>course drafts and tests</span></div>
+            </div>
+            <ul class="chips"><li>ASP.NET Core</li><li>OpenAI</li><li>Stripe</li><li>PayPal</li></ul>
+            <div class="row-actions"><button type="button" class="open-case" data-case="webinar">Read case study <span aria-hidden="true">&#8594;</span></button><button type="button" class="ask-mini" data-ask-q="How does the course generation work?">Ask AI</button></div>
+          </div>
+          <div class="stage" aria-hidden="true">
+            <div class="mock">
+              <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">webinar-ce · illustration</span></div>
+              <div class="mock-body">
+                <div class="mk-head"><b>AI course builder</b><span class="tag">GPT-4o</span></div>
+                <div class="field"><span>Source article</span><span class="muted-line" style="width: 96%;"></span><span class="muted-line" style="width: 88%;"></span><span class="muted-line" style="width: 64%;"></span></div>
+                <div class="pipeline"><span class="done">Extract</span><span class="done">Draft</span><span class="now">Build queue</span><span>Review</span></div>
+                <div class="course"><span class="thumb"></span><span><b>Home-study course</b><span>Test · 3 attempts · Certificate</span></span><span class="tag">Unlimited plan</span></div>
+                <div class="list-rows"><div><i class="d"></i><span>AI cost tracked per model</span><span class="tag">Logged</span></div></div>
+              </div>
+            </div>
           </div>
         </article>
 
-        <article class="tile t-nf reveal" data-tech="angular dotnet ai payments" data-name="Nurtureful">
-          <div class="tile-top"><span class="badge" aria-hidden="true">NF</span><p class="eyebrow">Online therapy<br>patients and therapists</p></div>
-          <h3>Nurtureful</h3>
-          <p class="hl-line">46 of 75 frontend commits</p>
-          <p class="lede">Therapist matching filters, ratings, onboarding, booking notifications and an AI assistant chatbot.</p>
-          <div class="tile-foot">
-            <ul class="chips"><li>Angular 19</li><li>.NET 9</li><li>Twilio</li></ul>
-            <button type="button" class="open-case" data-case="nurtureful">Read case study <span aria-hidden="true">&#8594;</span></button>
+        <article class="work-row flip reveal spot" style="--c: var(--c-workforce);" data-tech="ai angular dotnet postgres cicd" data-name="Workforce AI">
+          <div class="copy">
+            <div class="copy-top"><span class="badge" aria-hidden="true">WA</span><p class="eyebrow">Contact-center workforce management</p></div>
+            <h3>Workforce AI</h3>
+            <p class="lede">Forecasts call volume and builds agent shift schedules that cover demand with the fewest agents.</p>
+            <ul class="hl">
+              <li>Prophet forecasting from historical interval data</li>
+              <li>OR-Tools CP-SAT scheduler with breaks and multi-day plans</li>
+              <li>Flask REST API in Docker behind an Angular dashboard</li>
+            </ul>
+            <ul class="chips"><li>Python</li><li>OR-Tools</li><li>Prophet</li><li>Flask</li><li>Angular</li></ul>
+            <div class="row-actions"><button type="button" class="open-case" data-case="workforce">Read case study <span aria-hidden="true">&#8594;</span></button><button type="button" class="ask-mini" data-ask-q="Tell me about Workforce AI">Ask AI</button></div>
+          </div>
+          <div class="stage" aria-hidden="true">
+            <div class="mock">
+              <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">workforce-ai · illustration</span></div>
+              <div class="mock-body">
+                <div class="mk-head"><b>Generated schedule</b><span class="tag">CP-SAT</span></div>
+                <div class="chart"><svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M0 60 C 30 58, 50 40, 80 30 S 130 12, 160 18 S 220 44, 250 36 S 285 22, 300 26" fill="none" stroke="#5b3fd6" stroke-width="2.5"/><path d="M0 64 L 40 64 L 40 40 L 120 40 L 120 22 L 200 22 L 200 38 L 260 38 L 260 30 L 300 30" fill="none" stroke="#f2b33d" stroke-width="2" stroke-dasharray="4 3"/></svg></div>
+                <div class="heat" data-heat></div>
+                <div class="legend"><span><i style="background: var(--c-workforce);"></i>Forecast (Prophet)</span><span><i style="background: #f2b33d;"></i>Staffing / breaks</span></div>
+              </div>
+            </div>
           </div>
         </article>
+
+        <article class="work-row reveal spot" style="--c: var(--c-sunwai);" data-tech="dotnet sql" data-name="Sunwai">
+          <div class="copy">
+            <div class="copy-top"><span class="badge" aria-hidden="true">SW</span><p class="eyebrow">Banking regulator · State Bank of Pakistan</p></div>
+            <h3>Sunwai</h3>
+            <p class="lede">The State Bank of Pakistan's complaint portal. I work on its user-management app: bank users, administrators and complaint screens.</p>
+            <ul class="hl">
+              <li>Google reCAPTCHA Enterprise released to production</li>
+              <li>OTP resend flow released to production</li>
+              <li>Active Directory-linked bank user management</li>
+            </ul>
+            <div class="mrow"><div class="m"><b>2</b><span>production releases in 2026</span></div></div>
+            <ul class="chips"><li>.NET 10</li><li>SQL Server</li><li>Active Directory</li></ul>
+            <div class="row-actions"><button type="button" class="open-case" data-case="sunwai">Read case study <span aria-hidden="true">&#8594;</span></button><button type="button" class="ask-mini" data-ask-q="Tell me about Sunwai">Ask AI</button></div>
+          </div>
+          <div class="stage" aria-hidden="true">
+            <div class="mock">
+              <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">sunwai · illustration</span></div>
+              <div class="mock-body">
+                <div class="login">
+                  <b style="font-family: var(--font-display); font-size: 1.05rem; color: var(--fg);">Verify sign-in</b>
+                  <span class="in"></span>
+                  <div class="otp"><span>4</span><span>8</span><span>1</span><span class="f"></span><span></span><span></span></div>
+                  <div class="row2"><span class="tag">&#10003; reCAPTCHA Enterprise</span><a>Resend OTP</a></div>
+                  <span class="go">Verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-row flip reveal spot" style="--c: var(--c-nurtureful);" data-tech="angular dotnet ai payments" data-name="Nurtureful">
+          <div class="copy">
+            <div class="copy-top"><span class="badge" aria-hidden="true">NF</span><p class="eyebrow">Online therapy · patients and therapists</p></div>
+            <h3>Nurtureful</h3>
+            <p class="lede">Patients find a therapist, book sessions and meet over video; therapists manage profiles, skills and session notes.</p>
+            <ul class="hl">
+              <li>Therapist skills and needs filters that match patients</li>
+              <li>Ratings, onboarding and booking notifications</li>
+              <li>AI assistant chatbot for signed-in users</li>
+            </ul>
+            <div class="mrow"><div class="m"><b>46 / 75</b><span>frontend commits</span></div></div>
+            <ul class="chips"><li>Angular 19</li><li>.NET 9</li><li>Twilio</li><li>Stripe</li></ul>
+            <div class="row-actions"><button type="button" class="open-case" data-case="nurtureful">Read case study <span aria-hidden="true">&#8594;</span></button><button type="button" class="ask-mini" data-ask-q="Tell me about Nurtureful">Ask AI</button></div>
+          </div>
+          <div class="stage" aria-hidden="true">
+            <div class="mock">
+              <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">nurtureful · illustration</span></div>
+              <div class="mock-body">
+                <div class="mk-head"><b>Find a therapist</b><span class="tag">3 matches</span></div>
+                <div class="filters-mock"><span class="on">Anxiety</span><span class="on">Online</span><span>Couples</span><span>Stress</span></div>
+                <div class="person"><span class="av" style="background: #c0266d;">A</span><span><b>Therapist A</b><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span><span class="book">Book</span></div>
+                <div class="person"><span class="av" style="background: #6d4ae0;">S</span><span><b>Therapist S</b><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span></span><span class="book">Book</span></div>
+                <div class="bubble"><b>AI assistant:</b> here are therapists who match your needs.</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <section class="block alt" id="ai" aria-labelledby="ai-title">
+  <section class="block" id="ai" aria-labelledby="ai-title">
     <div class="wrap">
       <div class="section-head">
         <span class="label">AI in my work</span>
-        <h2 id="ai-title">AI I've shipped, and how I build with it</h2>
-        <p>AI features in production products, plus an AI-assisted workflow where every change is still reviewed, built and tested on staging.</p>
+        <h2 id="ai-title">AI I've shipped, <em>and how I build with it.</em></h2>
+        <p>AI features running in client products, plus an AI-assisted workflow where every change is still reviewed, built and tested on staging.</p>
       </div>
-      <div class="ai-grid">
-        <div class="ai-card shipped reveal">
-          <h3>Shipped to clients</h3>
-          <ul class="ai-list">
-            <li><span class="ai-ico" style="background: var(--c-webinar);"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h12v14H6a2 2 0 0 0-2 2Z"/><path d="M8 7h6"/><path d="M8 11h4"/></svg></span><div><b>AI course generation, Webinar CE Classes</b><span>Article extraction, GPT-4o drafts the course and test, an auto-build queue with admin review, and per-model cost tracking.</span></div></li>
-            <li><span class="ai-ico" style="background: var(--c-nurtureful);"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg></span><div><b>AI assistant chatbot, Nurtureful</b><span>An assistant for signed-in patients, with a cost estimate for the chatbot and Twilio video sessions.</span></div></li>
-            <li><span class="ai-ico" style="background: var(--c-workforce);"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span><div><b>Forecasting and optimization, Workforce AI</b><span>Prophet predicts call volume; an OR-Tools CP-SAT model builds the fewest-agent schedule that covers it.</span></div></li>
-            <li><span class="ai-ico" style="background: var(--violet);"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"/></svg></span><div><b>This portfolio's assistant</b><span>Claude answers visitors' questions about my work from a fixed set of facts, behind a serverless function so no key reaches the browser.</span></div></li>
-          </ul>
-          <div class="try"><button type="button" class="btn ai" data-open-chat>Try the assistant</button></div>
-        </div>
-        <div class="ai-card workflow reveal">
-          <h3>How I build with AI</h3>
-          <ul class="ai-list">
-            <li><div><b>Claude Code every day</b><span>Searching large legacy codebases, first drafts, reviews, test plans and release scripts.</span></div></li>
-            <li><div><b>Human review stays in charge</b><span>Every AI-written change is read, built and tested on staging before it reaches production.</span></div></li>
-            <li><div><b>Secrets never go in prompts</b><span>Keys and connection strings stay in server config and are filtered out of logs I share.</span></div></li>
-            <li><div><b>Cost-aware AI features</b><span>Per-model usage tracking, prompt caching and short answers keep AI spend predictable.</span></div></li>
-          </ul>
+      <div class="ai-panel reveal">
+        <div class="ai-inner">
+          <div>
+            <h3>Shipped to clients</h3>
+            <ul class="ai-list">
+              <li><span class="ai-ico" style="background: linear-gradient(135deg, #0e8a7e, #38c2b0);"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h12v14H6a2 2 0 0 0-2 2Z"/><path d="M8 7h6"/><path d="M8 11h4"/></svg></span><div><b>AI course generation</b><span>Webinar CE Classes: GPT-4o drafts the course and test from an article, with a review queue and per-model cost tracking.</span></div></li>
+              <li><span class="ai-ico" style="background: linear-gradient(135deg, #c0266d, #f472b6);"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg></span><div><b>AI assistant chatbot</b><span>Nurtureful: an assistant for signed-in patients, costed with the Twilio video sessions.</span></div></li>
+              <li><span class="ai-ico" style="background: linear-gradient(135deg, #5b3fd6, #a78bfa);"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span><div><b>Forecasting and optimization</b><span>Workforce AI: Prophet predicts demand; an OR-Tools CP-SAT model builds the fewest-agent schedule.</span></div></li>
+              <li><span class="ai-ico" style="background: var(--ai-grad);"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"/></svg></span><div><b>This portfolio's assistant</b><span>Claude answers questions about my work behind a serverless function, so no key reaches the browser.</span></div></li>
+            </ul>
+            <div class="ai-how">
+              <div><span><b>Claude Code daily:</b> code search, drafts, reviews, release scripts.</span></div>
+              <div><span><b>Human review:</b> every AI-written change is built and staged first.</span></div>
+              <div><span><b>No secrets in prompts:</b> keys stay in server config.</span></div>
+              <div><span><b>Cost-aware:</b> usage tracking, prompt caching, short answers.</span></div>
+            </div>
+          </div>
+          <div class="chat-demo">
+            <div class="cd-head"><img src="tayyab.jpg" alt="" width="32" height="32"><span><b>Ask about Tayyab</b><span>AI assistant · sample answer</span></span></div>
+            <div class="cd-body">
+              <p class="cd-q">What AI work has he shipped?</p>
+              <p class="cd-a">GPT-4o course generation with per-model cost tracking (Webinar CE Classes), an AI assistant chatbot (Nurtureful), and Prophet forecasting with OR-Tools optimization (Workforce AI). He also uses Claude Code daily, with every change reviewed and tested on staging.</p>
+              <p class="cd-q">Is he a team lead?</p>
+              <p class="cd-a">Yes: team lead at Visiomate now, and team lead and Scrum Master at Team Solution from 2021 to 2026.</p>
+            </div>
+            <div class="cd-foot"><span>Ask anything about my work</span><button type="button" class="btn ai" style="padding: 9px 16px; font-size: 0.86rem;" data-open-chat>Try it</button></div>
+          </div>
         </div>
       </div>
     </div>
@@ -742,29 +966,29 @@
     <div class="wrap">
       <div class="section-head">
         <span class="label">Approach</span>
-        <h2 id="approach-title">How I take work to production</h2>
+        <h2 id="approach-title">How I take work <em>to production.</em></h2>
       </div>
-      <div class="principles">
-        <div class="principle reveal"><span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span><h3>Staging first</h3><p>Every change runs on staging before production. NextMail services, Orange Line deploys and SQL migrations all ship this way.</p></div>
-        <div class="principle reveal"><span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></span><h3>Reversible releases</h3><p>Release windows come with per-step checks, a rollback plan and merges pinned to a known commit.</p></div>
-        <div class="principle reveal"><span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.3 17a9 9 0 1 1 17.4 0"/><path d="m12 14 4-4"/></svg></span><h3>Measured, not guessed</h3><p>k6 load tests, counts before and after every data fix, and the same check run on all 25 tenant databases.</p></div>
-        <div class="principle reveal"><span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="m13 7 4 4"/></svg></span><h3>Written clearly</h3><p>Tickets, pull requests and release notes that a US client can act on without a meeting.</p></div>
+      <div class="principles glass reveal">
+        <div class="principle"><span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span><h3>Staging first</h3><p>Every change runs on staging before production: NextMail services, Orange Line deploys and SQL migrations alike.</p></div>
+        <div class="principle"><span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></span><h3>Reversible releases</h3><p>Release windows come with per-step checks, a rollback plan and merges pinned to a known commit.</p></div>
+        <div class="principle"><span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.3 17a9 9 0 1 1 17.4 0"/><path d="m12 14 4-4"/></svg></span><h3>Measured, not guessed</h3><p>k6 load tests, counts before and after every data fix, and the same check run on all 25 tenant databases.</p></div>
+        <div class="principle"><span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="m13 7 4 4"/></svg></span><h3>Written clearly</h3><p>Tickets, pull requests and release notes that a US client can act on without a meeting.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="block alt" id="career" aria-labelledby="career-title">
+  <section class="block" id="career" aria-labelledby="career-title">
     <div class="wrap">
       <div class="section-head">
         <span class="label">Career · Jul 2018 to now</span>
-        <h2 id="career-title">Eight years, five roles</h2>
+        <h2 id="career-title">Eight years, <em>five roles.</em></h2>
         <p>Each bar is drawn to scale on the same timeline.</p>
       </div>
-      <div class="career reveal" role="img" aria-label="Career timeline: Softbeats Jul 2018 to Jan 2019; Fahmir Pharma Feb to Nov 2019; SirizApps May 2020 to Jul 2021; Team Solution Aug 2021 to Jan 2026; Visiomate Feb 2026 to present.">
+      <div class="career glass reveal" role="img" aria-label="Career timeline: Softbeats Jul 2018 to Jan 2019; Fahmir Pharma Feb to Nov 2019; SirizApps May 2020 to Jul 2021; Team Solution Aug 2021 to Jan 2026; Visiomate Feb 2026 to present.">
         <div class="crow"><div class="clabel"><b>Visiomate</b><span>Senior Software Engineer / Team Lead</span><em>Feb 2026 – Present</em></div><div class="ctrack"><span class="cbar now" style="--l: 89.22%; --w: 8.82%; --k: var(--accent);"></span></div></div>
         <div class="crow"><div class="clabel"><b>Team Solution</b><span>Software Engineer / Team Lead</span><em>Aug 2021 – Jan 2026</em></div><div class="ctrack"><span class="cbar" style="--l: 36.27%; --w: 52.94%; --k: var(--teal);"></span></div></div>
         <div class="crow"><div class="clabel"><b>SirizApps</b><span>Software Developer</span><em>May 2020 – Jul 2021</em></div><div class="ctrack"><span class="cbar" style="--l: 21.57%; --w: 14.71%; --k: var(--c-orangeline);"></span></div></div>
-        <div class="crow"><div class="clabel"><b>Fahmir Pharma</b><span>ERP Support Manager</span><em>Feb 2019 – Nov 2019</em></div><div class="ctrack"><span class="cbar" style="--l: 6.86%; --w: 9.80%; --k: var(--c-workforce);"></span></div></div>
+        <div class="crow"><div class="clabel"><b>Fahmir Pharma</b><span>ERP Support Manager</span><em>Feb 2019 – Nov 2019</em></div><div class="ctrack"><span class="cbar" style="--l: 6.86%; --w: 9.80%; --k: var(--violet);"></span></div></div>
         <div class="crow"><div class="clabel"><b>Softbeats</b><span>Technical Support Specialist</span><em>Jul 2018 – Jan 2019</em></div><div class="ctrack"><span class="cbar" style="--l: 0%; --w: 6.86%; --k: var(--c-nurtureful);"></span></div></div>
         <div class="axis" aria-hidden="true"><div></div><div class="ticks">
           <span style="left: 5.88%;">2019</span><span style="left: 17.65%;">2020</span><span style="left: 29.41%;">2021</span><span style="left: 41.18%;">2022</span><span style="left: 52.94%;">2023</span><span style="left: 64.71%;">2024</span><span style="left: 76.47%;">2025</span><span style="left: 88.24%;">2026</span>
@@ -785,61 +1009,58 @@
     <div class="wrap">
       <div class="section-head">
         <span class="label">2018 to 2026</span>
-        <h2 id="earlier-title">Earlier work</h2>
+        <h2 id="earlier-title">Earlier <em>work.</em></h2>
       </div>
-      <p class="earlier-intro">At Team Solution I led the team as Scrum Master on US K-12 education products. Across them I built OAuth2/JWT single sign-on, an asynchronous export service for PDF, Excel and CSV, and tuned SQL Server for high-traffic use.</p>
-      <div class="grid">
-        <article class="card ts reveal" data-tech="dotnet sql cicd" data-name="SchoolCity"><p class="company">Team Solution · US K-12</p><h3>SchoolCity</h3><p>Platform for US schools and districts to visualize, compare and report on educational data, with custom reports for administrators.</p><a class="ext" href="https://www.illuminateed.com/products/schoolcity/" target="_blank" rel="noopener">illuminateed.com/products/schoolcity</a><ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li><li>AWS</li></ul></article>
-        <article class="card ts reveal" data-tech="dotnet sql" data-name="School Charts"><p class="company">Team Solution · US K-12</p><h3>School Charts</h3><p>Charts, graphs and maps that compare schools and districts side by side, to support resource and curriculum decisions.</p><a class="ext" href="https://schoolcharts.schoolcity.com/" target="_blank" rel="noopener">schoolcharts.schoolcity.com</a><ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li></ul></article>
-        <article class="card ts reveal" data-tech="dotnet sql" data-name="Appraiser"><p class="company">Team Solution · US K-12</p><h3>Appraiser</h3><p>Teacher Incentive Allotment: configurable designations, nightly roster sync, SSO, mid-year and year-end evaluations, and automated payout scheduling.</p><a class="ext" href="https://everman.ilm.school/" target="_blank" rel="noopener">everman.ilm.school</a><ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SSO</li></ul></article>
-        <article class="card ts reveal" data-tech="dotnet" data-name="GradeCam"><p class="company">Team Solution</p><h3>GradeCam</h3><p>Scanner-based capture and evaluation of documents, turning scanned pages into structured data.</p><ul class="chips"><li>.NET</li><li>JavaScript</li></ul></article>
-        <article class="card ts reveal" data-tech="dotnet sql" data-name="Jobee"><p class="company">Team Solution</p><h3>Jobee</h3><p>Free resume builder with professional, modern, creative, executive and simple templates, plus matching cover letters.</p><a class="ext" href="https://jobee.io/" target="_blank" rel="noopener">jobee.io</a><ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li></ul></article>
-        <article class="card sz reveal" data-tech="dotnet sql" data-name="Mosino"><p class="company">SirizApps</p><h3>Mosino</h3><p>Multi-language platform that runs restaurant reservations, hospital management and spa management from one place.</p><a class="ext" href="https://www.mosinoone.com/" target="_blank" rel="noopener">mosinoone.com</a><ul class="chips"><li>Web Forms</li><li>SQL Server</li></ul></article>
-        <article class="card sb reveal" data-tech="dotnet sql" data-name="Gluon ERP"><p class="company">Softbeats Business Solutions</p><h3>Gluon ERP</h3><p>ERP modules for business clients, built and supported in ASP.NET Web Forms on SQL Server.</p><ul class="chips"><li>Web Forms</li><li>SQL Server</li></ul></article>
+      <p class="earlier-intro">At Team Solution I led the team as Scrum Master on US K-12 education products, building OAuth2/JWT single sign-on, an asynchronous export service for PDF, Excel and CSV, and tuning SQL Server for high-traffic use.</p>
+      <div class="ew-list glass reveal">
+        <article class="ew-item ts" data-tech="dotnet sql cicd" data-name="SchoolCity"><p class="company">Team Solution</p><div><h3>SchoolCity</h3><p>US schools and districts visualize, compare and report on educational data.</p></div><a class="ext" href="https://www.illuminateed.com/products/schoolcity/" target="_blank" rel="noopener">illuminateed.com &#8599;</a></article>
+        <article class="ew-item ts" data-tech="dotnet sql" data-name="School Charts"><p class="company">Team Solution</p><div><h3>School Charts</h3><p>Charts, graphs and maps comparing schools and districts side by side.</p></div><a class="ext" href="https://schoolcharts.schoolcity.com/" target="_blank" rel="noopener">schoolcharts &#8599;</a></article>
+        <article class="ew-item ts" data-tech="dotnet sql" data-name="Appraiser"><p class="company">Team Solution</p><div><h3>Appraiser</h3><p>Teacher Incentive Allotment: designations, roster sync, SSO, evaluations and payouts.</p></div><a class="ext" href="https://everman.ilm.school/" target="_blank" rel="noopener">everman.ilm.school &#8599;</a></article>
+        <article class="ew-item ts" data-tech="dotnet" data-name="GradeCam"><p class="company">Team Solution</p><div><h3>GradeCam</h3><p>Scanner-based capture and evaluation of documents into structured data.</p></div><span></span></article>
+        <article class="ew-item ts" data-tech="dotnet sql" data-name="Jobee"><p class="company">Team Solution</p><div><h3>Jobee</h3><p>Free resume builder with professional, modern and creative templates and cover letters.</p></div><a class="ext" href="https://jobee.io/" target="_blank" rel="noopener">jobee.io &#8599;</a></article>
+        <article class="ew-item sz" data-tech="dotnet sql" data-name="Mosino"><p class="company">SirizApps</p><div><h3>Mosino</h3><p>Multi-language platform for restaurant reservations, hospital and spa management.</p></div><a class="ext" href="https://www.mosinoone.com/" target="_blank" rel="noopener">mosinoone.com &#8599;</a></article>
+        <article class="ew-item sb" data-tech="dotnet sql" data-name="Gluon ERP"><p class="company">Softbeats</p><div><h3>Gluon ERP</h3><p>ERP modules for business clients in ASP.NET Web Forms on SQL Server.</p></div><span></span></article>
       </div>
     </div>
   </section>
 
-  <section class="block alt" id="skills" aria-labelledby="skills-title">
+  <section class="block" id="skills" aria-labelledby="skills-title">
     <div class="wrap">
       <div class="section-head">
         <span class="label">Toolbox</span>
-        <h2 id="skills-title">Skills</h2>
+        <h2 id="skills-title">Skills <em>and tools.</em></h2>
       </div>
-      <div class="skills">
-        <div class="skill reveal"><h3>Backend</h3><ul class="chips"><li>C#</li><li>.NET 10</li><li>ASP.NET Core Web API</li><li>ASP.NET Core MVC</li><li>EF Core</li><li>SignalR</li><li>ASP.NET Web Forms</li><li>Windows Services</li></ul></div>
-        <div class="skill reveal"><h3>Frontend</h3><ul class="chips"><li>Angular</li><li>TypeScript</li><li>JavaScript</li><li>RxJS</li><li>Tailwind CSS</li><li>Angular Material</li><li>Razor</li></ul></div>
-        <div class="skill reveal"><h3>Databases</h3><ul class="chips"><li>SQL Server</li><li>T-SQL</li><li>Stored procedures</li><li>Query tuning</li><li>PostgreSQL</li><li>DbUp</li></ul></div>
-        <div class="skill reveal"><h3>DevOps and Cloud</h3><ul class="chips"><li>GitHub Actions</li><li>Docker</li><li>IIS</li><li>Linux</li><li>AWS</li><li>Git</li><li>k6</li><li>Vercel</li></ul></div>
-        <div class="skill reveal"><h3>AI and Python</h3><ul class="chips"><li>Claude API</li><li>OpenAI GPT-4o</li><li>Claude Code</li><li>Python</li><li>Flask</li><li>Google OR-Tools</li><li>Prophet</li></ul></div>
-        <div class="skill reveal"><h3>Integrations</h3><ul class="chips"><li>Stripe</li><li>PayPal</li><li>Twilio</li><li>SendGrid</li><li>Firebase</li><li>OAuth2 / JWT / SSO</li><li>KumoMTA</li><li>PowerMTA</li></ul></div>
+      <div class="skills glass reveal">
+        <div class="skill"><h3>Backend</h3><ul class="chips"><li>C#</li><li>.NET 10</li><li>ASP.NET Core Web API</li><li>ASP.NET Core MVC</li><li>EF Core</li><li>SignalR</li><li>ASP.NET Web Forms</li><li>Windows Services</li></ul></div>
+        <div class="skill"><h3>Frontend</h3><ul class="chips"><li>Angular</li><li>TypeScript</li><li>JavaScript</li><li>RxJS</li><li>Tailwind CSS</li><li>Angular Material</li><li>Razor</li></ul></div>
+        <div class="skill"><h3>Databases</h3><ul class="chips"><li>SQL Server</li><li>T-SQL</li><li>Stored procedures</li><li>Query tuning</li><li>PostgreSQL</li><li>DbUp</li></ul></div>
+        <div class="skill"><h3>DevOps and Cloud</h3><ul class="chips"><li>GitHub Actions</li><li>Docker</li><li>IIS</li><li>Linux</li><li>AWS</li><li>Git</li><li>k6</li><li>Vercel</li></ul></div>
+        <div class="skill"><h3>AI and Python</h3><ul class="chips"><li>Claude API</li><li>OpenAI GPT-4o</li><li>Claude Code</li><li>Python</li><li>Flask</li><li>Google OR-Tools</li><li>Prophet</li></ul></div>
+        <div class="skill"><h3>Integrations</h3><ul class="chips"><li>Stripe</li><li>PayPal</li><li>Twilio</li><li>SendGrid</li><li>Firebase</li><li>OAuth2 / JWT / SSO</li><li>KumoMTA</li><li>PowerMTA</li></ul></div>
       </div>
     </div>
   </section>
 </main>
 
-<section class="contact-band" id="contact" aria-labelledby="contact-title">
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="mesh" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   <div class="wrap">
-    <div>
-      <span class="label" style="color: #ffd88a;">Contact</span>
-      <h2 id="contact-title" style="margin-top: 12px;">Let's build something reliable</h2>
-      <p>Have a project or a role in mind? I work with teams across time zones from Lahore, Pakistan.</p>
-      <div class="actions">
-        <a class="btn primary" href="Muhammad-Tayyab-Resume.pdf">Download CV</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/tayyab-ch-623024158/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
+    <span class="label">Contact</span>
+    <h2 id="contact-title">Let's build something <em>reliable.</em></h2>
+    <p>Have a project or a role in mind? I work with teams across time zones from Lahore, Pakistan.</p>
+    <div class="email-big glass"><span id="email-text">tayyabch380@gmail.com</span><button type="button" class="copy-btn" id="copy-email">Copy email</button></div>
+    <span class="copy-status" id="copy-status" aria-live="polite"></span>
+    <div class="actions" style="justify-content: center; margin-top: 4px;">
+      <a class="btn primary" href="Muhammad-Tayyab-Resume.pdf">Download CV</a>
+      <button type="button" class="btn ai" data-open-chat>Ask AI about me</button>
+      <a class="btn ghost" href="https://www.linkedin.com/in/tayyab-ch-623024158/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
-    <dl class="contact-list">
-      <div><dt>Email</dt><dd><span id="email-text">tayyabch380@gmail.com</span><button type="button" class="copy" id="copy-email">Copy</button><span class="copy-status" id="copy-status" aria-live="polite"></span></dd></div>
-      <div><dt>Phone</dt><dd>+92 323 4508663</dd></div>
-      <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/tayyab-ch-623024158/" target="_blank" rel="noopener">linkedin.com/in/tayyab-ch-623024158</a></dd></div>
-      <div><dt>Location</dt><dd>Lahore, Pakistan (UTC+5)</dd></div>
-    </dl>
+    <div class="contact-meta"><span>+92 323 4508663</span><span>Lahore, Pakistan (UTC+5)</span><a href="https://www.linkedin.com/in/tayyab-ch-623024158/" target="_blank" rel="noopener">linkedin.com/in/tayyab-ch-623024158</a></div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap"><span>© 2026 Muhammad Tayyab</span><span>Project details describe my own work; client names appear only where the product is public.</span></div>
+  <div class="wrap"><span>© 2026 Muhammad Tayyab</span><span>Project mockups are illustrations. Project details describe my own work; client names appear only where the product is public.</span></div>
 </footer>
 
 <button type="button" class="to-top" id="to-top" aria-label="Back to top">&#8593;</button>
@@ -1078,6 +1299,19 @@
       });
     }
 
+    /* ---------- Decorative schedule grid in the Workforce AI mockup ---------- */
+    document.querySelectorAll('[data-heat]').forEach(function (grid) {
+      for (var r = 0; r < 6; r++) {
+        var start = (r * 3) % 6;
+        for (var c = 0; c < 14; c++) {
+          var cell = document.createElement('i');
+          var on = c >= start && c < start + 8;
+          cell.className = on ? (c === start + 4 ? 'b' : 's' + ((r + c) % 3)) : '';
+          grid.appendChild(cell);
+        }
+      }
+    });
+
     /* ---------- Tech explorer ---------- */
     var techButtons = document.querySelectorAll('[data-tech-btn]');
     var techItems = document.querySelectorAll('[data-tech]');
@@ -1108,7 +1342,7 @@
     techButtons.forEach(function (b) { b.addEventListener('click', function () { highlight(b.dataset.techBtn); }); });
 
     /* ---------- Cursor spotlight on tiles ---------- */
-    document.querySelectorAll('.tile').forEach(function (tile) {
+    document.querySelectorAll('.spot').forEach(function (tile) {
       tile.addEventListener('pointermove', function (e) {
         var r = tile.getBoundingClientRect();
         tile.style.setProperty('--mx', (e.clientX - r.left) + 'px');
@@ -1471,6 +1705,7 @@
       fab.focus();
     }
     document.querySelectorAll('[data-open-chat]').forEach(function (b) { b.addEventListener('click', openChat); });
+    document.querySelectorAll('[data-ask-q]').forEach(function (b) { b.addEventListener('click', function () { openChat(); askQuestion(b.dataset.askQ); }); });
     document.getElementById('chat-close').addEventListener('click', closeChat);
     chat.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeChat(); } });
     suggest.querySelectorAll('button').forEach(function (b) { b.addEventListener('click', function () { askQuestion(b.textContent); }); });
@@ -1619,3 +1854,4 @@
 </script>
 </body>
 </html>
+
