@@ -48,7 +48,15 @@ Visiomate projects:
 5. Sunwai, the State Bank of Pakistan's complaint portal (ASP.NET Core on .NET 10, SQL Server, Active Directory). Maintains the user-management app (bank, admin and portal-admin users); released Google reCAPTCHA Enterprise (Feb 2026) and an OTP resend flow (Jun 2026) to production.
 6. Nurtureful, an online therapy platform (Angular 19, .NET 9, Twilio Video, Stripe). Main frontend contributor with 46 of 75 commits: therapist skills and needs filters, ratings, onboarding acknowledgements, booking notifications, an AI assistant chatbot, and a cost estimate for the chatbot and video sessions.
 
-How he works: staging first; reversible releases with per-step checks and rollback plans; measures instead of guessing (load tests, before/after counts); writes clear tickets, pull requests and release notes for US clients.`;
+How he works: staging first; reversible releases with per-step checks and rollback plans; measures instead of guessing (load tests, before/after counts); writes clear tickets, pull requests and release notes for US clients.
+
+Other facts:
+- Industries: email marketing, metro-rail operations, education (continuing education and US K-12), workforce management, banking regulation, online therapy, restaurant/hospital/spa systems (Mosino) and ERP.
+- Team Solution's export service used IronPDF and Winnovative (PDF), EPPlus (Excel) and CsvHelper (CSV). AWS was used on SchoolCity.
+- Earlier products: SchoolCity (Illuminate Education; US schools and districts visualize, compare and report on educational data), School Charts (compares schools and districts with charts and maps), Appraiser (Teacher Incentive Allotment: designations, nightly roster sync, SSO, evaluations, payout scheduling), GradeCam (scanner-based document capture), Jobee (free resume builder, jobee.io), Mosino (mosinoone.com), Gluon ERP.
+- No certifications are listed. Most of his code is in private client repositories, so there are no public code samples; he is happy to walk through architecture in an interview.
+- React, Vue, NestJS, Node.js, PHP, Java, microservices and Kubernetes are not listed in his portfolio; say so plainly if asked.
+- For salary, rates, notice period or start date, ask the visitor to email him.`;
 
 function clientOrNull() {
   if (!process.env.ANTHROPIC_API_KEY) {

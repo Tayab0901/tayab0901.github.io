@@ -353,7 +353,10 @@
   .msg.me { align-self: flex-end; background: var(--fg); color: #fff; border-bottom-right-radius: 6px; }
   .msg .src { display: block; margin-top: 8px; font-size: 0.72rem; color: var(--muted); font-family: var(--font-mono); white-space: normal; }
   .msg .msg-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; white-space: normal; }
-  .msg .msg-actions button { font: 500 0.78rem var(--font-body); border: 1px solid var(--line-strong); background: var(--bg); border-radius: 999px; padding: 4px 10px; cursor: pointer; color: var(--fg); }
+  .msg .msg-actions button { font: 500 0.78rem var(--font-body); border: 1px solid var(--line-strong); background: var(--bg); border-radius: 999px; padding: 4px 10px; cursor: pointer; color: var(--fg); text-align: left; }
+  .msg .msg-actions .case-btn { background: var(--fg); border-color: var(--fg); color: #fff; }
+  .msg .msg-actions .follow-btn { border-color: #ddd5fb; background: #f6f3ff; color: #4b34b0; }
+  .msg .msg-actions .follow-btn:hover { background: #ece6ff; }
   .typing { display: inline-flex; gap: 4px; padding: 4px 0; }
   .typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: dot 1.2s infinite ease-in-out; }
   .typing i:nth-child(2) { animation-delay: 0.15s; } .typing i:nth-child(3) { animation-delay: 0.3s; }
@@ -849,9 +852,11 @@
   </div>
   <div class="chat-log" id="chat-log" aria-live="polite"></div>
   <div class="suggest" id="suggest">
+    <button type="button">Summarize his experience</button>
+    <button type="button">Which projects has he built?</button>
     <button type="button">What did he build at NextMail?</button>
-    <button type="button">How much Angular experience?</button>
     <button type="button">What AI work has he shipped?</button>
+    <button type="button">Has he led a team?</button>
     <button type="button">Is he open to remote roles?</button>
   </div>
   <form class="chat-form" id="chat-form" autocomplete="off">
@@ -1159,35 +1164,172 @@
     var busy = false;
     var API_URL = location.hostname.indexOf('github.io') !== -1 ? 'https://tayyabch-portfolio.vercel.app/api/ask' : '/api/ask';
 
+    // Built-in answers: used when the Claude endpoint is not configured or unreachable.
+    // k = strong keywords (3 points), g = generic keywords (1 point). Specific entries come first: ties go to the earlier entry.
     var KB = [
-      { k: ['nextmail', 'email marketing', 'kumo', 'kumomta', 'powermta', 'tenant', 'campaign'], a: 'At NextMail, a multi-tenant email-marketing SaaS for a US client, Tayyab added KumoMTA as a second mail engine beside PowerMTA, built a .NET tracking and webhook API, built a DbUp + GitHub Actions pipeline that migrates 25 tenant databases, and runs release windows for 12 Windows services with staging tests and rollback plans. He also fixed a gap that left 1,592 hard-bounced contacts mailable.', c: 'nextmail' },
-      { k: ['orange', 'metro', 'oms', 'load test', 'load-test', 'k6', 'permit', 'signalr'], a: 'Orange Line OMS is an operations system for the Lahore Orange Line Metro Train. Tayyab is the main contributor (479 of 984 commits) across an Angular 21 frontend and a .NET 10 API on PostgreSQL: work permits, power isolation, dispatch orders and approval workflows, live notifications, PDF output and Docker deploys. His k6 tests sustained 80 req/s at 0% errors.', c: 'orangeline' },
-      { k: ['webinar', 'course', 'gpt', 'openai', 'education', 'ce'], a: 'For Webinar CE Classes (webinarceclasses.com), Tayyab is the lead developer (44 of 52 commits). He built AI course generation with GPT-4o: article extraction, draft course and test, an auto-build queue with admin review, and per-model AI cost tracking, plus a pricing module, coupons and a redesigned catalog.', c: 'webinar' },
-      { k: ['workforce', 'forecast', 'schedule', 'scheduling', 'prophet', 'or-tools', 'ortools', 'optimization', 'python'], a: 'For Workforce AI, Tayyab built the forecasting and scheduling engine: Prophet predicts call volume and an OR-Tools CP-SAT model assigns shifts and breaks, minimizing unmet demand first and then headcount. It runs as a Flask REST API in Docker behind an Angular dashboard.', c: 'workforce' },
-      { k: ['sunwai', 'sbp', 'state bank', 'bank', 'government', 'recaptcha', 'otp'], a: 'Sunwai is the State Bank of Pakistan\'s complaint portal. Tayyab maintains its user-management app (.NET 10, SQL Server, Active Directory) and shipped Google reCAPTCHA Enterprise (Feb 2026) and an OTP resend flow (Jun 2026) to production.', c: 'sunwai' },
-      { k: ['nurtureful', 'therapy', 'therapist', 'patient', 'twilio'], a: 'Nurtureful is an online therapy platform. Tayyab is the main frontend contributor (46 of 75 commits): therapist skills and needs filters, ratings, onboarding acknowledgements, booking notifications and an AI assistant chatbot, on Angular 19 and .NET 9.', c: 'nurtureful' },
-      { k: ['angular', 'frontend', 'typescript', 'front-end'], a: 'Tayyab uses Angular in current work: Angular 21 with SSR on Orange Line OMS (main contributor), Angular 19 on Nurtureful (46 of 75 frontend commits), and the Angular dashboard for Workforce AI, with TypeScript, RxJS, Tailwind CSS and Angular Material.' },
-      { k: ['ai', 'machine', 'llm', 'claude', 'chatbot', 'artificial'], a: 'AI work Tayyab has shipped: GPT-4o course generation with cost tracking (Webinar CE Classes), an AI assistant chatbot (Nurtureful), Prophet forecasting with OR-Tools optimization (Workforce AI), and this portfolio\'s Claude-powered assistant. He uses Claude Code daily, with every change reviewed and tested on staging.' },
-      { k: ['remote', 'available', 'availability', 'relocate', 'timezone', 'time zone', 'hire', 'notice'], a: 'Yes. Tayyab is open to remote and on-site roles. He is based in Lahore, Pakistan (UTC+5) and already works with US teams across time zones. Email: tayyabch380@gmail.com.' },
-      { k: ['contact', 'email', 'phone', 'reach', 'linkedin', 'call'], a: 'You can reach Tayyab at tayyabch380@gmail.com, on +92 323 4508663, or on LinkedIn at linkedin.com/in/tayyab-ch-623024158.' },
-      { k: ['experience', 'years', 'career', 'background', 'summary', 'about', 'who'], a: 'Tayyab is a Senior Software Engineer / Team Lead with 8+ years in .NET since July 2018: Visiomate (Feb 2026 to now, six client products), Team Solution (Aug 2021 to Jan 2026, team lead and Scrum Master on US K-12 products), SirizApps, Fahmir Pharma and Softbeats.' },
-      { k: ['lead', 'leadership', 'manage', 'scrum', 'team', 'mentor'], a: 'Tayyab has led teams in two roles: team lead at Visiomate now, and team lead and Scrum Master at Team Solution (2021 to 2026), running sprint planning, stand-ups, reviews and retrospectives in Jira and acting as the link between stakeholders and developers.' },
-      { k: ['skill', 'skills', 'stack', 'tech', 'technologies', '.net', 'dotnet', 'c#', 'sql', 'database'], a: 'Core stack: C#, .NET 10, ASP.NET Core, Web Forms, EF Core and SignalR; Angular and TypeScript; SQL Server and PostgreSQL; GitHub Actions, Docker, IIS, Linux and AWS; Python, Flask, GPT-4o, OR-Tools and Prophet; Stripe, PayPal, Twilio and Firebase.' },
-      { k: ['release', 'deploy', 'devops', 'ci', 'cd', 'pipeline', 'docker', 'production'], a: 'Tayyab runs releases staging first, with per-step checks, rollback plans and merges pinned to a known commit. He built a DbUp + GitHub Actions pipeline for 25 tenant databases (NextMail) and Docker + GHCR deploys with GitHub Actions (Orange Line OMS).' },
-      { k: ['cv', 'resume', 'résumé', 'download'], a: 'You can download Tayyab\'s CV with the "CV" button at the top of the page, or directly at tayyabch-portfolio.vercel.app/Muhammad-Tayyab-Resume.pdf.' },
-      { k: ['education', 'degree', 'university', 'study'], a: 'Tayyab holds a Master of Computer Science (MCS) from Superior University, Lahore (2019).' }
+      { k: ['nextmail', 'next mail', 'kumomta', 'kumo', 'powermta', 'email marketing', 'tenant'], g: ['campaign', 'bounce', 'unsubscribe'], c: 'nextmail',
+        a: 'At NextMail, a multi-tenant email-marketing SaaS for a US client, Tayyab:\n- added KumoMTA as a second mail engine beside PowerMTA, chosen per client\n- built a .NET tracking and webhook API for opens, clicks and delivery events\n- built a DbUp + GitHub Actions pipeline that migrates 25 tenant databases\n- runs release windows for 12 Windows services with staging tests and rollback plans\n- fixed a gap that left 1,592 hard-bounced contacts mailable.',
+        f: ['How does he run releases?', 'Tell me about Orange Line OMS', 'Which databases has he used?'] },
+      { k: ['orange line', 'orangeline', 'metro', 'oms', 'k6', 'load test', 'load-test', 'work permit'], g: ['permit', 'dispatch', 'signalr'], c: 'orangeline',
+        a: 'Orange Line OMS is an operations system for the Lahore Orange Line Metro Train. Tayyab is the main contributor (479 of 984 commits) across an Angular 21 frontend and a .NET 10 API on PostgreSQL: work permits, power isolation, ground-wire orders, dispatch and approval workflows, live notifications (SignalR, Firebase), PDF tickets and Docker deploys. His k6 load tests held 80 req/s for 3 minutes at 0% errors, and he traced the ~100 req/s limit to sequential database calls.',
+        f: ['What Angular work has he done?', 'Has he used Docker and CI/CD?', 'What are his biggest achievements?'] },
+      { k: ['webinar', 'ce classes', 'course generation', 'gpt-4o', 'gpt4o', 'webinarceclasses'], g: ['course', 'openai', 'gpt', 'continuing education'], c: 'webinar',
+        a: 'For Webinar CE Classes (webinarceclasses.com), Tayyab is the lead developer (44 of 52 commits). He built AI course generation with GPT-4o (article extraction, draft course and test, an auto-build queue with admin review), per-model AI cost tracking, a pricing module with unlimited home-study plans, coupons, a newsletter, reCAPTCHA and a redesigned course catalog. Payments run on Stripe and PayPal.',
+        f: ['What other AI work has he shipped?', 'Which payment gateways has he used?', 'Which projects has he built?'] },
+      { k: ['workforce', 'forecast', 'scheduling', 'scheduler', 'prophet', 'or-tools', 'ortools', 'cp-sat', 'optimization'], g: ['shift', 'call center', 'contact center'], c: 'workforce',
+        a: 'For Workforce AI (contact-center workforce management), Tayyab built the forecasting and scheduling engine: Prophet predicts call volume, and an OR-Tools CP-SAT model assigns shifts and breaks across multi-day plans. It minimizes unmet demand first, then headcount, always returns a schedule, and runs as a Flask REST API in Docker behind an Angular dashboard.',
+        f: ['Does he know Python?', 'What AI work has he shipped?', 'Which projects has he built?'] },
+      { k: ['sunwai', 'state bank', 'sbp'], g: ['bank', 'banking', 'government', 'regulator', 'complaint'], c: 'sunwai',
+        a: 'Sunwai is the State Bank of Pakistan\'s complaint portal. Tayyab maintains its user-management app (ASP.NET Core on .NET 10, SQL Server, Active Directory) and shipped Google reCAPTCHA Enterprise (Feb 2026) and an OTP resend flow (Jun 2026) to production.',
+        f: ['What security work has he done?', 'Which industries has he worked in?', 'Which projects has he built?'] },
+      { k: ['nurtureful', 'therapy', 'therapist', 'telehealth'], g: ['patient', 'healthcare', 'health'], c: 'nurtureful',
+        a: 'Nurtureful is an online therapy platform (Angular 19, .NET 9, Twilio Video, Stripe). Tayyab is the main frontend contributor (46 of 75 commits): therapist skills and needs filters, ratings, onboarding acknowledgements, booking notifications, an AI assistant chatbot, and a cost estimate for the chatbot and video sessions.',
+        f: ['What Angular work has he done?', 'What AI work has he shipped?', 'Which integrations has he built?'] },
+      { k: ['schoolcity', 'school city', 'school charts', 'schoolcharts', 'illuminate', 'k-12', 'k12'], g: ['school', 'education'],
+        a: 'At Team Solution, Tayyab worked on SchoolCity (Illuminate Education), a platform for US schools and districts to visualize, compare and report on educational data, and School Charts, which compares schools and districts with charts and maps. Stack: ASP.NET, .NET Core, SQL Server and AWS, run with Scrum in Jira.',
+        f: ['What did he do at Team Solution?', 'Tell me about Appraiser', 'Has he led a team?'] },
+      { k: ['appraiser', 'teacher incentive', 'tia', 'everman'], g: ['teacher', 'evaluation'],
+        a: 'Appraiser (Team Solution) manages the Teacher Incentive Allotment for school districts: configurable designations, nightly roster sync, single sign-on, mid-year and year-end evaluations, dashboards and automated payout scheduling. Built on ASP.NET, .NET Core and SQL Server.',
+        f: ['What did he do at Team Solution?', 'What security work has he done?', 'Which projects has he built?'] },
+      { k: ['gradecam', 'grade cam'], g: ['scanner', 'scanning'],
+        a: 'GradeCam (Team Solution) is scanner-based capture and evaluation of documents, turning scanned pages into structured data. Tayyab worked on it with .NET and JavaScript.',
+        f: ['What did he do at Team Solution?', 'Which projects has he built?'] },
+      { k: ['jobee', 'resume builder'], g: [],
+        a: 'Jobee (jobee.io), built at Team Solution, is a free resume builder with professional, modern, creative, executive and simple templates plus matching cover letters. Stack: ASP.NET, .NET Core and SQL Server.',
+        f: ['What did he do at Team Solution?', 'Which projects has he built?'] },
+      { k: ['mosino', 'restaurant', 'spa management', 'hospital management'], g: ['hospital', 'spa'],
+        a: 'Mosino (mosinoone.com), built at SirizApps, is a multi-language platform that runs restaurant reservations, hospital management and spa management from one place, in ASP.NET Web Forms and SQL Server.',
+        f: ['What did he do at SirizApps?', 'Which industries has he worked in?'] },
+      { k: ['gluon', 'erp'], g: [],
+        a: 'Tayyab has ERP experience on both sides: he developed and supported Gluon ERP modules in ASP.NET Web Forms and SQL Server at Softbeats Business Solutions (2018 to 2019), then led ERP support, user training and customization at Fahmir Pharma (2019).',
+        f: ['Summarize his experience', 'Which industries has he worked in?'] },
+      { k: ['visiomate', 'current job', 'current role', 'current company', 'currently', 'right now', 'present role', 'doing now'], g: ['now', 'current'],
+        a: 'Since Feb 2026 Tayyab has been Senior Software Engineer / Team Lead at Visiomate. He is team lead and full-stack engineer on six client products: NextMail, Orange Line OMS, Webinar CE Classes, Workforce AI, Sunwai and Nurtureful, from requirements to production support.',
+        f: ['What did he build at NextMail?', 'Tell me about Orange Line OMS', 'What AI work has he shipped?'] },
+      { k: ['team solution', 'teamsolution'], g: [],
+        a: 'At Team Solution (Lahore, Aug 2021 to Jan 2026), Tayyab was Software Engineer / Team Lead and Scrum Master on US K-12 education products: SchoolCity, School Charts, Appraiser, GradeCam and Jobee. He built OAuth2/JWT single sign-on, an asynchronous export service for PDF, Excel and CSV, and tuned SQL Server for high-traffic apps.',
+        f: ['Has he led a team?', 'Tell me about Appraiser', 'What security work has he done?'] },
+      { k: ['sirizapps', 'siriz'], g: [],
+        a: 'At SirizApps (Lahore, May 2020 to Jul 2021), Tayyab was a Software Developer working as senior web developer: ASP.NET Web Forms and SQL Server apps including Mosino, plus requirements analysis, code reviews and mentoring junior developers.',
+        f: ['Tell me about Mosino', 'Summarize his experience'] },
+      { k: ['fahmir', 'pharma'], g: [],
+        a: 'At Fahmir Pharma (Lahore, Feb to Nov 2019), Tayyab was ERP Support Manager: he led the ERP support team, handled troubleshooting and upgrades, trained users, and customized the ERP with finance and operations teams.',
+        f: ['Summarize his experience', 'Has he led a team?'] },
+      { k: ['softbeats', 'soft beats'], g: [],
+        a: 'At Softbeats Business Solutions (Lahore, Jul 2018 to Jan 2019), Tayyab started his career as Technical Support Specialist, developing and supporting Gluon ERP modules in ASP.NET Web Forms and SQL Server.',
+        f: ['Summarize his experience', 'Which projects has he built?'] },
+      { k: ['biggest', 'most impactful', 'proudest', 'best project', 'achievement', 'achievements', 'impact', 'highlights'], g: ['result', 'results'],
+        a: 'Highlights:\n- NextMail: one migration pipeline for 25 tenant databases, a second mail engine (KumoMTA), and 1,592 bounced contacts correctly suppressed\n- Orange Line OMS: main contributor with 479 of 984 commits; 80 req/s at 0% errors in load tests\n- Webinar CE Classes: AI course generation with GPT-4o and per-model cost tracking\n- Team Solution: team lead and Scrum Master for over four years.',
+        f: ['What did he build at NextMail?', 'Tell me about Orange Line OMS', 'Why should we hire him?'] },
+      { k: ['ai work', 'ai project', 'ai projects', 'artificial intelligence', 'machine learning', 'llm', 'chatbot', 'claude', 'generative'], g: ['ai', 'gpt', 'ml'],
+        a: 'AI work Tayyab has shipped:\n- GPT-4o course generation with per-model cost tracking (Webinar CE Classes)\n- an AI assistant chatbot (Nurtureful)\n- Prophet forecasting with OR-Tools optimization (Workforce AI)\n- this portfolio\'s Claude-powered assistant.\nHe also uses Claude Code daily, with every change reviewed and tested on staging.',
+        f: ['How does the course generation work?', 'Does he know Python?', 'How does he run releases?'] },
+      { k: ['projects', 'what has he built', 'what did he build', 'worked on', 'products', 'portfolio', 'list of'], g: ['project', 'built', 'work'],
+        a: 'Current (Visiomate): NextMail (email-marketing SaaS), Orange Line OMS (metro operations), Webinar CE Classes (AI course generation), Workforce AI (forecasting and scheduling), Sunwai (State Bank of Pakistan) and Nurtureful (online therapy).\nEarlier: SchoolCity, School Charts, Appraiser, GradeCam and Jobee at Team Solution; Mosino at SirizApps; Gluon ERP at Softbeats.',
+        f: ['What did he build at NextMail?', 'Tell me about Orange Line OMS', 'What are his biggest achievements?'] },
+      { k: ['angular', 'typescript', 'frontend', 'front-end', 'front end', 'rxjs', 'tailwind'], g: ['ui', 'javascript'],
+        a: 'Tayyab uses Angular in current work: Angular 21 with server-side rendering on Orange Line OMS (main contributor), Angular 19 on Nurtureful (46 of 75 frontend commits), and the Angular dashboard for Workforce AI. Tools: TypeScript, RxJS, Tailwind CSS and Angular Material.',
+        f: ['Tell me about Orange Line OMS', 'What is his .NET and backend experience?', 'Which projects has he built?'] },
+      { k: ['.net', 'dotnet', 'c#', 'csharp', 'asp.net', 'entity framework', 'ef core', 'web api', 'backend', 'back-end', 'back end'], g: ['api', 'mvc'],
+        a: 'Backend is Tayyab\'s core skill, used in every role since 2018: C#, .NET 10/9, .NET Framework 4.8, ASP.NET Core Web API and MVC, ASP.NET Web Forms, Entity Framework Core, SignalR and Windows Services.',
+        f: ['Which databases has he used?', 'What Angular work has he done?', 'Has he used Docker and CI/CD?'] },
+      { k: ['sql server', 'database', 'databases', 'postgres', 'postgresql', 't-sql', 'stored procedure', 'query tuning', 'dbup'], g: ['sql', 'db', 'data'],
+        a: 'Databases: SQL Server since 2018 (T-SQL, stored procedures, indexing and query tuning for high-traffic apps) and PostgreSQL on Orange Line OMS and Workforce AI. On NextMail he built a DbUp + GitHub Actions pipeline that applies versioned migrations to 25 tenant databases.',
+        f: ['How does he handle performance?', 'Has he used Docker and CI/CD?', 'What is his .NET and backend experience?'] },
+      { k: ['ci/cd', 'cicd', 'ci cd', 'devops', 'docker', 'github actions', 'deploy', 'deployment', 'release', 'releases', 'pipeline'], g: ['ci', 'cd', 'iis', 'linux', 'production'],
+        a: 'Tayyab runs releases staging first, with per-step checks, a rollback plan and merges pinned to a known commit. He built a DbUp + GitHub Actions pipeline for 25 tenant databases (NextMail), Docker images on GHCR with GitHub Actions deploys (Orange Line OMS), and planned release windows for 12 Windows services.',
+        f: ['Which cloud platforms has he used?', 'How does he test his work?', 'What did he build at NextMail?'] },
+      { k: ['aws', 'azure', 'cloud', 'vercel', 'gcp'], g: ['server', 'servers', 'hosting'],
+        a: 'Tayyab has used AWS on SchoolCity (Team Solution), runs Linux and IIS servers, ships Docker images through GHCR, and deploys this portfolio on Vercel. Azure and GCP are not listed in his portfolio, so please ask him about specific services.',
+        f: ['Has he used Docker and CI/CD?', 'What are his main skills?'] },
+      { k: ['python', 'flask', 'pandas'], g: [],
+        a: 'Tayyab uses Python for AI and data work: Prophet forecasting and an OR-Tools CP-SAT scheduler behind a Flask REST API in Docker (Workforce AI).',
+        f: ['Tell me about Workforce AI', 'What AI work has he shipped?'] },
+      { k: ['testing', 'test', 'qa', 'quality', 'bugs', 'debug', 'debugging'], g: [],
+        a: 'Tayyab tests every change on staging before production, runs k6 load tests (Orange Line OMS: 80 req/s at 0% errors), and verifies data fixes with before-and-after counts across all 25 NextMail tenant databases.',
+        f: ['How does he run releases?', 'How does he handle performance?'] },
+      { k: ['security', 'secure', 'oauth', 'jwt', 'sso', 'single sign-on', 'authentication', 'authorization', 'recaptcha', 'otp', 'secrets'], g: ['auth', 'login'],
+        a: 'Security work: OAuth2/JWT authentication and single sign-on across products (Team Solution); JWT, ASP.NET Identity and feature-based access control (Orange Line OMS); Google reCAPTCHA Enterprise and an OTP resend flow (Sunwai); and moving secrets out of source control (NextMail).',
+        f: ['Tell me about Sunwai', 'What did he do at Team Solution?'] },
+      { k: ['payment', 'payments', 'stripe', 'paypal', 'checkout', 'gateway'], g: ['billing'],
+        a: 'Payments: Stripe and PayPal checkout on Webinar CE Classes, and Stripe on Nurtureful.',
+        f: ['Which integrations has he built?', 'Tell me about Webinar CE Classes'] },
+      { k: ['integration', 'integrations', 'third-party', 'real-time', 'realtime', 'signalr', 'firebase', 'push notification', 'twilio', 'sendgrid'], g: ['notifications', 'api'],
+        a: 'Integrations he has shipped: SignalR and Firebase push (Orange Line OMS), Twilio Video and Stripe (Nurtureful), SendGrid, Stripe and PayPal (Webinar CE Classes), KumoMTA and PowerMTA (NextMail), and Active Directory (Sunwai).',
+        f: ['Which payment gateways has he used?', 'Tell me about Orange Line OMS'] },
+      { k: ['pdf', 'excel', 'export', 'exports', 'ironpdf', 'epplus', 'csv'], g: ['report', 'reports'],
+        a: 'Reports and exports: an asynchronous export service at Team Solution (PDF with IronPDF and Winnovative, Excel with EPPlus, CSV with CsvHelper), PDF tickets and Excel exports on Orange Line OMS, and IronPDF certificates on Webinar CE Classes.',
+        f: ['What did he do at Team Solution?', 'Tell me about Orange Line OMS'] },
+      { k: ['performance', 'tuning', 'scalability', 'scalable', 'slow', 'optimize'], g: ['fast', 'speed', 'scale'],
+        a: 'Performance work: SQL Server query and index tuning for high-traffic apps (Team Solution), and k6 load tests that found the Orange Line API\'s limit (~100 req/s) and its cause, sequential database calls in list endpoints.',
+        f: ['Which databases has he used?', 'Tell me about Orange Line OMS'] },
+      { k: ['team lead', 'leadership', 'lead', 'manage', 'manager', 'scrum', 'mentor', 'mentoring', 'agile', 'jira'], g: ['team'],
+        a: 'Tayyab has led teams in two roles: team lead at Visiomate now, and team lead and Scrum Master at Team Solution (2021 to 2026), running sprint planning, stand-ups, reviews and retrospectives in Jira and linking stakeholders with developers. Earlier he mentored junior developers at SirizApps.',
+        f: ['How does he communicate?', 'Why should we hire him?'] },
+      { k: ['remote', 'relocat', 'timezone', 'time zone', 'work from home', 'wfh', 'on-site', 'onsite', 'hybrid', 'availability', 'available'], g: ['start', 'join', 'hire'],
+        a: 'Tayyab is open to remote and on-site roles. He is based in Lahore, Pakistan (UTC+5) and already works with US teams across time zones. For start dates and details, email tayyabch380@gmail.com.',
+        f: ['How does he communicate?', 'How can I contact him?'] },
+      { k: ['communication', 'communicate', 'english', 'urdu', 'language', 'languages', 'spoken'], g: ['speak', 'writing'],
+        a: 'Tayyab speaks English (fluent) and Urdu (native). He works directly with US clients in writing: clear Jira tickets, pull requests, release notes and status updates.',
+        f: ['Is he open to remote roles?', 'Has he led a team?'] },
+      { k: ['salary', 'compensation', 'hourly', 'notice period', 'notice', 'expected', 'expectation', 'ctc', 'package', 'rate'], g: ['pay', 'cost'],
+        a: 'Tayyab prefers to discuss compensation, rates and notice period directly. Please email him at tayyabch380@gmail.com.',
+        f: ['How can I contact him?', 'Is he open to remote roles?'] },
+      { k: ['why hire', 'why should', 'strength', 'strengths', 'stand out', 'good fit', 'unique', 'value'], g: ['fit', 'best'],
+        a: 'What stands out: Tayyab owns work from requirements to production, leads teams, and ships safely: staging first, rollback plans and measured results (25 tenant databases on one pipeline; 80 req/s at 0% errors). He also builds practical AI features, such as GPT-4o course generation and forecasting with optimization.',
+        f: ['What are his biggest achievements?', 'How does he run releases?', 'How can I contact him?'] },
+      { k: ['domain', 'domains', 'industry', 'industries', 'sector', 'sectors'], g: ['field'],
+        a: 'Industries: email marketing (NextMail), metro-rail operations (Orange Line), education (Webinar CE Classes and US K-12 products), workforce management (Workforce AI), banking regulation (Sunwai, State Bank of Pakistan), online therapy (Nurtureful), plus restaurant, hospital and spa systems (Mosino) and ERP.',
+        f: ['Which projects has he built?', 'What are his biggest achievements?'] },
+      { k: ['react', 'vue', 'svelte', 'nestjs', 'node.js', 'nodejs', 'django', 'laravel', 'php', 'spring boot', 'golang', 'kotlin', 'flutter', 'swift', 'microservice', 'kubernetes', 'k8s'], g: [],
+        a: 'That isn\'t listed in Tayyab\'s portfolio. His core stack is .NET, Angular, SQL Server and PostgreSQL, with Python for AI work. For experience with a specific technology, please ask him at tayyabch380@gmail.com.',
+        f: ['What are his main skills?', 'What is his .NET and backend experience?'] },
+      { k: ['certification', 'certifications', 'certified'], g: [],
+        a: 'No certifications are listed on his portfolio. He holds a Master of Computer Science (MCS) from Superior University, Lahore (2019). For anything specific, please ask him directly.',
+        f: ['Where did he study?', 'What are his main skills?'] },
+      { k: ['github', 'source code', 'code sample', 'code samples', 'open source', 'repository'], g: ['code'],
+        a: 'Most of Tayyab\'s work lives in private client repositories, so the code is not public. The case studies on this page show what he built, and he is happy to walk through architecture and decisions in an interview.',
+        f: ['Which projects has he built?', 'How can I contact him?'] },
+      { k: ['contact', 'email', 'phone', 'reach', 'linkedin', 'whatsapp', 'call him'], g: ['call', 'message'],
+        a: 'You can reach Tayyab at tayyabch380@gmail.com, on +92 323 4508663, or on LinkedIn at linkedin.com/in/tayyab-ch-623024158.',
+        f: ['Is he open to remote roles?', 'Can I download his CV?'] },
+      { k: ['cv', 'resume', 'résumé', 'download'], g: [],
+        a: 'You can download Tayyab\'s CV with the "CV" button at the top of the page, or directly at tayyabch-portfolio.vercel.app/Muhammad-Tayyab-Resume.pdf.',
+        f: ['Summarize his experience', 'How can I contact him?'] },
+      { k: ['education', 'degree', 'university', 'study', 'studied', 'graduate', 'mcs'], g: [],
+        a: 'Tayyab holds a Master of Computer Science (MCS) from Superior University, Lahore (2019).',
+        f: ['Summarize his experience', 'Does he have certifications?'] },
+      { k: ['location', 'where is he', 'based', 'lahore', 'city', 'country'], g: ['pakistan', 'where'],
+        a: 'Tayyab is based in Lahore, Pakistan (UTC+5) and is open to remote and on-site roles.',
+        f: ['Is he open to remote roles?', 'How can I contact him?'] },
+      { k: ['skills', 'stack', 'tech stack', 'technologies', 'tools', 'main skills'], g: ['skill', 'tech', 'know'],
+        a: 'Core stack:\n- Backend: C#, .NET 10, ASP.NET Core, Web Forms, EF Core, SignalR\n- Frontend: Angular, TypeScript, RxJS, Tailwind CSS\n- Data: SQL Server, PostgreSQL, DbUp\n- DevOps: GitHub Actions, Docker, IIS, Linux, AWS\n- AI: GPT-4o, Claude, Python, Flask, OR-Tools, Prophet\n- Integrations: Stripe, PayPal, Twilio, SendGrid, Firebase.',
+        f: ['What is his .NET and backend experience?', 'What Angular work has he done?', 'What AI work has he shipped?'] },
+      { k: ['work history', 'career summary', 'summarize', 'summary', 'background', 'how many years', 'years of experience', 'total experience', 'about him', 'who is', 'introduce'], g: ['experience', 'career', 'years', 'about', 'who', 'tayyab', 'profile'],
+        a: 'Tayyab is a Senior Software Engineer / Team Lead with 8+ years in .NET since July 2018:\n- Visiomate (Feb 2026 to now): team lead on six client products\n- Team Solution (2021 to 2026): team lead and Scrum Master, US K-12 products\n- SirizApps (2020 to 2021): software developer\n- Fahmir Pharma (2019): ERP support manager\n- Softbeats (2018 to 2019): technical support specialist.',
+        f: ['Which projects has he built?', 'Has he led a team?', 'What are his main skills?'] },
+      { k: ['hello', 'salam', 'assalam', 'good morning', 'good evening'], g: ['hi', 'hey'],
+        a: 'Hello! I can tell you about Tayyab\'s experience, projects, skills, AI work and availability. What would you like to know?',
+        f: ['Summarize his experience', 'Which projects has he built?', 'What are his main skills?'] },
+      { k: ['thank you', 'thanks', 'thx'], g: ['great', 'awesome', 'nice'],
+        a: 'You\'re welcome! To talk to Tayyab directly, email tayyabch380@gmail.com.',
+        f: ['How can I contact him?', 'Can I download his CV?'] }
     ];
+    var DEFAULT_FOLLOW = ['Summarize his experience', 'Which projects has he built?', 'What are his main skills?'];
+    function normalize(q) { return ' ' + q.toLowerCase().replace(/[^a-z0-9#.+\/\-é ]/g, ' ').replace(/\s+/g, ' ') + ' '; }
+    function hasKey(text, key) { return key.length <= 3 ? text.indexOf(' ' + key + ' ') !== -1 : text.indexOf(key) !== -1; }
     function localAnswer(q) {
-      var text = ' ' + q.toLowerCase().replace(/[^a-z0-9#.+\- ]/g, ' ') + ' ';
+      var text = normalize(q);
       var best = null;
       var bestScore = 0;
       KB.forEach(function (entry) {
         var score = 0;
-        entry.k.forEach(function (key) { if (text.indexOf(key.length <= 3 ? ' ' + key + ' ' : key) !== -1) { score += key.length > 4 ? 2 : 1; } });
+        entry.k.forEach(function (key) { if (hasKey(text, key)) { score += 3; } });
+        entry.g.forEach(function (key) { if (hasKey(text, key)) { score += 1; } });
         if (score > bestScore) { bestScore = score; best = entry; }
       });
       if (!best) {
-        return { a: 'I can answer questions about Tayyab\'s projects, skills, experience, AI work and availability. Try one of the suggestions below, or email him at tayyabch380@gmail.com.', c: null };
+        return { a: 'I can answer questions about Tayyab\'s experience, projects, skills, AI work, leadership and availability. Try one of these, or email him at tayyabch380@gmail.com.', c: null, f: DEFAULT_FOLLOW };
       }
       return best;
     }
@@ -1212,14 +1354,27 @@
         finish();
       }
       function finish() {
-        if (opts && opts.caseId) {
+        var hasCase = opts && opts.caseId;
+        var follow = opts && opts.follow ? opts.follow.filter(function (q) { return q !== opts.asked; }).slice(0, 3) : [];
+        if (hasCase || follow.length) {
           var actions = document.createElement('div');
           actions.className = 'msg-actions';
-          var btn = document.createElement('button');
-          btn.type = 'button';
-          btn.textContent = 'Open the case study';
-          btn.addEventListener('click', function () { openCase(opts.caseId, true); });
-          actions.appendChild(btn);
+          if (hasCase) {
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'case-btn';
+            btn.textContent = 'Open the case study';
+            btn.addEventListener('click', function () { openCase(opts.caseId, true); });
+            actions.appendChild(btn);
+          }
+          follow.forEach(function (q) {
+            var fb = document.createElement('button');
+            fb.type = 'button';
+            fb.className = 'follow-btn';
+            fb.textContent = q;
+            fb.addEventListener('click', function () { askQuestion(q); });
+            actions.appendChild(fb);
+          });
           el.appendChild(actions);
         }
         if (opts && opts.source) {
@@ -1286,15 +1441,15 @@
       } catch (err) {
         answer = null;
       }
+      var match = localAnswer(question);
       if (!answer) {
-        var local = localAnswer(question);
-        answer = local.a;
-        caseId = local.c;
+        answer = match.a;
+        caseId = match.c || null;
         source = 'Instant answer from portfolio content';
       }
       typing.remove();
       history_.push({ role: 'user', text: question }, { role: 'assistant', text: answer });
-      addMessage('bot', answer, { type: true, source: source, caseId: caseId });
+      addMessage('bot', answer, { type: true, source: source, caseId: caseId, follow: match.f || DEFAULT_FOLLOW, asked: question });
       busy = false;
       send.disabled = false;
       input.focus();
