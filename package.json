@@ -1,0 +1,9 @@
+{
+  "name": "tayyabch-portfolio",
+  "private": true,
+  "type": "module",
+  "description": "Portfolio of Muhammad Tayyab: static site plus one Vercel function (api/ask.js) for the AI assistant.",
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.3.0"
+  }
+}
