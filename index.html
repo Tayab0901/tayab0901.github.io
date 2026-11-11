@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muhammad Tayyab Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Muhammad Tayyab, senior software engineer and team lead (.NET, Angular, SQL Server): case studies of NextMail, Orange Line OMS, Webinar CE Classes, Workforce AI, Sunwai and Nurtureful.">
+<meta name="author" content="Muhammad Tayyab">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+  /* Layout: bright hero on a dotted blueprint band; sticky project index beside colour-coded case studies
+     (one column under 960px); earlier-work grid; skills; timeline; one bold navy-teal contact band.
+     Deliberately a single light look: every colour is set explicitly. */
+  :root {
+    color-scheme: light;
+    --bg: #f6f9fc;
+    --surface: #ffffff;
+    --fg: #0f2236;
+    --muted: #55657a;
+    --line: #e3e9f1;
+    --accent: #1f5fa8;
+    --accent-ink: #ffffff;
+    --teal: #0f766e;
+    --amber: #f2b33d;
+    --amber-ink: #8a5a00;
+    --chip: #eef4fb;
+    --band-from: #12355b;
+    --band-to: #0f5f6b;
+    --shadow: 0 1px 2px rgba(15, 34, 54, 0.05), 0 10px 30px rgba(15, 34, 54, 0.07);
+    --shadow-hover: 0 2px 4px rgba(15, 34, 54, 0.06), 0 16px 40px rgba(15, 34, 54, 0.11);
+    --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+    --radius: 16px;
+    /* project colours */
+    --c-nextmail: #1d4ed8;
+    --c-orangeline: #e0610f;
+    --c-webinar: #0f766e;
+    --c-workforce: #4338ca;
+    --c-sunwai: #15803d;
+    --c-nurtureful: #be185d;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; background: var(--bg); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+  img { max-width: 100%; }
+  p { margin: 0; }
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.12; margin: 0; color: var(--fg); }
+  h2 { font-size: clamp(1.7rem, 3.2vw, 2.3rem); font-weight: 800; letter-spacing: -0.015em; }
+  h3 { font-size: 1.55rem; font-weight: 800; }
+  h4 { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin: 0 0 10px; font-weight: 600; }
+
+  .wrap {
+    max-width: 1160px; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .label {
+    display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.78rem;
+    font-weight: 600; letter-spacing: 0.04em; color: var(--amber-ink); background: #fff5df;
+    border: 1px solid #f6dfae; padding: 3px 10px; border-radius: 999px;
+  }
+  .label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--amber); }
+
+  /* Top bar */
+  .topbar { background: rgba(255, 255, 255, 0.92); border-bottom: 1px solid var(--line); }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; flex-wrap: wrap; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 1.08rem; color: var(--fg); text-decoration: none; }
+  .mono-badge {
+    width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--accent), var(--teal)); color: #fff;
+    font-family: var(--font-mono); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.02em;
+  }
+  .topnav { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.93rem; font-weight: 500; }
+  .topnav a { color: var(--muted); text-decoration: none; }
+  .topnav a:hover { color: var(--accent); }
+
+  /* Hero */
+  .hero {
+    background-color: #eef4fb;
+    background-image:
+      radial-gradient(rgba(31, 95, 168, 0.16) 1px, transparent 1.3px),
+      linear-gradient(180deg, #eaf2fc 0%, #f3f8f7 100%);
+    background-size: 22px 22px, 100% 100%;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 48px; padding-block: 70px 60px; align-items: center; }
+  .hero .wrap > * { min-width: 0; }
+  .hero h1 { font-size: clamp(2.2rem, 7vw, 4.6rem); font-weight: 800; letter-spacing: -0.025em; margin-top: 16px; overflow-wrap: anywhere; }
+  .hero h1 .hl { color: var(--accent); background: linear-gradient(transparent 64%, #fde3a7 64%, #fde3a7 90%, transparent 90%); padding: 0 4px; }
+  .hero .role { font-size: 1.18rem; font-weight: 600; margin-top: 14px; color: var(--fg); }
+  .hero .thesis { color: var(--muted); max-width: 60ch; margin-top: 12px; font-size: 1.05rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 999px;
+    font: 600 0.95rem var(--font-body); text-decoration: none; cursor: pointer; border: 1px solid var(--accent);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.ghost { background: #ffffff; color: var(--accent); }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0; }
+  .facts div { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; box-shadow: var(--shadow); }
+  .facts dt { font-family: var(--font-display); font-weight: 800; font-size: 2.1rem; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .facts div:nth-child(1) dt { color: var(--accent); }
+  .facts div:nth-child(2) dt { color: var(--teal); }
+  .facts div:nth-child(3) dt { color: var(--c-orangeline); }
+  .facts div:nth-child(4) dt { color: var(--c-workforce); }
+  .facts dd { margin: 6px 0 0; color: var(--muted); font-size: 0.88rem; line-height: 1.35; }
+
+  /* Sections */
+  section.block { padding-block: 64px; }
+  section.block + section.block { border-top: 1px solid var(--line); }
+  .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 30px; }
+  .section-head > div { display: grid; gap: 10px; justify-items: start; }
+  .section-head p { color: var(--muted); max-width: 58ch; }
+
+  /* Work: index + cases */
+  .work { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 36px; align-items: start; }
+  .index { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 20px); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; box-shadow: var(--shadow); }
+  .index ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .index a { display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 10px; align-items: start; padding: 9px 10px; border-radius: 10px; text-decoration: none; color: var(--fg); }
+  .index a::before { content: ""; width: 10px; height: 10px; border-radius: 3px; background: var(--c); margin-top: 7px; }
+  .index a:hover { background: var(--chip); }
+  .index a strong { font-weight: 600; display: block; }
+  .index a small { display: block; color: var(--muted); font-size: 0.78rem; line-height: 1.3; }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+  .filters button {
+    font: 500 0.88rem var(--font-body); padding: 7px 15px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--surface); color: var(--fg); transition: background 0.15s ease;
+  }
+  .filters button:hover { background: var(--chip); }
+  .filters button[aria-pressed="true"] { background: var(--fg); color: #ffffff; border-color: var(--fg); }
+
+  .cases { display: grid; gap: 28px; min-width: 0; }
+  .case {
+    --c: var(--accent);
+    --tint: color-mix(in srgb, var(--c) 7%, #ffffff);
+    --tint-line: color-mix(in srgb, var(--c) 24%, #ffffff);
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px;
+    display: grid; gap: 24px; min-width: 0; scroll-margin-top: 20px; box-shadow: var(--shadow);
+    transition: box-shadow 0.2s ease;
+  }
+  .case:hover { box-shadow: var(--shadow-hover); }
+  .case-top { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 16px; align-items: start; }
+  .badge {
+    width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
+    background: var(--c); color: #ffffff; font-family: var(--font-mono); font-weight: 600; font-size: 1rem;
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--c) 35%, transparent);
+  }
+  .case header { display: grid; gap: 8px; min-width: 0; }
+  .case .eyebrow { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; color: var(--c); }
+  .case .eyebrow a { color: inherit; }
+  .case .lede { font-size: 1.05rem; max-width: 70ch; color: var(--fg); }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 0; }
+  .meta div { display: inline-flex; gap: 8px; align-items: baseline; background: var(--tint); border: 1px solid var(--tint-line); border-radius: 999px; padding: 4px 12px; font-size: 0.85rem; }
+  .meta dt { font-family: var(--font-mono); color: var(--c); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.72rem; font-weight: 600; }
+  .meta dd { margin: 0; font-weight: 500; }
+  .case-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr); gap: 30px; }
+  .context { background: var(--bg); border-radius: 12px; padding: 16px 18px; align-self: start; }
+  .context p { color: var(--muted); }
+  .case ul.built { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .case ul.built li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 6px; }
+  .case ul.built li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); margin-top: 9px; }
+
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+  .metric { background: var(--tint); border: 1px solid var(--tint-line); border-radius: 12px; padding: 14px 16px; }
+  .metric b { display: block; font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; color: var(--c); font-variant-numeric: tabular-nums; line-height: 1.15; }
+  .metric span { font-size: 0.86rem; color: var(--muted); }
+
+  figure.flow-wrap { margin: 0; overflow-x: auto; }
+  figure.flow-wrap figcaption { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
+  ol.flow { list-style: none; margin: 0; padding: 2px; display: flex; min-width: 640px; counter-reset: step; }
+  ol.flow li { flex: 1 1 0; position: relative; padding: 11px 12px; border: 1px solid var(--tint-line); border-radius: 12px; background: var(--tint); font-size: 0.84rem; line-height: 1.38; }
+  ol.flow li b { display: block; font-size: 0.9rem; color: var(--fg); margin-bottom: 3px; }
+  ol.flow li b::before { counter-increment: step; content: counter(step); display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--c); color: #fff; font-family: var(--font-mono); font-size: 0.68rem; margin-right: 6px; vertical-align: 1px; }
+  ol.flow li span { color: var(--muted); }
+  ol.flow li + li { margin-left: 28px; }
+  ol.flow li + li::before { content: "\2192"; position: absolute; left: -21px; top: 50%; transform: translateY(-50%); color: var(--c); font-weight: 700; }
+
+  .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips li { font-family: var(--font-mono); font-size: 0.76rem; background: var(--chip); color: var(--fg); padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); }
+  .case .chips li { background: var(--tint); border-color: var(--tint-line); color: color-mix(in srgb, var(--c) 70%, #0f2236); }
+
+  #nextmail { --c: var(--c-nextmail); }
+  #orangeline { --c: var(--c-orangeline); }
+  #webinar { --c: var(--c-webinar); }
+  #workforce { --c: var(--c-workforce); }
+  #sunwai { --c: var(--c-sunwai); }
+  #nurtureful { --c: var(--c-nurtureful); }
+  [data-index="nextmail"] a { --c: var(--c-nextmail); }
+  [data-index="orangeline"] a { --c: var(--c-orangeline); }
+  [data-index="webinar"] a { --c: var(--c-webinar); }
+  [data-index="workforce"] a { --c: var(--c-workforce); }
+  [data-index="sunwai"] a { --c: var(--c-sunwai); }
+  [data-index="nurtureful"] a { --c: var(--c-nurtureful); }
+
+  /* Earlier work */
+  .earlier-intro { color: var(--muted); max-width: 75ch; margin-bottom: 26px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 18px; }
+  .card {
+    --k: var(--accent);
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px;
+    display: flex; flex-direction: column; gap: 10px; min-width: 0; box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+  .card .company { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; color: var(--k); }
+  .card h3 { font-size: 1.22rem; }
+  .card p { color: var(--muted); font-size: 0.95rem; }
+  .card .chips { margin-top: auto; padding-top: 4px; }
+  .card a.ext { font-size: 0.88rem; font-weight: 500; }
+  .card.ts { --k: var(--c-nextmail); }
+  .card.sz { --k: var(--c-webinar); }
+  .card.sb { --k: var(--amber-ink); }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 18px; }
+  .skill { --k: var(--accent); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow); }
+  .skill h3 { font-size: 1.06rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .skill h3::before { content: ""; width: 12px; height: 12px; border-radius: 4px; background: var(--k); }
+  .skill:nth-child(1) { --k: var(--c-nextmail); }
+  .skill:nth-child(2) { --k: var(--c-nurtureful); }
+  .skill:nth-child(3) { --k: var(--c-webinar); }
+  .skill:nth-child(4) { --k: var(--c-orangeline); }
+  .skill:nth-child(5) { --k: var(--c-workforce); }
+  .skill:nth-child(6) { --k: var(--c-sunwai); }
+
+  /* Timeline */
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 26px; position: relative; display: grid; gap: 14px; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--accent), var(--teal)); border-radius: 2px; }
+  .timeline li { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; box-shadow: var(--shadow); display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 18px; }
+  .timeline li::before { content: ""; position: absolute; left: -25px; top: 22px; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 3px solid var(--accent); }
+  .timeline li:first-child::before { background: var(--amber); border-color: var(--amber); }
+  .timeline .when { font-family: var(--font-mono); font-size: 0.84rem; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+  .timeline h3 { font-size: 1.12rem; }
+  .timeline h3 em { font-style: normal; color: var(--accent); }
+  .timeline p { color: var(--muted); margin-top: 4px; }
+  .edu { margin-top: 20px; color: var(--muted); }
+  .edu strong { color: var(--fg); }
+
+  /* Contact band */
+  .contact-band { background: linear-gradient(135deg, var(--band-from), var(--band-to)); color: #ffffff; }
+  .contact-band .wrap { padding-block: 60px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+  .contact-band h2 { color: #ffffff; margin-bottom: 12px; }
+  .contact-band p { color: #cfe3f2; max-width: 46ch; }
+  .contact-list { margin: 0; display: grid; gap: 10px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: var(--radius); padding: 20px 22px; }
+  .contact-list div { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 12px; align-items: center; }
+  .contact-list dt { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: #9fc6e2; }
+  .contact-list dd { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; overflow-wrap: anywhere; color: #ffffff; font-weight: 500; }
+  .contact-list a { color: #ffe2a0; }
+  .copy { font: 600 0.78rem var(--font-body); border: 1px solid rgba(255, 255, 255, 0.5); background: transparent; color: #ffffff; border-radius: 999px; padding: 3px 11px; cursor: pointer; }
+  .copy:hover { background: rgba(255, 255, 255, 0.12); }
+  .copy-status { font-size: 0.8rem; color: #ffe2a0; }
+
+  footer { background: var(--surface); border-top: 1px solid var(--line); }
+  footer .wrap { padding-block: 22px 32px; color: var(--muted); font-size: 0.85rem; }
+
+  @media (max-width: 960px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 32px; padding-block: 48px 40px; }
+    .work { grid-template-columns: 1fr; }
+    .index { display: none; }
+    .case-body { grid-template-columns: 1fr; gap: 18px; }
+    .contact-band .wrap { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .case { padding: 20px; }
+    .case-top { grid-template-columns: 1fr; gap: 12px; }
+    ol.flow { flex-direction: column; min-width: 0; }
+    ol.flow li + li { margin-left: 0; margin-top: 26px; }
+    ol.flow li + li::before { content: "\2193"; left: 16px; top: -22px; transform: none; }
+    .timeline li { grid-template-columns: 1fr; gap: 4px; }
+    .contact-list div { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mono-badge" aria-hidden="true">MT</span>Muhammad Tayyab</a>
+    <nav class="topnav" aria-label="Sections">
+      <a href="#work">Case studies</a>
+      <a href="#earlier">Earlier work</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="label">Senior Software Engineer / Team Lead</span>
+      <h1>Muhammad <span class="hl">Tayyab</span></h1>
+      <p class="role">.NET, Angular and SQL Server systems, taken safely to production</p>
+      <p class="thesis">I build web applications, APIs and data pipelines for clients in the US and Pakistan, and I lead the releases that put them live. Below are the products I work on now, what I built in each, and the numbers that came out of it.</p>
+      <div class="actions">
+        <a class="btn primary" href="Muhammad-Tayyab-Resume.pdf">Download CV (PDF)</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/tayyab-ch-623024158/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="#contact">Contact</a>
+      </div>
+    </div>
+    <dl class="facts">
+      <div><dt>8+</dt><dd>years building .NET software</dd></div>
+      <div><dt>13</dt><dd>products shipped or maintained</dd></div>
+      <div><dt>6</dt><dd>client products at Visiomate now</dd></div>
+      <div><dt>2</dt><dd>team-lead roles, US and Pakistan clients</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+  <section class="block" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="label">Selected work</span><h2 id="work-title">Case studies at Visiomate</h2></div>
+        <p>Feb 2026 to present, as senior software engineer and team lead. Filter by the technology you care about.</p>
+      </div>
+
+      <div class="work">
+        <nav class="index" aria-label="Case studies">
+          <ol>
+            <li data-index="nextmail"><a href="#nextmail"><span><strong>NextMail</strong><small>Email marketing SaaS</small></span></a></li>
+            <li data-index="orangeline"><a href="#orangeline"><span><strong>Orange Line OMS</strong><small>Metro-rail operations</small></span></a></li>
+            <li data-index="webinar"><a href="#webinar"><span><strong>Webinar CE Classes</strong><small>AI course generation</small></span></a></li>
+            <li data-index="workforce"><a href="#workforce"><span><strong>Workforce AI</strong><small>Forecasting and scheduling</small></span></a></li>
+            <li data-index="sunwai"><a href="#sunwai"><span><strong>Sunwai</strong><small>State Bank of Pakistan</small></span></a></li>
+            <li data-index="nurtureful"><a href="#nurtureful"><span><strong>Nurtureful</strong><small>Online therapy</small></span></a></li>
+          </ol>
+        </nav>
+
+        <div>
+          <div class="filters" role="group" aria-label="Filter case studies">
+            <button type="button" id="f-all" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" id="f-dotnet" data-filter="dotnet" aria-pressed="false">.NET</button>
+            <button type="button" id="f-angular" data-filter="angular" aria-pressed="false">Angular</button>
+            <button type="button" id="f-ai" data-filter="ai" aria-pressed="false">AI and Python</button>
+            <button type="button" id="f-devops" data-filter="devops" aria-pressed="false">Data and DevOps</button>
+          </div>
+
+          <div class="cases">
+
+            <article class="case" id="nextmail" data-tags="dotnet devops">
+              <div class="case-top">
+                <span class="badge" aria-hidden="true">NM</span>
+                <header>
+                  <p class="eyebrow">Email marketing SaaS, US client</p>
+                  <h3>NextMail</h3>
+                  <p class="lede">A multi-tenant email platform that sends campaigns, triggered and transactional mail for business clients, each with its own SQL Server database.</p>
+                  <dl class="meta">
+                    <div><dt>Role</dt><dd>Team lead, full-stack engineer</dd></div>
+                    <div><dt>Platform</dt><dd>ASP.NET Web Forms, Windows Services</dd></div>
+                  </dl>
+                </header>
+              </div>
+              <div class="case-body">
+                <div class="context">
+                  <h4>Context</h4>
+                  <p>A mature platform that sent everything through PowerMTA. The client wanted a second mail engine, safer releases and tighter security, without interrupting live senders.</p>
+                </div>
+                <div>
+                  <h4>What I built</h4>
+                  <ul class="built">
+                    <li>Integrated KumoMTA as a second mail engine beside PowerMTA, chosen per client, across the web app and the sending services.</li>
+                    <li>Built a .NET tracking and webhook API that records opens, clicks and delivery events in each tenant database.</li>
+                    <li>Built a DbUp and GitHub Actions pipeline that applies versioned SQL migrations to 25 tenant databases, with schema snapshots in git.</li>
+                    <li>Planned production release windows for 12 Windows services: staging-first tests, per-service checks, rollback plans and pinned merges.</li>
+                    <li>Found and fixed a bounce-category gap that left 1,592 hard-bounced contacts mailable, and an unsubscribe race condition.</li>
+                    <li>Moved application secrets into server-side configuration managed outside source control, and retired unused pages.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="metrics">
+                <div class="metric"><b>25</b><span>tenant databases on one migration pipeline</span></div>
+                <div class="metric"><b>12</b><span>Windows services in planned releases</span></div>
+                <div class="metric"><b>1,592</b><span>hard-bounced contacts correctly suppressed</span></div>
+              </div>
+              <figure class="flow-wrap">
+                <figcaption>How a campaign flows</figcaption>
+                <ol class="flow">
+                  <li><b>Web app</b><span>ASP.NET Web Forms: campaigns, lists, client settings</span></li>
+                  <li><b>Tenant DBs</b><span>SQL Server x25, DbUp migrations</span></li>
+                  <li><b>Services</b><span>12 Windows services: import, build, send, bounce</span></li>
+                  <li><b>Mail engine</b><span>PowerMTA or KumoMTA, per client</span></li>
+                  <li><b>Tracking</b><span>.NET API: opens, clicks and events back to the tenant</span></li>
+                </ol>
+              </figure>
+              <ul class="chips" aria-label="Stack">
+                <li>C#</li><li>.NET Framework 4.8</li><li>ASP.NET Web Forms</li><li>Windows Services</li><li>SQL Server</li><li>KumoMTA</li><li>PowerMTA</li><li>DbUp</li><li>GitHub Actions</li><li>IIS</li>
+              </ul>
+            </article>
+
+            <article class="case" id="orangeline" data-tags="dotnet angular devops">
+              <div class="case-top">
+                <span class="badge" aria-hidden="true">OL</span>
+                <header>
+                  <p class="eyebrow">Metro-rail operations, Lahore Orange Line Metro Train</p>
+                  <h3>Orange Line OMS</h3>
+                  <p class="lede">An operations management system for the metro's maintenance and operations teams: work permits, power isolation, ground-wire orders, dispatch and maintenance plans.</p>
+                  <dl class="meta">
+                    <div><dt>Role</dt><dd>Main contributor, frontend and API</dd></div>
+                    <div><dt>Platform</dt><dd>Angular 21, .NET 10, PostgreSQL</dd></div>
+                  </dl>
+                </header>
+              </div>
+              <div class="case-body">
+                <div class="context">
+                  <h4>Context</h4>
+                  <p>Permits and approval chains for track and power work had to move into one system, with live updates for the next person in the chain and documents that print correctly.</p>
+                </div>
+                <div>
+                  <h4>What I built</h4>
+                  <ul class="built">
+                    <li>Angular 21 app with server-side rendering, Tailwind CSS, Angular Material and a shared design library.</li>
+                    <li>.NET 10 Web API with JWT, ASP.NET Identity and EF Core on PostgreSQL: 28 controllers for tickets, plans, power and ground-wire workflows.</li>
+                    <li>Multi-step approvals for work-permit tickets, power-isolation and ground-wire requests, dispatch orders and construction registrations.</li>
+                    <li>Feature-based access control: every route, menu item and action checks the user's role features.</li>
+                    <li>Live notifications through SignalR and Firebase push, plus PDF tickets and orders and Excel exports.</li>
+                    <li>Docker image published to GHCR, with a GitHub Actions deploy that restarts only the backend container on a shared host.</li>
+                    <li>k6 load tests: 80 req/s held for 3 minutes at 0% errors; traced the ~100 req/s limit to sequential database calls in list endpoints.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="metrics">
+                <div class="metric"><b>479 / 984</b><span>commits across frontend and API</span></div>
+                <div class="metric"><b>28</b><span>API controllers</span></div>
+                <div class="metric"><b>80 req/s</b><span>sustained at 0% errors in k6 soak test</span></div>
+              </div>
+              <figure class="flow-wrap">
+                <figcaption>How an approval moves</figcaption>
+                <ol class="flow">
+                  <li><b>Raised</b><span>Angular 21 form, checked against role features</span></li>
+                  <li><b>Approved</b><span>.NET 10 API validates and records the step</span></li>
+                  <li><b>Stored</b><span>PostgreSQL through EF Core</span></li>
+                  <li><b>Notified</b><span>Next approver: SignalR in the app, Firebase push</span></li>
+                  <li><b>Printed</b><span>PDF ticket or dispatch order</span></li>
+                </ol>
+              </figure>
+              <ul class="chips" aria-label="Stack">
+                <li>Angular 21</li><li>TypeScript</li><li>Tailwind CSS</li><li>.NET 10</li><li>EF Core</li><li>PostgreSQL</li><li>SignalR</li><li>Firebase</li><li>Docker</li><li>GitHub Actions</li><li>k6</li>
+              </ul>
+            </article>
+
+            <article class="case" id="webinar" data-tags="dotnet ai">
+              <div class="case-top">
+                <span class="badge" aria-hidden="true">WC</span>
+                <header>
+                  <p class="eyebrow">Continuing education, <a href="https://webinarceclasses.com" target="_blank" rel="noopener">webinarceclasses.com</a></p>
+                  <h3>Webinar CE Classes</h3>
+                  <p class="lede">A platform where professionals take live webinars, recorded webinars and home-study courses for continuing-education credit, with tests and certificates.</p>
+                  <dl class="meta">
+                    <div><dt>Role</dt><dd>Lead developer, 44 of 52 commits</dd></div>
+                    <div><dt>Platform</dt><dd>ASP.NET Core MVC, SQL Server</dd></div>
+                  </dl>
+                </header>
+              </div>
+              <div class="case-body">
+                <div class="context">
+                  <h4>Context</h4>
+                  <p>The client wanted to grow the home-study catalog faster and sell it in new ways, on an existing ASP.NET Core MVC codebase with Stripe and PayPal checkout.</p>
+                </div>
+                <div>
+                  <h4>What I built</h4>
+                  <ul class="built">
+                    <li>AI course generation: extract a source article, have GPT-4o draft the course content and test, and queue auto-builds for review.</li>
+                    <li>Per-model AI usage and cost tracking, so the client sees what each generated course costs.</li>
+                    <li>A pricing module with unlimited home-study plans, coupons, a newsletter, an admin mailbox and reCAPTCHA on public forms.</li>
+                    <li>Test rules (3 attempts per course), evaluation reports by date range, and course cards rebuilt to the client's new design.</li>
+                    <li>Contact, feedback and grievance mail routed to separate inboxes.</li>
+                  </ul>
+                </div>
+              </div>
+              <figure class="flow-wrap">
+                <figcaption>How a course gets built</figcaption>
+                <ol class="flow">
+                  <li><b>Source</b><span>Article chosen by the admin</span></li>
+                  <li><b>Extract</b><span>Article text and structure pulled out</span></li>
+                  <li><b>Draft</b><span>GPT-4o writes content and test, cost logged</span></li>
+                  <li><b>Queue</b><span>Auto-build, then admin review</span></li>
+                  <li><b>Publish</b><span>Test, IronPDF certificate, Stripe or PayPal checkout</span></li>
+                </ol>
+              </figure>
+              <ul class="chips" aria-label="Stack">
+                <li>ASP.NET Core MVC</li><li>EF Core</li><li>SQL Server</li><li>OpenAI GPT-4o</li><li>Stripe</li><li>PayPal</li><li>SendGrid</li><li>IronPDF</li><li>reCAPTCHA</li>
+              </ul>
+            </article>
+
+            <article class="case" id="workforce" data-tags="ai angular devops">
+              <div class="case-top">
+                <span class="badge" aria-hidden="true">WA</span>
+                <header>
+                  <p class="eyebrow">Contact-center workforce management</p>
+                  <h3>Workforce AI</h3>
+                  <p class="lede">Forecasts call volume and generates agent shift schedules that cover demand with the fewest agents, for planners to review and edit.</p>
+                  <dl class="meta">
+                    <div><dt>Role</dt><dd>Built the forecasting and scheduling engine</dd></div>
+                    <div><dt>Platform</dt><dd>Python, Flask, Angular, .NET</dd></div>
+                  </dl>
+                </header>
+              </div>
+              <div class="case-body">
+                <div class="context">
+                  <h4>Context</h4>
+                  <p>The product needed demand forecasts and agent schedules generated from historical call data, then editable by planners in the dashboard.</p>
+                </div>
+                <div>
+                  <h4>What I built</h4>
+                  <ul class="built">
+                    <li>Call-volume forecasting with Prophet from historical interval data.</li>
+                    <li>An OR-Tools CP-SAT scheduler with continuous shift patterns, breaks and multi-day plans.</li>
+                    <li>Soft demand constraints, so it always returns a schedule and reports any demand it could not cover.</li>
+                    <li>A two-level objective: minimize unmet demand first, then the number of agents.</li>
+                    <li>A Flask REST API for forecasts, schedules, edits and agents, packaged with Docker for the Angular dashboard.</li>
+                    <li>Moved the .NET backend's data layer to PostgreSQL.</li>
+                  </ul>
+                </div>
+              </div>
+              <figure class="flow-wrap">
+                <figcaption>How a schedule is produced</figcaption>
+                <ol class="flow">
+                  <li><b>History</b><span>Interval call volumes</span></li>
+                  <li><b>Forecast</b><span>Prophet predicts demand per interval</span></li>
+                  <li><b>Optimize</b><span>CP-SAT assigns shifts and breaks</span></li>
+                  <li><b>Serve</b><span>Flask REST API</span></li>
+                  <li><b>Review</b><span>Angular dashboard: edits, adherence, compliance</span></li>
+                </ol>
+              </figure>
+              <ul class="chips" aria-label="Stack">
+                <li>Python</li><li>Flask</li><li>Google OR-Tools</li><li>Prophet</li><li>pandas</li><li>Docker</li><li>Angular</li><li>.NET</li><li>PostgreSQL</li>
+              </ul>
+            </article>
+
+            <article class="case" id="sunwai" data-tags="dotnet">
+              <div class="case-top">
+                <span class="badge" aria-hidden="true">SW</span>
+                <header>
+                  <p class="eyebrow">Banking regulator, State Bank of Pakistan</p>
+                  <h3>Sunwai</h3>
+                  <p class="lede">Sunwai is the State Bank of Pakistan's complaint portal. I work on its user-management web app: bank users, administrators and complaint screens.</p>
+                  <dl class="meta">
+                    <div><dt>Role</dt><dd>Maintenance and production releases</dd></div>
+                    <div><dt>Platform</dt><dd>ASP.NET Core (.NET 10), SQL Server</dd></div>
+                  </dl>
+                </header>
+              </div>
+              <div class="case-body">
+                <div class="context">
+                  <h4>Context</h4>
+                  <p>A public-facing government system, so changes go out as small, well-tested releases.</p>
+                </div>
+                <div>
+                  <h4>What I built</h4>
+                  <ul class="built">
+                    <li>Maintained bank, admin and portal-admin user management, including Active Directory-linked bank accounts.</li>
+                    <li>Released Google reCAPTCHA Enterprise to production (Feb 2026).</li>
+                    <li>Released an OTP resend flow to production (Jun 2026).</li>
+                  </ul>
+                </div>
+              </div>
+              <ul class="chips" aria-label="Stack">
+                <li>ASP.NET Core</li><li>.NET 10</li><li>SQL Server</li><li>Active Directory</li><li>reCAPTCHA Enterprise</li><li>Serilog</li>
+              </ul>
+            </article>
+
+            <article class="case" id="nurtureful" data-tags="angular dotnet ai">
+              <div class="case-top">
+                <span class="badge" aria-hidden="true">NF</span>
+                <header>
+                  <p class="eyebrow">Online therapy</p>
+                  <h3>Nurtureful</h3>
+                  <p class="lede">Patients find a therapist, book sessions and meet over video; therapists manage their profiles, skills and session notes.</p>
+                  <dl class="meta">
+                    <div><dt>Role</dt><dd>Main frontend contributor, 46 of 75 commits</dd></div>
+                    <div><dt>Platform</dt><dd>Angular 19, .NET 9</dd></div>
+                  </dl>
+                </header>
+              </div>
+              <div class="case-body">
+                <div class="context">
+                  <h4>Context</h4>
+                  <p>Patients needed better ways to find the right therapist and stay informed through booking, on an Angular and .NET 9 clean-architecture codebase.</p>
+                </div>
+                <div>
+                  <h4>What I built</h4>
+                  <ul class="built">
+                    <li>Therapist skills and needs configuration, with patient-side filters that match them, across Angular and the .NET API.</li>
+                    <li>Therapist ratings, and extra acknowledgements during patient onboarding.</li>
+                    <li>Sign-up and sign-in notifications when a patient books an appointment.</li>
+                    <li>An AI assistant chatbot for signed-in users.</li>
+                    <li>A cost estimate for the chatbot and Twilio video sessions.</li>
+                  </ul>
+                </div>
+              </div>
+              <ul class="chips" aria-label="Stack">
+                <li>Angular 19</li><li>Tailwind CSS</li><li>.NET 9</li><li>Twilio Video</li><li>Stripe</li>
+              </ul>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="earlier" aria-labelledby="earlier-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="label">2018 to 2026</span><h2 id="earlier-title">Earlier work</h2></div>
+        <p>At Team Solution, SirizApps and Softbeats Business Solutions.</p>
+      </div>
+      <p class="earlier-intro">At Team Solution I led the team as Scrum Master on US K-12 education products. Across them I built OAuth2/JWT single sign-on, an asynchronous export service for PDF, Excel and CSV, and tuned SQL Server for high-traffic use.</p>
+      <div class="grid">
+        <article class="card ts">
+          <p class="company">Team Solution, US K-12</p>
+          <h3>SchoolCity</h3>
+          <p>Platform for US schools and districts to visualize, compare and report on educational data, with custom reports for administrators.</p>
+          <a class="ext" href="https://www.illuminateed.com/products/schoolcity/" target="_blank" rel="noopener">illuminateed.com/products/schoolcity</a>
+          <ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li><li>AWS</li><li>Scrum</li></ul>
+        </article>
+        <article class="card ts">
+          <p class="company">Team Solution, US K-12</p>
+          <h3>School Charts</h3>
+          <p>Charts, graphs and maps that compare schools and districts side by side, to support resource and curriculum decisions.</p>
+          <a class="ext" href="https://schoolcharts.schoolcity.com/" target="_blank" rel="noopener">schoolcharts.schoolcity.com</a>
+          <ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li><li>Jira</li></ul>
+        </article>
+        <article class="card ts">
+          <p class="company">Team Solution, US K-12</p>
+          <h3>Appraiser</h3>
+          <p>Teacher Incentive Allotment management: configurable designations, nightly roster sync, SSO, mid-year and year-end evaluations, and automated payout scheduling.</p>
+          <a class="ext" href="https://everman.ilm.school/" target="_blank" rel="noopener">everman.ilm.school</a>
+          <ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li><li>SSO</li></ul>
+        </article>
+        <article class="card ts">
+          <p class="company">Team Solution</p>
+          <h3>GradeCam</h3>
+          <p>Scanner-based capture and evaluation of documents, turning scanned pages into structured data.</p>
+          <ul class="chips"><li>.NET</li><li>JavaScript</li><li>CSS</li></ul>
+        </article>
+        <article class="card ts">
+          <p class="company">Team Solution</p>
+          <h3>Jobee</h3>
+          <p>Free resume builder with professional, modern, creative, executive and simple templates, plus matching cover letters.</p>
+          <a class="ext" href="https://jobee.io/" target="_blank" rel="noopener">jobee.io</a>
+          <ul class="chips"><li>ASP.NET</li><li>.NET Core</li><li>SQL Server</li></ul>
+        </article>
+        <article class="card sz">
+          <p class="company">SirizApps</p>
+          <h3>Mosino</h3>
+          <p>Multi-language platform that runs several businesses from one place: restaurant reservations, hospital management and spa management.</p>
+          <a class="ext" href="https://www.mosinoone.com/" target="_blank" rel="noopener">mosinoone.com</a>
+          <ul class="chips"><li>ASP.NET Web Forms</li><li>SQL Server</li></ul>
+        </article>
+        <article class="card sb">
+          <p class="company">Softbeats Business Solutions</p>
+          <h3>Gluon ERP</h3>
+          <p>ERP modules for business clients, built and supported in ASP.NET Web Forms on SQL Server.</p>
+          <ul class="chips"><li>ASP.NET Web Forms</li><li>SQL Server</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills" aria-labelledby="skills-title">
+    <div class="wrap">
+      <div class="section-head"><div><span class="label">Toolbox</span><h2 id="skills-title">Skills</h2></div></div>
+      <div class="skills">
+        <div class="skill"><h3>Backend</h3><ul class="chips"><li>C#</li><li>.NET 10</li><li>ASP.NET Core Web API</li><li>ASP.NET Core MVC</li><li>EF Core</li><li>SignalR</li><li>ASP.NET Web Forms</li><li>Windows Services</li></ul></div>
+        <div class="skill"><h3>Frontend</h3><ul class="chips"><li>Angular</li><li>TypeScript</li><li>JavaScript</li><li>RxJS</li><li>Tailwind CSS</li><li>Angular Material</li><li>Razor</li></ul></div>
+        <div class="skill"><h3>Databases</h3><ul class="chips"><li>SQL Server</li><li>T-SQL</li><li>Stored procedures</li><li>Query tuning</li><li>PostgreSQL</li><li>DbUp</li></ul></div>
+        <div class="skill"><h3>DevOps and Cloud</h3><ul class="chips"><li>GitHub Actions</li><li>Docker</li><li>IIS</li><li>Linux</li><li>AWS</li><li>Git</li><li>k6</li></ul></div>
+        <div class="skill"><h3>AI and Python</h3><ul class="chips"><li>Python</li><li>Flask</li><li>OpenAI GPT-4o</li><li>Google OR-Tools</li><li>Prophet</li></ul></div>
+        <div class="skill"><h3>Integrations</h3><ul class="chips"><li>Stripe</li><li>PayPal</li><li>Twilio</li><li>SendGrid</li><li>Firebase</li><li>OAuth2 / JWT / SSO</li><li>KumoMTA</li><li>PowerMTA</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience" aria-labelledby="experience-title">
+    <div class="wrap">
+      <div class="section-head"><div><span class="label">Since 2018</span><h2 id="experience-title">Experience</h2></div></div>
+      <ol class="timeline">
+        <li><p class="when">Feb 2026 – Present</p><div><h3>Senior Software Engineer / Team Lead, <em>Visiomate</em></h3><p>Team lead and full-stack engineer on six client products, from requirements to production support.</p></div></li>
+        <li><p class="when">Aug 2021 – Jan 2026</p><div><h3>Software Engineer / Team Lead, <em>Team Solution</em>, Lahore</h3><p>Scrum Master for the team on US K-12 products; SSO, export service and SQL Server tuning.</p></div></li>
+        <li><p class="when">May 2020 – Jul 2021</p><div><h3>Software Developer, <em>SirizApps</em>, Lahore</h3><p>ASP.NET Web Forms and SQL Server apps including Mosino; code reviews and mentoring.</p></div></li>
+        <li><p class="when">Feb 2019 – Nov 2019</p><div><h3>ERP Support Manager, <em>Fahmir Pharma</em>, Lahore</h3><p>Led ERP support, user training and customization with finance and operations.</p></div></li>
+        <li><p class="when">Jul 2018 – Jan 2019</p><div><h3>Technical Support Specialist, <em>Softbeats Business Solutions</em>, Lahore</h3><p>Developed and supported Gluon ERP modules.</p></div></li>
+      </ol>
+      <p class="edu"><strong>Education:</strong> Master of Computer Science (MCS), Superior University, Lahore, 2019.</p>
+    </div>
+  </section>
+</main>
+
+<section class="contact-band" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div>
+      <h2 id="contact-title">Let's build something reliable</h2>
+      <p>Open to remote and on-site roles. I work with US teams across time zones from Lahore, Pakistan.</p>
+    </div>
+    <dl class="contact-list">
+      <div><dt>Email</dt><dd><span id="email-text">tayyabch380@gmail.com</span><button type="button" class="copy" id="copy-email">Copy</button><span class="copy-status" id="copy-status" aria-live="polite"></span></dd></div>
+      <div><dt>Phone</dt><dd>+92 323 4508663</dd></div>
+      <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/tayyab-ch-623024158/" target="_blank" rel="noopener">linkedin.com/in/tayyab-ch-623024158</a></dd></div>
+      <div><dt>CV</dt><dd><a href="Muhammad-Tayyab-Resume.pdf">Muhammad-Tayyab-Resume.pdf</a></dd></div>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Muhammad Tayyab, Lahore, Pakistan. Project details describe my own work; client names appear only where the product is public.</div>
+</footer>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('[data-filter]');
+    var cases = document.querySelectorAll('.case');
+    var indexItems = document.querySelectorAll('[data-index]');
+
+    function applyFilter(tag) {
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.filter === tag)); });
+      cases.forEach(function (c) {
+        var show = tag === 'all' || c.dataset.tags.split(' ').indexOf(tag) !== -1;
+        c.hidden = !show;
+        indexItems.forEach(function (i) { if (i.dataset.index === c.id) { i.hidden = !show; } });
+      });
+    }
+    buttons.forEach(function (b) { b.addEventListener('click', function () { applyFilter(b.dataset.filter); }); });
+
+    var copyBtn = document.getElementById('copy-email');
+    var status = document.getElementById('copy-status');
+    var emailText = document.getElementById('email-text');
+    function selectEmail() {
+      var range = document.createRange();
+      range.selectNodeContents(emailText);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      status.textContent = 'Selected, press Ctrl+C';
+    }
+    copyBtn.addEventListener('click', function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(emailText.textContent)
+          .then(function () { status.textContent = 'Copied'; })
+          .catch(selectEmail);
+      } else {
+        selectEmail();
+      }
+    });
+  })();
+</script>
+</body>
+</html>
